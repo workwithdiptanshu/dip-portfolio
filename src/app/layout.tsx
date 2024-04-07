@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "dptsnhu",
+    title: "Diptanshu Mahish",
     description: "Diptanshu Mahish | Portfolio | Shop",
     icons: {
         icon: "/favicon.ico",
