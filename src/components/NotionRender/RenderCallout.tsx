@@ -17,7 +17,6 @@ export default async function RenderCallout({ block }: Props) {
                         callout.icon.emoji
                     ) : (
                         <Image
-                            unoptimized
                             blurDataURL={assets.blur_img}
                             placeholder="blur"
                             src={

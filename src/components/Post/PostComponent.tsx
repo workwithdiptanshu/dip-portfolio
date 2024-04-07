@@ -36,7 +36,6 @@ export default async function PostComponent({ post, postType }: Props) {
                     {post.title}
                 </h3>
                 <Image
-                    unoptimized
                     src={post.cover ?? assets.blur_img}
                     alt={post.title ?? "Image"}
                     height={300}

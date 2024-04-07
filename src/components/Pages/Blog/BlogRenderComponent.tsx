@@ -27,7 +27,6 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
                 </Link>
             </div> */}
             <Image
-                unoptimized
                 src={url}
                 alt={title}
                 height={1080}
