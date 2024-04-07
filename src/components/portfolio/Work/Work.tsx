@@ -47,9 +47,9 @@ export default function Work() {
                     contentNumber="02"
                     backgroundColor="293960"
                     backgroundImage="/Assets/back-dark-2.svg"
-                    contentFullDesc="Cursed diary is a creepy pasta website, where you can submit horror and such stuff, readers can read stuff easily and with a minimal and clean UI, it becomes easy for the users to navigate between pages and read their favorite content with ease. Proper SEO practices have been put to use here and every page is well shareable"
+                    contentFullDesc="Diptanshu Mahish is a creepy pasta website, where you can submit horror and such stuff, readers can read stuff easily and with a minimal and clean UI, it becomes easy for the users to navigate between pages and read their favorite content with ease. Proper SEO practices have been put to use here and every page is well shareable"
                     contentMiniDesc="Creepypasta blogs made using the notion databases"
-                    contentName="Cursed diary : Creepypasta content"
+                    contentName="Diptanshu Mahish : Creepypasta content"
                     contentTags={[
                         "Next JS",
                         "Tailwind CSS",
@@ -59,7 +59,7 @@ export default function Work() {
                         "Vercel",
                     ]}
                     mainImagery="/Assets/work/cd.webp"
-                    LiveLink="https://curseddiary.vercel.app/"
+                    LiveLink="https://diptanshumahish.in/"
                     githubLink="https://github.com/diptanshumahish/curseddiary"
                 />
                 <WorkItem

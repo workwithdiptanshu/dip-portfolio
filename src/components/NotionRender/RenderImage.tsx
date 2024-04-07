@@ -26,7 +26,7 @@ export default async function RenderImage({ block }: Props) {
                 src={imageUrl}
                 width={1920}
                 height={1080}
-                alt="Cursed Diary Imagez"
+                alt="Diptanshu Mahish Imagez"
                 className=" border border-white border-opacity-15 h-auto lg:h-[40vh] w-full aspect-auto"
             />
             <figcaption className="caption">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         icon: "/favicon.ico",
         shortcut: "/favicon.ico",
     },
-    authors: [{ name: "Diptanshu Mahish", url: "https://diptanshumahish.me" }],
+    authors: [{ name: "Diptanshu Mahish", url: "https://diptanshumahish.in" }],
     category: "Portfolio Websites",
     abstract:
         "Diptanshu Mahish | Portfolio Website | UI/UX | Front end developer | Flutter | NextJS | Shop",
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
         "Nextjs Diptanshu Mahish",
     ],
     robots: { follow: true },
-    assets: "https://diptanshumahish.me/banner.png",
+    assets: "https://diptanshumahish.in/banner.png",
     twitter: {
         card: "summary_large_image",
-        site: "https://diptanshumahish.me",
+        site: "https://diptanshumahish.in",
         creator: "@DiptanshuMahis5",
-        images: "https://diptanshumahish.me/banner.png",
+        images: "https://diptanshumahish.in/banner.png",
     },
 
     classification: "Portfolio Website",
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
         countryName: "India",
         emails: ["diptanshumahish2016@gmail.com"],
         title: "Diptanshu Mahish | Portfolio",
-        url: "https://diptanshumahish.me",
+        url: "https://diptanshumahish.in",
         siteName: "Diptanshu Mahish",
-        images: ["https://diptanshumahish.me/banner.png"],
+        images: ["https://diptanshumahish.in/banner.png"],
         description: "Diptanshu Mahish | Portfolio website. | Shop  ",
         determiner: "the",
         locale: "IN",
         alternateLocale: "US",
     },
-    metadataBase: new URL("https://diptanshumahish.me"),
+    metadataBase: new URL("https://diptanshumahish.in"),
 };
 export const viewport: Viewport = {
     themeColor: "#353451",
