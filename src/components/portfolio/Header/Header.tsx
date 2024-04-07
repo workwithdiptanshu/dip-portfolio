@@ -5,7 +5,7 @@ const hf = Herr_Von_Muellerhoff({ subsets: ["latin"], weight: ["400"] });
 
 export default function Header() {
     return (
-        <div className="lg:pt-[10vh]  lg:h-fit h-screen flex items-center justify-center pointer-events-none ">
+        <div className="lg:pt-[10vh]  lg:h-fit h-[90vh] flex items-center justify-center pointer-events-none ">
             <div>
                 <div className=" text-center">
                     <span className={`${hf.className}`}>diptanshu Mahish</span>
