@@ -1,9 +1,7 @@
 import Heading from "@/components/Common/Heading";
 import PostComponent from "@/components/Post/PostComponent";
 import NotionClient from "@/components/services/notion-client";
-import { capitaliseFirst } from "@/components/services/strings";
 import { ServerProps } from "@/contracts/ServerComponents";
-import { Loader2 } from "lucide-react";
 import React, { Suspense } from "react";
 
 export default async function page(

@@ -42,7 +42,7 @@ export default async function PostComponent({ post, postType }: Props) {
                     blurDataURL={assets.blur_img}
                     placeholder="blur"
                     width={200}
-                    className="w-full h-auto aspect-[16/9] bg-theme-bg object-cover border-y border-black border-opacity-20 "
+                    className="w-full h-auto aspect-[16/9] bg-theme-bg object-cover border-y border-black border-opacity-20"
                 />
                 <div className=" h-full flex flex-col gap-2 px-4 py-2">
                     <span className="h-[45%] opacity-50 text-sm w-full text-ellipsis overflow-hidden line-clamp-4">
