@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
     title: "Diptanshu Mahish",
@@ -82,6 +83,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${generalSans.className} bg-bg-back`}>
+                <NextTopLoader
+                    showSpinner={false}
+                    color="#4D33B3"
+                    crawlSpeed={400}
+                />
                 {children}
             </body>
         </html>
