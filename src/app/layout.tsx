@@ -4,7 +4,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Diptanshu Mahish",
-    description: "Diptanshu Mahish | Portfolio | Shop",
+    description:
+        "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast yet creative designs and turn them into reality.",
     icons: {
         icon: "/favicon.ico",
         shortcut: "/favicon.ico",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
         "Dip",
         "UI UX Diptanshu",
         "Nextjs Diptanshu Mahish",
+        "diptanshumahish.in",
     ],
     robots: { follow: true },
     assets: "https://diptanshumahish.in/banner.png",
@@ -36,17 +38,22 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         countryName: "India",
-        emails: ["diptanshumahish2016@gmail.com"],
+        emails: [
+            "diptanshumahish2016@gmail.com",
+            "workwithdiptanshu@gmail.com",
+        ],
         title: "Diptanshu Mahish | Portfolio",
         url: "https://diptanshumahish.in",
         siteName: "Diptanshu Mahish",
         images: ["https://diptanshumahish.in/banner.png"],
-        description: "Diptanshu Mahish | Portfolio website. | Shop  ",
+        description:
+            "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast yet creative designs and turn them into reality.",
         determiner: "the",
         locale: "IN",
         alternateLocale: "US",
     },
     metadataBase: new URL("https://diptanshumahish.in"),
+    creator: "Diptanshu Mahish",
 };
 export const viewport: Viewport = {
     themeColor: "#353451",
