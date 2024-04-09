@@ -33,7 +33,7 @@ export default async function BlogRenderComponent(props: ServerProps<"id">) {
                 width={1920}
                 placeholder="blur"
                 blurDataURL={assets.blur_img}
-                className="mb-4 w-[90%] lg:h-[60vh] h-auto object-cover rounded-md offsetstyle"
+                className="mb-4 w-[90%] lg:h-[60vh] h-auto object-cover rounded-md border border-black offsetstyle"
             />
             <div className=" flex flex-col gap-2 w-[90%] text-black py-8 border-b border-black border-dashed">
                 <h1 className="lg:text-5xl  text-4xl">{title}</h1>

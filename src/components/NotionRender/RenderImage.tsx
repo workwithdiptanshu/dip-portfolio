@@ -25,8 +25,8 @@ export default async function RenderImage({ block }: Props) {
                 src={imageUrl}
                 width={1920}
                 height={1080}
-                alt="Diptanshu Mahish Imagez"
-                className=" border border-white border-opacity-15 h-auto lg:h-[40vh] w-full aspect-auto"
+                alt="Blog Image"
+                className=" border border-black border-opacity-15 h-auto w-full "
             />
             <figcaption className="caption">
                 {block.image.caption[0].plain_text}
