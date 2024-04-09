@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="p-8 flex items-center justify-center">
+        <div className="p-8 flex items-center justify-center border-t border-black">
             <div>
                 <Image
                     src="/Assets/logo-full.svg"

@@ -23,7 +23,7 @@ export default async function PostComponent({ post, postType }: Props) {
             data-genre={genres}
             data-catagory={postType}
         >
-            <div className="border overflow-hidden flex flex-col  hover:bg-[#ebc99a10] text-black  transition-colors justify-between border-black border-opacity-20 rounded-sm  shadow-sm ">
+            <div className="border overflow-hidden flex flex-col  hover:bg-[#ebc99a10] text-black  transition-colors justify-between border-black border-opacity-20 rounded-sm  shadow-sm bg-white">
                 <div className="flex justify-between items-center px-4 py-2 border-b border-black border-opacity-20 py-">
                     <span className="opacity-50">
                         {moment(post.created_time).format("D MMM,YYYY")}

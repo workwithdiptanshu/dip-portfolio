@@ -1,7 +1,9 @@
+import Bakcground from "@/components/Common/Bakcground";
 import Heading from "@/components/Common/Heading";
 import PostComponent from "@/components/Post/PostComponent";
 import NotionClient from "@/components/services/notion-client";
 import { ServerProps } from "@/contracts/ServerComponents";
+import { Loader2 } from "lucide-react";
 import React, { Suspense } from "react";
 
 export default async function page(
@@ -28,31 +30,19 @@ export default async function page(
     );
     const posts = postsData?.posts ?? [];
     return (
-        <div className=" pb-[5%] lg:pt-[2%] pt-[10%]">
+        <div className=" pb-[5%] lg:pt-[2%] pt-[10%] ">
             <div className="">
                 <Heading heading={["Blogs", "That I write"]} number={4} />
             </div>
-            {/* <Suspense fallback={<Loader2 />}>
-                {tags.map((tag, index) => {
-                    if (activeTag !== index + 1) {
-                        return (
-                            <a
-                                href={"/blogs?tag=" + tag.name + "#blogs"}
-                                key={tag.id}
-                            >
-                                <span
-                                    className={
-                                        "text-md border flex items-center w-max border-white border-opacity-10 px-2 py-1 hover:opacity-80 active:bg-opacity-20 rounded-sm  "
-                                    }
-                                >
-                                    {capitaliseFirst(tag.name)}
-                                </span>
-                            </a>
-                        );
-                    }
-                })}
-            </Suspense> */}
-            <Suspense>
+
+            <Suspense
+                fallback={
+                    <div className="w-screen h-[50vh] flex items-center justify-center flex-col gap-2">
+                        <div>Loading</div>
+                        <Loader2 className="animate-spin" />
+                    </div>
+                }
+            >
                 <div className=" px-[5%] py-[2%] grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  lg:gap-6 gap-8 justify-evenly ">
                     {posts &&
                         posts.map((x) => (

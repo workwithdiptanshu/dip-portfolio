@@ -1,3 +1,4 @@
+import BlogHome from "@/components/BlogHome/BlogHome";
 import Bakcground from "@/components/Common/Bakcground";
 import Footer from "@/components/Common/Footer";
 import Heading from "@/components/Common/Heading";
@@ -20,6 +21,7 @@ export default function Home() {
                 />
                 <Work />
                 <Services />
+                <BlogHome />
                 <Contact />
                 <Bakcground />
             </SmoothScrollProvider>

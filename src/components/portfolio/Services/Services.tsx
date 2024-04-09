@@ -54,7 +54,7 @@ export default function Services() {
                     highlight="#D4FFCD"
                     bgImage="/Assets/back-light-3.svg"
                     details="Crafting visually appealing and innovative designs is my passion, and I am committed to bringing a touch of sophistication to every project. I have a keen eye for clean and modern aesthetics, ensuring that every design I create is not only visually pleasing but also aligned with contemporary trends. Whether it's user interfaces or user experiences, I strive to elevate the overall design by infusing creativity and a fresh perspective. In my portfolio's Design and UI/UX section, you'll find a showcase of my dedication to pushing the boundaries of design, transforming concepts into visually stunning and intuitively crafted experiences. I believe that great design not only captures attention but also enhances usability, and my work reflects this philosophy. Explore my portfolio to witness how I translate my passion for innovative and clean designs into impactful and user-friendly solutions."
-                    itemNumber="02"
+                    itemNumber="03"
                     mainImage="/Assets/services/des.svg"
                     name="UI/UX Work + Brand Content "
                     scrollSpeed="-0.8"
