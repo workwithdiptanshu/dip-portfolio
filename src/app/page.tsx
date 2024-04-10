@@ -3,6 +3,7 @@ import Bakcground from "@/components/Common/Bakcground";
 import Footer from "@/components/Common/Footer";
 import Heading from "@/components/Common/Heading";
 import { SmoothScrollProvider } from "@/components/Locomotive/SmoothScroll";
+import OnboardHome from "@/components/onboard/OnboardHome";
 import Contact from "@/components/portfolio/Contact/Contact";
 import Header from "@/components/portfolio/Header/Header";
 import Navbar from "@/components/portfolio/Navbar/Navbar";
@@ -21,6 +22,7 @@ export default function Home() {
                 />
                 <Work />
                 <Services />
+                <OnboardHome />
                 <BlogHome />
                 <Contact />
                 <Bakcground />

@@ -10,7 +10,7 @@ export default function Contact() {
         <div className="">
             <Heading
                 heading={["Now how ", "do we", "connect?"]}
-                number={4}
+                number={5}
                 key="Contact"
             />
 

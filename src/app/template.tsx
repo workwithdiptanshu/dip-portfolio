@@ -2,7 +2,7 @@
 import { animatePageIn } from "@/components/onboard/animations";
 import React, { useEffect } from "react";
 
-export default function template({ children }: { children: React.ReactNode }) {
+export default function Template({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         animatePageIn();
     }, []);

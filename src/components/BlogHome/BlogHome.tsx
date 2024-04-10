@@ -8,7 +8,7 @@ export default function BlogHome() {
         <div className="bg-white  overflow-hidden">
             <Heading
                 heading={["And Btw", "Sometimes I ", "Write too"]}
-                number={3}
+                number={4}
                 key="write"
             />
             <div className="bg-[#FFE486] px-[5%] pt-[2%] flex flex-col items-center justify-center relative">
