@@ -5,6 +5,7 @@ import NotionClient from "@/components/services/notion-client";
 import { ServerProps } from "@/contracts/ServerComponents";
 import { Loader2 } from "lucide-react";
 import React, { Suspense } from "react";
+import Image from "next/image";
 
 export default async function page(
     props: ServerProps<
@@ -30,10 +31,17 @@ export default async function page(
     );
     const posts = postsData?.posts ?? [];
     return (
-        <div className=" pb-[5%] lg:pt-[2%] pt-[10%] ">
+        <div className=" pb-[5%] lg:pt-[2%] pt-[10%] relative overflow-hidden ">
             <div className="">
                 <Heading heading={["Blogs", "That I write"]} number={4} />
             </div>
+            <Image
+                src="/Assets/back-dark-3.svg"
+                height={1900}
+                width={1900}
+                alt="background image"
+                className="absolute inset-0 invert opacity-30 -z-0"
+            />
 
             <Suspense
                 fallback={
