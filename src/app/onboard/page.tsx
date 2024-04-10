@@ -54,12 +54,12 @@ export default function page() {
                         <h3 className="lg:text-4xl text-2xl">
                             What are you interested in ?
                         </h3>
-                        <div className="grid grid-cols-2 gap-2 py-4 ">
+                        <div className="grid grid-cols-2 lg:gap-6 gap-2 py-4 ">
                             {onBoardCards.map((ele, idx) => (
                                 <Link
                                     href={`/onboard/${ele.to}`}
                                     key={idx}
-                                    className="bg-white px-2 py-2 flex flex-col gap-2 rounded-md text-black offsetstyle"
+                                    className="bg-white lg:px-4 px-2 py-2 flex flex-col gap-2 rounded-md text-black offsetstyle"
                                 >
                                     <h2 className="lg:text-3xl text-2xl font-medium">
                                         {ele.name}
