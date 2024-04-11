@@ -18,13 +18,13 @@ export default function Header() {
                         Diptanshu Mahish 👋
                     </h1>
 
-                    <span className="text-sm opacity-80 lg:max-w-[40%]">
-                        A web and app developer,(with a bit of more creativity
-                        and speed). Well experienced in minimalistic designs,
-                        clean UI and can make cool animations too. Flutter is my
-                        go-to tool for apps and for websites I use NextJS. This
-                        websites speaks for me, about what I do✨, keep
-                        scrolling
+                    <span className="text-sm opacity-80 lg:max-w-[40%] pt-2">
+                        A <b>web and app developer</b>, (with a bit of more
+                        <b>creativity and speed</b>). Well experienced in
+                        minimalistic designs, clean UI and can make cool
+                        animations too. Flutter is my go-to tool for apps and
+                        for websites I use NextJS. This websites speaks for me,
+                        about what I do✨, keep scrolling
                     </span>
                     <Link
                         className="bg-black text-white px-4 py-2 w-fit flex items-center gap-4 rounded-full mt-6"

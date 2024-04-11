@@ -5,13 +5,13 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Diptanshu Mahish",
     description:
-        "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast yet creative designs and turn them into reality.",
+        "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast and creative designs and turn them into reality.",
     icons: {
         icon: "/favicon.ico",
         shortcut: "/favicon.ico",
     },
     authors: [{ name: "Diptanshu Mahish", url: "https://diptanshumahish.in" }],
-    category: "Portfolio Websites",
+    category: "Portfolio Website",
     abstract:
         "Diptanshu Mahish | Portfolio Website | UI/UX | Front end developer | Flutter | NextJS | Shop",
     keywords: [
