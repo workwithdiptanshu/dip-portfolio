@@ -9,3 +9,9 @@
 .offsetstyle:hover {
     box-shadow: 6px 6px 0 0 black, 8px 8px 0 0 #0f172a;
 }
+
+.bar {
+    width: 10vw;
+    height: 105vh;
+    background: #1a1a1a;
+}
