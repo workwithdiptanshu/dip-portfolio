@@ -39,10 +39,11 @@ export const animatePageIn = () => {
                     },
                     ease: "power4.inOut",
                 });
-                tl.to([name, overlay, barBack], 0.3, {
+                tl.to([name, overlay, barBack, movingBar], 0.3, {
                     display: "hidden",
                     opacity: 0,
                     zIndex: "-100",
+                    width: 0,
                     stagger: {
                         amount: 1,
                     },
