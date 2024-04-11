@@ -16,7 +16,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 width={300}
                 alt="Dip logo"
                 id="lBack"
-                className="z-50  h-screen w-screen fixed inset-0 opacity-5 object-cover"
+                className="z-50  h-screen w-screen fixed inset-0 opacity-20 object-cover"
             />
             <div
                 id="overlay"
