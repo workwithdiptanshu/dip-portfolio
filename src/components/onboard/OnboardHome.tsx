@@ -19,9 +19,9 @@ export default function OnboardHome() {
                     alt="background image"
                     className="absolute inset-0 invert opacity-30"
                 />
-                <div className="py-8 flex flex-col justify-center items-center gap-6 z-10">
-                    <div className="flex flex-col justify-center items-center">
-                        <h2 className="lg:text-4xl text-2xl font-medium">
+                <div className="py-8 flex flex-col justify-center items-center gap-6 z-10 w-full">
+                    <div className="flex flex-col justify-center items-center text-center">
+                        <h2 className="lg:text-4xl text-2xl font-medium text-center">
                             Let us work together on something amazing!
                         </h2>
                         <span className="opacity-60 text-sm italic">

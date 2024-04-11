@@ -8,13 +8,14 @@ export const animatePageIn = () => {
     const name = document.getElementById("name");
     const movingBar = document.getElementById("MBarInner");
     const barBack = document.getElementById("MBar");
+    const back = document.getElementById("lBack");
     var currentValue = 0;
 
     function updateCounter() {
         if (currentValue === 100) {
             if (counterElement && bar) {
                 const tl = gsap.timeline();
-                tl.to(movingBar, 0.9, {
+                tl.to([movingBar, back], 0.9, {
                     xPercent: 100,
 
                     stagger: {
@@ -22,7 +23,7 @@ export const animatePageIn = () => {
                     },
                     ease: "power4.inOut",
                 });
-                tl.to(counterElement, 0.4, {
+                tl.to([counterElement], 0.4, {
                     yPercent: 100,
                     opacity: 0,
 
@@ -32,14 +33,14 @@ export const animatePageIn = () => {
                     },
                 });
 
-                tl.to([bar, name, barBack], 0.4, {
+                tl.to([bar, name, barBack, back], 0.4, {
                     height: 0,
                     stagger: {
                         amount: 0.5,
                     },
                     ease: "power4.inOut",
                 });
-                tl.to([name, overlay, barBack, movingBar], 0.3, {
+                tl.to([name, overlay, barBack, movingBar, back], 0.3, {
                     display: "hidden",
                     opacity: 0,
                     zIndex: "-100",

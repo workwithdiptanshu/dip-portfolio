@@ -1,4 +1,5 @@
 "use client";
+import Bakcground from "@/components/Common/Bakcground";
 import { animatePageIn } from "@/components/onboard/animations";
 import Image from "next/image";
 import React, { useEffect } from "react";
@@ -8,7 +9,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
         animatePageIn();
     }, []);
     return (
-        <div className="relative">
+        <div className="relative overflow-hidden">
+            <Image
+                src="/Assets/back-dark-3.svg"
+                height={100}
+                width={300}
+                alt="Dip logo"
+                id="lBack"
+                className="z-50  h-screen w-screen fixed inset-0 opacity-5 object-cover"
+            />
             <div
                 id="overlay"
                 className="h-screen z-30 fixed inset-0 w-screen flex"
