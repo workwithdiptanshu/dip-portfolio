@@ -29,6 +29,7 @@ export const animatePageIn = () => {
                 });
                 tl.to([name, overlay], {
                     display: "hidden",
+                    opacity: 0,
                     zIndex: "-100",
                     stagger: {
                         amount: 1,
