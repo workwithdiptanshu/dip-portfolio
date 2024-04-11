@@ -7,12 +7,9 @@ const hf = Herr_Von_Muellerhoff({ subsets: ["latin"], weight: ["400"] });
 
 export default function Header() {
     return (
-        <div
-            id="header"
-            className="lg:pt-[10vh] h-fit  border-b border-black   flex    "
-        >
+        <div className="lg:pt-[10vh] h-fit overflow-hidden  border-b border-black   flex    ">
             <div>
-                <div className="px-[5%] py-[5%] lg:pt-[8%] pt-[18%] flex flex-col">
+                <div className="px-[5%]  py-[5%] lg:pt-[8%] pt-[18%] flex flex-col">
                     <h2 className="lg:text-2xl text-xl">Hi there, I am</h2>
                     <h1 className="lg:text-8xl text-4xl lg:max-w-[40%] font-medium pb-4 border-b border-black border-dashed">
                         Diptanshu Mahish 👋

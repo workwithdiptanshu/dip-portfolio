@@ -1,9 +1,7 @@
 import gsap from "gsap";
-
 export const animatePageIn = () => {
     const bar = document.querySelectorAll(".bar");
     const counterElement = document.querySelector<HTMLDivElement>(".counter");
-    const header = document.getElementById("header");
     const overlay = document.getElementById("overlay");
     const name = document.getElementById("name");
     const movingBar = document.getElementById("MBarInner");
@@ -40,6 +38,7 @@ export const animatePageIn = () => {
                     },
                     ease: "power4.inOut",
                 });
+
                 tl.to([name, overlay, barBack, movingBar, back], 0.3, {
                     display: "hidden",
                     opacity: 0,
