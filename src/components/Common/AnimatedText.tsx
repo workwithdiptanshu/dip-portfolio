@@ -31,26 +31,6 @@ export default function AnimatedText({ content }: Props) {
         gsap.updateRoot(1000);
     }, [aniText]);
 
-    // const aniText = useCallback((aniTextElement: HTMLDivElement) => {
-    //     if (!aniTextElement) return;
-
-    //     const text = SplitType.create(aniTextElement, { types: "chars" });
-    //     const charText = text.chars;
-
-    //     gsap.from(charText, {
-    //         // Object shorthand for better readability
-    //         scrollTrigger: {
-    //             trigger: aniTextElement,
-    //             start: "top bottom",
-    //             end: "bottom+=300 bottom",
-    //             scrub: true,
-    //         },
-    //         stagger: 0.05,
-    //         y: +120,
-    //         duration: 1,
-    //     });
-    // }, []);
-
     return (
         <div
             className="relative flex flex-col overflow-hidden"

@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <div
             id="header"
-            className="lg:pt-[10vh]  border-b border-black   flex  pointer-events-none  "
+            className="lg:pt-[10vh] h-fit  border-b border-black   flex  pointer-events-none  "
         >
             <div>
                 <div className="px-[5%] py-[5%] lg:pt-[8%] pt-[18%] flex flex-col">
