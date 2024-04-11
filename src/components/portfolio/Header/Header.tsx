@@ -14,7 +14,7 @@ export default function Header() {
             <div>
                 <div className="px-[5%] py-[5%] lg:pt-[8%] pt-[18%] flex flex-col">
                     <h2 className="lg:text-2xl text-xl">Hi there, I am</h2>
-                    <h1 className="lg:text-8xl text-4xl lg:max-w-[40%] font-bold pb-4 border-b border-black border-dashed">
+                    <h1 className="lg:text-8xl text-4xl lg:max-w-[40%] font-medium pb-4 border-b border-black border-dashed">
                         Diptanshu Mahish 👋
                     </h1>
 
