@@ -1,5 +1,4 @@
 "use client";
-import Bakcground from "@/components/Common/Bakcground";
 import { animatePageIn } from "@/components/onboard/animations";
 import Image from "next/image";
 import React, { useEffect } from "react";
