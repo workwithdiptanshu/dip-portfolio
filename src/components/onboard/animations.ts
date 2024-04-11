@@ -3,8 +3,9 @@ import gsap from "gsap";
 export const animatePageIn = () => {
     const bar = document.querySelectorAll(".bar");
     const counterElement = document.querySelector<HTMLDivElement>(".counter");
-    const navbar = document.getElementById("navbar");
     const header = document.getElementById("header");
+    const overlay = document.getElementById("overlay");
+    const name = document.getElementById("name");
     var currentValue = 0;
 
     function updateCounter() {
@@ -19,43 +20,38 @@ export const animatePageIn = () => {
                     ease: "power2.inOut",
                 });
 
-                tl.to(bar, 0.9, {
+                tl.to([bar, name], 0.9, {
                     height: 0,
                     stagger: {
                         amount: 0.5,
                     },
                     ease: "power4.inOut",
                 });
-                tl.set(navbar, {
-                    y: 40,
-                    opacity: 0,
+                tl.to([name, overlay], {
+                    display: "hidden",
+                    zIndex: "-100",
                     stagger: {
-                        amount: 0.5,
+                        amount: 1,
                     },
                     ease: "power4.inOut",
-                }).to(navbar, {
-                    y: 0,
-
-                    opacity: 1,
-                    stagger: {
-                        amount: 0.5,
-                    },
                 });
-                tl.set(header, {
-                    y: 400,
-                    opacity: 0,
-                    stagger: {
-                        amount: 0.5,
-                    },
-                    ease: "power4.inOut",
-                }).to(header, {
-                    y: 0,
+                if (header) {
+                    tl.set(header, {
+                        y: 400,
+                        opacity: 0,
+                        stagger: {
+                            amount: 0.5,
+                        },
+                        ease: "power4.inOut",
+                    }).to(header, {
+                        y: 0,
 
-                    opacity: 1,
-                    stagger: {
-                        amount: 0.5,
-                    },
-                });
+                        opacity: 1,
+                        stagger: {
+                            amount: 0.5,
+                        },
+                    });
+                }
             }
             return;
         }
