@@ -18,11 +18,26 @@ export default async function RenderTextBlock({ block }: Props) {
         case "paragraph":
             return (
                 <p>
-                    {block.paragraph.rich_text.map((i) => (
-                        <span key={i.plain_text} style={styling(i.annotations)}>
-                            {i.plain_text}
-                        </span>
-                    ))}
+                    {block.paragraph.rich_text.map((i) =>
+                        i.href === null ? (
+                            <span
+                                key={i.plain_text}
+                                style={styling(i.annotations)}
+                            >
+                                {i.plain_text}
+                            </span>
+                        ) : (
+                            <a
+                                key={i.plain_text}
+                                href={i.href ?? ""}
+                                style={styling(i.annotations)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {i.plain_text}
+                            </a>
+                        )
+                    )}
                 </p>
             );
         case "quote":

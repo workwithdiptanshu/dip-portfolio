@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <div
             id="header"
-            className="lg:pt-[10vh] h-fit  border-b border-black   flex  pointer-events-none  "
+            className="lg:pt-[10vh] h-fit  border-b border-black   flex    "
         >
             <div>
                 <div className="px-[5%] py-[5%] lg:pt-[8%] pt-[18%] flex flex-col">
@@ -19,15 +19,21 @@ export default function Header() {
                     </h1>
 
                     <span className="text-sm opacity-80 lg:max-w-[40%] pt-2">
-                        A <b>web and app developer</b>, (with a bit of more
-                        <b>creativity and speed</b>). Well experienced in
-                        minimalistic designs, clean UI and can make cool
-                        animations too. Flutter is my go-to tool for apps and
-                        for websites I use NextJS. This websites speaks for me,
-                        about what I do✨, keep scrolling
+                        <b className="text-lg underline bg-yellow-300">
+                            {" "}
+                            I craft beautiful, lightning-fast apps and websites.
+                        </b>{" "}
+                        <br />
+                        <b>Think minimalism meets magic</b>. Clean UIs, smooth
+                        animations, and a sprinkle of creativity - that&apos;s
+                        my recipe for bringing your digital dreams to life. 🪄
+                        Flutter for apps, Next.js for websites, and Figma for
+                        weaving the design magic. Let&apos;s build something
+                        awesome together! P.S. Scroll down to see my work speak
+                        for itself.
                     </span>
                     <Link
-                        className="bg-black text-white px-4 py-2 w-fit flex items-center gap-4 rounded-full mt-6"
+                        className="bg-black text-white px-4 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors hover:shadow-md gap-4 rounded-full mt-6"
                         href="/contact"
                     >
                         Get in Touch <ArrowUpRight />

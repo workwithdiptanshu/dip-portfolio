@@ -24,6 +24,10 @@
     object-fit: cover;
     margin: 1rem auto;
 }
+.blogContainer article a {
+    text-decoration: underline;
+    color: #1c3e51;
+}
 .blogContainer article img:first-of-type {
     width: 100%;
     max-height: 500px;

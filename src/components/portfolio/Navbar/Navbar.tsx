@@ -5,7 +5,7 @@ import { Book, ShoppingBagIcon } from "lucide-react";
 export default function Navbar() {
     return (
         <div className="fixed  left-[5vw]  right-[5vw] top-2 z-20 ">
-            <div className="relative  lg:py-2 py-1 flex  bg-[#28282a] border border-black text-white rounded-full justify-center items-center">
+            <div className="relative  lg:py-2 py-1 flex bg-white  border border-black text-black rounded-full justify-center items-center">
                 {" "}
                 <Link href="/" className="absolute lg:left-6 left-3">
                     <Image
@@ -13,7 +13,7 @@ export default function Navbar() {
                         height={30}
                         width={30}
                         alt="dptsnhu logo  "
-                        className="invert lg:h-[30px] h-[25px]"
+                        className=" lg:h-[30px] h-[25px]"
                     />
                 </Link>
                 <Image
@@ -21,7 +21,7 @@ export default function Navbar() {
                     height={40}
                     width={200}
                     alt="dptsnhu logo full"
-                    className="invert lg:h-[40px] h-[38px]"
+                    className=" lg:h-[40px] h-[38px]"
                 />
                 <div className="flex gap-3 absolute lg:right-6 right-3 items-center ">
                     <Link
