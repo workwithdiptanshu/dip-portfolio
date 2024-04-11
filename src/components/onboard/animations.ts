@@ -35,34 +35,17 @@ export const animatePageIn = () => {
                     },
                     ease: "power4.inOut",
                 });
-                if (header) {
-                    tl.set(header, {
-                        y: 400,
-                        opacity: 0,
-                        stagger: {
-                            amount: 0.5,
-                        },
-                        ease: "power4.inOut",
-                    }).to(header, {
-                        y: 0,
-
-                        opacity: 1,
-                        stagger: {
-                            amount: 0.5,
-                        },
-                    });
-                }
             }
             return;
         }
-        currentValue += Math.floor(Math.random() * 10) + 1;
+        currentValue += 1;
         if (currentValue > 100) {
             currentValue = 100;
         }
         if (counterElement) {
             counterElement.textContent = currentValue.toString();
         }
-        var delay = Math.floor(Math.random() * 200) + 50;
+        var delay = 0.1;
         setTimeout(updateCounter, delay);
     }
     updateCounter();

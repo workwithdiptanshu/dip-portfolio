@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <div
             id="header"
-            className="lg:pt-[10vh] opacity-0  lg:h-fit h-[90vh] flex items-center justify-center pointer-events-none "
+            className="lg:pt-[10vh]   lg:h-fit h-[90vh] flex items-center justify-center pointer-events-none "
         >
             <div>
                 <div className=" text-center">

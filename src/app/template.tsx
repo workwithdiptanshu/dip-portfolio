@@ -36,7 +36,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                     className="z-50 invert animate-pulse"
                 />
             </div>
-            <div className="counter fixed z-50 w-screen h-screen flex items-end justify-end text-8xl font-bold text-white p-8">
+            <div className="counter fixed z-50 w-screen h-[120vh] animate-pulse flex items-center justify-center text-8xl font-bold text-white p-8">
                 0
             </div>
 
