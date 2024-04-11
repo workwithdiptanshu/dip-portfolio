@@ -26,7 +26,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             </div>
             <div
                 id="name"
-                className="absolute inset-0 h-screen w-screen   flex items-center justify-center"
+                className="absolute inset-0 h-screen w-screen flex flex-col items-center justify-center"
             >
                 <Image
                     src="/Assets/logo-full.svg"
@@ -36,7 +36,16 @@ export default function Template({ children }: { children: React.ReactNode }) {
                     className="z-50 invert animate-pulse"
                 />
             </div>
-            <div className="counter fixed z-50 w-screen h-[120vh] animate-pulse flex items-center justify-center text-8xl font-bold text-white p-8">
+            <div
+                id="MBar"
+                className=" z-50 absolute inset-0 h-[160vh] w-screen flex items-center justify-start"
+            >
+                <div
+                    id="MBarInner"
+                    className="w-[0%] h-[20px] bg-yellow-100 opacity-40"
+                ></div>
+            </div>
+            <div className="counter fixed z-50 w-screen h-[120vh] animate-pulse flex items-center justify-center lg:text-[140px] text-6xl font-black text-white p-8">
                 0
             </div>
 

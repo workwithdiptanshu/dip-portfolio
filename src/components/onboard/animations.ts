@@ -6,28 +6,40 @@ export const animatePageIn = () => {
     const header = document.getElementById("header");
     const overlay = document.getElementById("overlay");
     const name = document.getElementById("name");
+    const movingBar = document.getElementById("MBarInner");
+    const barBack = document.getElementById("MBar");
     var currentValue = 0;
 
     function updateCounter() {
         if (currentValue === 100) {
             if (counterElement && bar) {
                 const tl = gsap.timeline();
+                tl.to(movingBar, 0.9, {
+                    xPercent: 100,
 
-                tl.to(counterElement, 1.2, {
+                    stagger: {
+                        amount: 0.6,
+                    },
+                    ease: "power4.inOut",
+                });
+                tl.to(counterElement, 0.4, {
                     yPercent: 100,
                     opacity: 0,
-                    delay: 0.5,
-                    ease: "power2.inOut",
+
+                    ease: "power4.inOut",
+                    stagger: {
+                        amount: 0.8,
+                    },
                 });
 
-                tl.to([bar, name], 0.9, {
+                tl.to([bar, name, barBack], 0.4, {
                     height: 0,
                     stagger: {
                         amount: 0.5,
                     },
                     ease: "power4.inOut",
                 });
-                tl.to([name, overlay], {
+                tl.to([name, overlay, barBack], 0.3, {
                     display: "hidden",
                     opacity: 0,
                     zIndex: "-100",
@@ -43,8 +55,9 @@ export const animatePageIn = () => {
         if (currentValue > 100) {
             currentValue = 100;
         }
-        if (counterElement) {
+        if (counterElement && movingBar) {
             counterElement.textContent = currentValue.toString();
+            movingBar.style.width = `${currentValue}%`;
         }
         var delay = 0.1;
         setTimeout(updateCounter, delay);
