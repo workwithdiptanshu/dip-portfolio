@@ -1,12 +1,94 @@
 import React from "react";
-import WorkItem from "./WorkItem";
+import WorkItem, { WorkItemProps } from "./WorkItem";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ArrowUpRight, GithubIcon, PlayCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+const workItemsArray: WorkItemProps[] = [
+    {
+        headingName: "Warriors Group Work Application",
+        itemNumber: "01",
+        itemDetails: `This application serves as the
+        backbone for
+     
+            warriorsgrp.com
+    
+        . This application
+        <b>
+            tracks employees working hours
+        </b>
+        , employees can update the forms,
+        send mass mails, update concerns and
+        such similar things. It also
+        includes a detailed admin panel that
+        allows the admins to look after the
+        employees information, add new
+        employees and remove them as well.
+        <br /> <br />
+        <p>
+            
+            Complete with proper charts and
+            data for reading previous data
+            recorded from employees,
+            sendgrid api has been used to
+            send the mass mails, along with
+            attachments.
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/wgnew.svg",
+        linksAvailable: false,
+        techUsed: `NextJS, Tailwind, SendGrid,
+    FormSubmit, FireBase`,
+        appType: ["Progressive Web Application"],
+        sideHeading: `The official work application for Warriors's Group LLC built using `,
+    },
+    {
+        headingName: "Cursed Diary Website",
+        itemNumber: "02",
+        itemDetails: `This fun website was made for the creepypasta readers
+        <b>
+            tracks employees working hours
+        </b>
+        , employees can update the forms,
+        send mass mails, update concerns and
+        such similar things. It also
+        includes a detailed admin panel that
+        allows the admins to look after the
+        employees information, add new
+        employees and remove them as well.
+        <br /> <br />
+        <p>
+            
+            Complete with proper charts and
+            data for reading previous data
+            recorded from employees,
+            sendgrid api has been used to
+            send the mass mails, along with
+            attachments.
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/cdnew.svg",
+        linksAvailable: true,
+        techUsed: `NextJS, Tailwind & Notion Databases`,
+        appType: ["website"],
+        sideHeading: `A fun website made for the creepypasta readers built using `,
+        githubLink: "https://github.com/diptanshumahish/curseddiary",
+        livelink: "https://curseddiary.vercel.app",
+    },
+];
 
 export default function Work() {
     return (
         <div className=" overflow-hidden">
             <div className="lg:h-[10vh]"></div>
 
-            <div>
+            {/* <div>
                 <WorkItem
                     backgroundScroll="0.4"
                     imageScroll="-0.3"
@@ -127,6 +209,18 @@ export default function Work() {
                     LiveLink="https://katzespeaks.vercel.app/"
                     githubLink="https://github.com/diptanshumahish/katze-speaks-website"
                 />
+            </div> */}
+            <div className="bg-[#1a1a1a] px-[5%] text-white py-[5%]">
+                <h2 className="lg:text-8xl text-4xl lg:py-8 py-4">
+                    <span className="flex">
+                        Here are some of my selected works ^^
+                    </span>
+                </h2>
+                <Accordion type="single" collapsible className="w-full">
+                    {workItemsArray.map((ele, idx) => (
+                        <WorkItem workItem={ele} key={idx} />
+                    ))}
+                </Accordion>
             </div>
         </div>
     );

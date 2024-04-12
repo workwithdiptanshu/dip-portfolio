@@ -1,129 +1,105 @@
+import {
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 import React from "react";
 import Image from "next/image";
-import Tags from "@/components/Common/Tags";
 import Link from "next/link";
-import { PlayCircle, GithubIcon } from "lucide-react";
-import CommonImage from "@/components/Common/CommonImage";
+import { GithubIcon, PlayCircle } from "lucide-react";
 
-interface Props {
-    backgroundColor: string;
-    backgroundImage: string;
-    mainImagery: string;
-    contentName: string;
-    contentMiniDesc: string;
-    contentFullDesc: string;
-    contentTags: string[];
-    LiveLink?: string;
+export interface WorkItemProps {
+    headingName: string;
+    itemNumber: string;
+    itemDetails: string;
+    itemImage: string;
     githubLink?: string;
-    contentNumber: string;
-    imageScroll: string;
-    backgroundScroll: string;
-    subTextColor: string;
+    livelink?: string;
+    linksAvailable: boolean;
+    techUsed: string;
+    appType: string[];
+    sideHeading: string;
+}
+interface Props {
+    workItem: WorkItemProps;
 }
 
-export default function WorkItem({
-    backgroundColor,
-    subTextColor,
-    backgroundImage,
-    contentFullDesc,
-    contentMiniDesc,
-    contentName,
-    contentTags,
-    mainImagery,
-    LiveLink,
-    githubLink,
-    contentNumber,
-    backgroundScroll,
-    imageScroll,
-}: Props) {
+export default function WorkItem({ workItem }: Props) {
     return (
-        <div
-            style={{ backgroundColor: `#${backgroundColor}` }}
-            className={`min-h-screen relative w-screen lg:px-[5vw] lg:py-0 py-[5vh] px-[5%] overflow-hidden  flex lg:flex-row flex-col items-center lg:justify-between justify-center lg:gap-0 gap-[5vh] `}
-        >
-            <Image
-                data-scroll
-                data-scroll-speed={backgroundScroll}
-                src={backgroundImage}
-                height={450}
-                width={450}
-                alt="wg"
-                className="absolute left-0  w-full opacity-20 -z-0 object-center"
-            />
-            <div className="lg:z-10 ">
-                <Image
-                    data-scroll
-                    data-scroll-speed={imageScroll}
-                    src={mainImagery}
-                    height={450}
-                    width={450}
-                    alt="wg"
-                    className="lg:flex hidden justify-center items-center"
-                />
-                {/* <CommonImage
-                    height={450}
-                    width={450}
-                    imageLink={mainImagery}
-                    classList="lg:flex hidden justify-center items-center"
-                    alt="wg"
-                    dataScroll={imageScroll}
-                /> */}
-                {/* <CommonImage
-                    imageLink={mainImagery}
-                    height={450}
-                    width={450}
-                    alt="wg"
-                    classList="lg:hidden flex w-full h-auto aspect-square object-cover"
-                /> */}
+        <AccordionItem value={workItem.itemNumber}>
+            <AccordionTrigger className="lg:text-4xl text-2xl  flex gap-1">
+                <div className="flex gap-4">
+                    <span className="  ">{workItem.itemNumber}.</span>
 
-                <Image
-                    src={mainImagery}
-                    height={450}
-                    width={450}
-                    alt="wg"
-                    className="lg:hidden flex w-full h-auto aspect-square object-cover"
-                    blurDataURL=""
-                />
-            </div>
-            <div className="lg:w-[55%] w-full flex flex-col text-white gap-4 ">
-                <div className="flex lg:flex-row flex-col-reverse justify-between lg:items-center items-start">
-                    <span className="lg:text-5xl md:text-5xl text-4xl  ">
-                        {contentName}
-                    </span>
-                    <span className="lg:text-6xl md:text-5xl text-4xl font-bold   ">
-                        {contentNumber}
-                    </span>
+                    <span>{workItem.headingName}</span>
                 </div>
-                <span style={{ color: `${subTextColor}` }}>
-                    {contentMiniDesc}
-                </span>
-                <span className="opacity-80 tracking-wide">
-                    {contentFullDesc}
-                </span>
-                <Tags stack={contentTags} />
-                {!LiveLink && !githubLink && (
-                    <span className="opacity-40">
-                        Live link unavailable as this is an organization
-                        application
-                    </span>
-                )}
-                {LiveLink && githubLink && (
-                    <div className="flex gap-4 items-center z-10 ">
-                        <Link
-                            className="flex items-center px-4 py-1 gap-2 rounded-full text-black bg-green-100 hover:shadow-sm hover:shadow-green-100"
-                            href={LiveLink}
-                        >
-                            Live <PlayCircle size={15} />{" "}
-                        </Link>
-                        <Link
-                            className="flex items-center px-4 py-1 gap-2 rounded-full border border-white"
-                            href={githubLink}
-                        >
-                            Github <GithubIcon />
-                        </Link>
+            </AccordionTrigger>
+            <AccordionContent>
+                <div className="flex lg:flex-row flex-col gap-6">
+                    <Image
+                        src={workItem.itemImage}
+                        height={900}
+                        width={1000}
+                        alt="wg"
+                        className="lg:w-[60%] w-full h-auto"
+                    />
+                    <div className="lg:max-w-[40%] w-full flex flex-col justify-between bg-white bg-opacity-5 py-4 px-4 rounded-lg">
+                        <div className="flex flex-col gap-6">
+                            <div className="flex flex-wrap gap-2">
+                                {workItem.appType.map((ele, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="bg-white uppercase text-xs px-4 py-1 rounded-full text-black"
+                                    >
+                                        {ele}
+                                    </span>
+                                ))}
+                            </div>
+                            <h2 className="text-3xl font-light pl-4 border-l-4 border-yellow-100 rounded-sm py-1 pb-2 my-4 ">
+                                {workItem.sideHeading}
+                                <span className="bg-yellow-200 text-black   underline">
+                                    {workItem.techUsed}
+                                </span>
+                            </h2>
+                            <p
+                                className="text-gray-300 tracking-wide"
+                                dangerouslySetInnerHTML={{
+                                    __html: workItem.itemDetails,
+                                }}
+                            ></p>
+                        </div>
+                        <div className="flex flex-col lg:mt-0 mt-4 ">
+                            <span className="text-xl underline text-blue-300">
+                                LINKS
+                            </span>
+                            <div>
+                                {!workItem.linksAvailable ? (
+                                    <p className="opacity-70">
+                                        {" "}
+                                        No links available as this is an
+                                        organization application
+                                    </p>
+                                ) : (
+                                    <div className="flex gap-4 items-center pt-2 ">
+                                        <Link
+                                            className="flex items-center px-4 py-1 gap-2 rounded-md text-black bg-white hover:shadow-sm hover:shadow-green-100"
+                                            href={workItem.livelink ?? ""}
+                                        >
+                                            Live <PlayCircle size={15} />{" "}
+                                        </Link>
+                                        <Link
+                                            className="flex items-center px-4 py-1 gap-2 rounded-md border border-white"
+                                            href={workItem.githubLink ?? ""}
+                                        >
+                                            Github <GithubIcon />
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                )}
-            </div>
-        </div>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
     );
 }
