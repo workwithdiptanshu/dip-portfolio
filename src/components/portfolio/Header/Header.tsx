@@ -31,7 +31,7 @@ export default function Header() {
                     </span>
                     <Link
                         className="bg-black text-white px-4 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors hover:shadow-md gap-4 rounded-full mt-6"
-                        href="/contact"
+                        href="/hire"
                     >
                         Get in Touch <ArrowUpRight />
                     </Link>

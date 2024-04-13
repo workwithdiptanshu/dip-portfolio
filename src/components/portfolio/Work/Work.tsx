@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const workItemsArray: WorkItemProps[] = [
     {
-        headingName: "Warriors Group Application",
+        headingName: "Warriors Group App",
         itemNumber: "01",
         itemDetails: `This application serves as the
         backbone for
