@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const workItemsArray: WorkItemProps[] = [
     {
-        headingName: "Warriors Group Work Application",
+        headingName: "Warriors Group Application",
         itemNumber: "01",
         itemDetails: `This application serves as the
         backbone for
@@ -47,30 +47,20 @@ const workItemsArray: WorkItemProps[] = [
     FormSubmit, FireBase`,
         appType: ["Progressive Web Application"],
         sideHeading: `The official work application for Warriors's Group LLC built using `,
+        itemMobileImage: "/Assets/work/wgmob.svg",
     },
     {
         headingName: "Cursed Diary Website",
         itemNumber: "02",
         itemDetails: `This fun website was made for the creepypasta readers
         <b>
-            tracks employees working hours
+           with creeepy content
         </b>
-        , employees can update the forms,
-        send mass mails, update concerns and
-        such similar things. It also
-        includes a detailed admin panel that
-        allows the admins to look after the
-        employees information, add new
-        employees and remove them as well.
+        ,users can read creepy content, horror experiences, 
+        share their views, in a clean UI format.
         <br /> <br />
         <p>
-            
-            Complete with proper charts and
-            data for reading previous data
-            recorded from employees,
-            sendgrid api has been used to
-            send the mass mails, along with
-            attachments.
+           The super clean UI, with a super readable and user friendly font makes content reading much more easier. I've used the power of Notion Databases to manage the content with robustness. Data is rendered natively
         </p>
     </p>`,
         itemImage: "/Assets/work/cdnew.svg",
@@ -80,6 +70,85 @@ const workItemsArray: WorkItemProps[] = [
         sideHeading: `A fun website made for the creepypasta readers built using `,
         githubLink: "https://github.com/diptanshumahish/curseddiary",
         livelink: "https://curseddiary.vercel.app",
+        itemMobileImage: "/Assets/work/cdmob.svg",
+    },
+    {
+        headingName: "Katze Speaks Website",
+        itemNumber: "03",
+        itemDetails: `A fun little blogging website for the horror bloggers
+        <b>
+            with a twist!
+        </b>
+        , readers can read experiences written by their fellow friends, and strangers as well. Can ready catagorized content, comment their views as well. All with a clean and dark UI.
+        <br /> <br />
+        <p>
+            complete with a well made text editor and content upload page, with a rich text editor and image upload features
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/ksweb.svg",
+        linksAvailable: true,
+        techUsed: `NextJS, Tailwind, MongoDB, ExpressJS, Playbook, Cloudinary`,
+        appType: ["Fullstack Website"],
+        sideHeading: `A fun website made for the horror bloggers built using `,
+        githubLink: "https://github.com/diptanshumahish/katzespeaks",
+        livelink: "https://katzespeaks.vercel.app",
+        itemMobileImage: "/Assets/work/ksmob.svg",
+    },
+    {
+        headingName: "Windows Utilities",
+        itemNumber: "04",
+        itemDetails: `A small project to ease the issues faced by Windows users , with these few simple python and batch scripts, users can easily do tasks such as image compression, organize files, flatten folders and many more such stuff with ease
+        <br /> <br />
+        <p>
+            with the basic requirements , i.e python and a few python ,modules being installed on your device this is a super lightweight program set!
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/wuweb.svg",
+        linksAvailable: true,
+        techUsed: `Python, BATCH`,
+        appType: ["Python scripts"],
+        sideHeading: `A set of tools to ease your experience `,
+        githubLink: "https://github.com/diptanshumahish/windows_utliities",
+        livelink: "https://github.com/diptanshumahish/windows_utliities",
+        itemMobileImage: "/Assets/work/wumob.svg",
+    },
+    {
+        headingName: "Wally",
+        itemNumber: "05",
+        itemDetails: `An Android wallpapers applications (wallpapers made by me). with a super clean and fresh UI. Wally is a must have for all aesthetic people.
+        <br /> <br />
+        <p>
+           recently crossed the 300+ downloads mark on Playstore. this app uses an Express Server hosted at Cyclic.sh and the images are stores using Playbook
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/waweb.svg",
+        linksAvailable: true,
+        techUsed: `Flutter, ExpressJS, Github, PlayBook`,
+        appType: ["Flutter Application"],
+        sideHeading: `An aesthetic wallpapers app, wallpapers made by yours ❤️ `,
+        githubLink: "https://github.com/diptanshumahish/windows_utliities",
+        livelink:
+            "https://play.google.com/store/apps/details?id=com.diptanshumahish.wally&hl=en&gl=US",
+        itemMobileImage: "/Assets/work/wamob.svg",
+    },
+    {
+        headingName: "Zen Clock/ Pomodoro",
+        itemNumber: "06",
+        itemDetails: `An Android zen clock application with 500+ downloads on Play Store!
+        <br /> <br />
+        <p>
+        I noticed  that Zen clock is a pretty cool productivity thing. I myself was using one on my old  Tablet. I noticed there were too many ads. I thus decided to make my own Zen clock along with a Pomodoro timer. This ap allows various scenes and also plays ambient music if you want to play. The scenes are basically the various themes in the app. Which ranges from aesthetic images to amoled 
+        </p>
+    </p>`,
+        itemImage: "/Assets/work/zweb.svg",
+        linksAvailable: true,
+        techUsed: `Flutter,  Github`,
+        appType: ["Flutter Application"],
+        sideHeading: `A zen clock app with a built in pomodoro `,
+        githubLink: "https://github.com/diptanshumahish/windows_utliities",
+        livelink:
+            "https://play.google.com/store/apps/details?id=com.diptanshumahish.zen_clock&hl=en&gl=US",
+        itemMobileImage: "/Assets/work/zmob.svg",
     },
 ];
 
@@ -87,131 +156,8 @@ export default function Work() {
     return (
         <div className=" overflow-hidden">
             <div className="lg:h-[10vh]"></div>
-
-            {/* <div>
-                <WorkItem
-                    backgroundScroll="0.4"
-                    imageScroll="-0.3"
-                    key="01"
-                    contentNumber="01"
-                    backgroundColor="121024"
-                    subTextColor="#FFCFFA"
-                    backgroundImage="/Assets/back-dark.svg"
-                    contentFullDesc=" Warriors Group Work Application, built with Next.js,
-                Tailwind CSS, and Firebase FormSubmit, simplifies employee
-                work hour tracking and form submissions. The user-friendly
-                interface allows easy data submission, enhanced by SendGrid
-                API integration for efficient mass emails. The clean UI
-                ensures a seamless experience, while the admin dashboard
-                provides graphical insights into form data. This powerful
-                tool exemplifies streamlined communication and data
-                management, showcasing the developer's proficiency in
-                cutting-edge web technologies"
-                    contentMiniDesc="The official web-app for Warriors' Group LLC"
-                    contentName=" Warriors's Group Work Application"
-                    contentTags={[
-                        "Next JS",
-                        "Tailwind CSS",
-                        "Typescript",
-                        " Firebase",
-                        "Formsubmit",
-                        "Sendgrid",
-                    ]}
-                    mainImagery="/Assets/work/wg2.webp"
-                    LiveLink=""
-                    githubLink=""
-                />
-                <WorkItem
-                    backgroundScroll="-0.1"
-                    imageScroll="-0.7"
-                    subTextColor="#FAD4C1"
-                    key="021"
-                    contentNumber="02"
-                    backgroundColor="293960"
-                    backgroundImage="/Assets/back-dark-2.svg"
-                    contentFullDesc="Cursed Diary is a creepy pasta website, where you can submit horror and such stuff, readers can read stuff easily and with a minimal and clean UI, it becomes easy for the users to navigate between pages and read their favorite content with ease. Proper SEO practices have been put to use here and every page is well shareable"
-                    contentMiniDesc="Creepypasta blogs made using the notion databases"
-                    contentName="Cursed Diary : Creepypasta content"
-                    contentTags={[
-                        "Next JS",
-                        "Tailwind CSS",
-                        "Typescript",
-                        "Notion",
-                        "Node JS",
-                        "Vercel",
-                    ]}
-                    mainImagery="/Assets/work/cd.webp"
-                    LiveLink="https://curseddiary.vercel.app/"
-                    githubLink="https://github.com/diptanshumahish/curseddiary"
-                />
-                <WorkItem
-                    backgroundScroll="-0.1"
-                    imageScroll="-0.7"
-                    subTextColor="#FAD4C1"
-                    key="02"
-                    contentNumber="03"
-                    backgroundColor="111"
-                    backgroundImage="/Assets/back-dark-2.svg"
-                    contentFullDesc=" Katze Speaks is a full-stack creepy pasta website with a sleek, minimalist UI, crafted entirely using the MERN stack. The platform invites users to share and explore chilling experiences through blogs and narratives in the horror genre. With a focus on user engagement, Katze Speaks provides a seamless experience for both contributors and readers. The website is not only a hub for spooky tales but also prioritizes visibility with SEO optimization. Katze Speaks, an immersive space for horror enthusiasts, demonstrates the developer's expertise in creating a captivating, user-friendly MERN stack application tailored for the eerie and unknown."
-                    contentMiniDesc="A fullstack creepypasta website"
-                    contentName="Katze Speaks"
-                    contentTags={[
-                        "Next JS",
-                        "Tailwind CSS",
-                        "Typescript",
-                        "Express JS",
-                        "Node JS",
-                        "Mongo DB",
-                        "Cloudinary",
-                        "Playbook",
-                        "Vercel",
-                    ]}
-                    mainImagery="/Assets/work/ks.webp"
-                    LiveLink="https://katzespeaks.vercel.app/"
-                    githubLink="https://github.com/diptanshumahish/katze-speaks-website"
-                />
-                <WorkItem
-                    backgroundScroll="0.2"
-                    imageScroll="-0.5"
-                    subTextColor="#FAD4C1"
-                    key="03"
-                    contentNumber="04"
-                    backgroundColor="472C1F"
-                    backgroundImage="/Assets/back-dark.svg"
-                    contentFullDesc="Introducing 'Wally,' a visually stunning Flutter-based app, now available on the Play Store. Embracing a super aesthetic and clean UI with minimalistic designs, Wally stands out as a go-to destination for beautiful wallpapers. Every wallpaper featured on the app is exclusively crafted by the developer. The backend is seamlessly hosted on cyclic.sh, while images are served from Playbook. Wally provides users with an immersive experience, offering a curated collection of eye-catching wallpapers, making it the perfect companion for those seeking a touch of elegance for their device backgrounds"
-                    contentMiniDesc="A flutter Wallpapers app ( ✅Available on Play Store)"
-                    contentName="Wally App"
-                    contentTags={[
-                        "Flutter",
-                        "Node",
-                        "Express JS",
-                        "Mongo DB",
-                        "Playbook",
-                        "Figma",
-                    ]}
-                    mainImagery="/Assets/work/wally.webp"
-                    LiveLink="https://katzespeaks.vercel.app/"
-                    githubLink="https://github.com/diptanshumahish/katze-speaks-website"
-                />
-                <WorkItem
-                    backgroundScroll="0.3"
-                    imageScroll="-0.6"
-                    subTextColor="#FFADDE"
-                    key="04"
-                    contentNumber="05"
-                    backgroundColor="0C1E25"
-                    backgroundImage="/Assets/back-dark-2.svg"
-                    contentFullDesc="I noticed  that Zen clock is a pretty cool productivity thing. I myself was using one on my old  Tablet. I noticed there were too many ads. I thus decided to make my own Zen clock along with a Pomodoro timer. This ap allows various scenes and also plays ambient music if you want to play. The scenes are basically the various themes in the app. Which ranges from aesthetic images to amoled black or pure white. This app as of now is available on Play Store."
-                    contentMiniDesc="A flutter Zen clock app ( ✅Available on Play Store)"
-                    contentName="Zen Clock/ Pomodoro"
-                    contentTags={["Flutter", "Figma"]}
-                    mainImagery="/Assets/work/zen.webp"
-                    LiveLink="https://katzespeaks.vercel.app/"
-                    githubLink="https://github.com/diptanshumahish/katze-speaks-website"
-                />
-            </div> */}
             <div className="bg-[#1a1a1a] px-[5%] text-white py-[5%]">
-                <h2 className="lg:text-8xl text-4xl lg:py-8 py-4">
+                <h2 className="lg:text-7xl text-4xl lg:py-8 py-4">
                     <span className="flex">
                         Here are some of my selected works ^^
                     </span>

@@ -13,6 +13,7 @@ export interface WorkItemProps {
     itemNumber: string;
     itemDetails: string;
     itemImage: string;
+    itemMobileImage: string;
     githubLink?: string;
     livelink?: string;
     linksAvailable: boolean;
@@ -41,7 +42,14 @@ export default function WorkItem({ workItem }: Props) {
                         height={900}
                         width={1000}
                         alt="wg"
-                        className="lg:w-[60%] w-full h-auto"
+                        className="lg:w-[60%] lg:flex hidden h-auto"
+                    />
+                    <Image
+                        src={workItem.itemMobileImage}
+                        height={900}
+                        width={1000}
+                        alt="wg"
+                        className="lg:hidden flex w-full h-auto"
                     />
                     <div className="lg:max-w-[40%] w-full flex flex-col justify-between bg-white bg-opacity-5 py-4 px-4 rounded-lg">
                         <div className="flex flex-col gap-6">
@@ -55,7 +63,7 @@ export default function WorkItem({ workItem }: Props) {
                                     </span>
                                 ))}
                             </div>
-                            <h2 className="text-3xl font-light pl-4 border-l-4 border-yellow-100 rounded-sm py-1 pb-2 my-4 ">
+                            <h2 className="lg:text-3xl text-2xl font-light pl-4 border-l-4 border-yellow-100 rounded-sm py-1 pb-2 my-4 ">
                                 {workItem.sideHeading}
                                 <span className="bg-yellow-200 text-black   underline">
                                     {workItem.techUsed}
