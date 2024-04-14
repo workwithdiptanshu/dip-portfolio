@@ -31,6 +31,7 @@ export default function ImageLoader({
                 )}
                 alt={alt}
                 src={src}
+                priority
                 height={height}
                 width={width}
             />
