@@ -7,6 +7,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { GithubIcon, PlayCircle } from "lucide-react";
+import ImageLoader from "@/components/Common/ImageLoader";
 
 export interface WorkItemProps {
     headingName: string;
@@ -37,19 +38,19 @@ export default function WorkItem({ workItem }: Props) {
             </AccordionTrigger>
             <AccordionContent>
                 <div className="flex lg:flex-row flex-col gap-6">
-                    <Image
+                    <ImageLoader
                         src={workItem.itemImage}
                         height={900}
                         width={1000}
-                        alt="wg"
+                        alt={workItem.headingName}
                         className="lg:w-[60%] lg:flex hidden h-auto"
                     />
-                    <Image
+                    <ImageLoader
                         src={workItem.itemMobileImage}
-                        height={900}
+                        height={1400}
                         width={1000}
-                        alt="wg"
-                        className="lg:hidden flex w-full h-auto"
+                        alt={workItem.headingName}
+                        className="lg:hidden flex w-full h-auto min-h-[200px]"
                     />
                     <div className="lg:max-w-[40%] w-full flex flex-col justify-between bg-white bg-opacity-5 py-4 px-4 rounded-lg">
                         <div className="flex flex-col gap-6">
