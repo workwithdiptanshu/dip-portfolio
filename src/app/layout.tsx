@@ -57,6 +57,7 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = {
     themeColor: "#353451",
+    
 };
 
 const generalSans = localFont({
