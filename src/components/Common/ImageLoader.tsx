@@ -37,11 +37,11 @@ export default function ImageLoader({
             />
             <div
                 className={twMerge(
-                    "absolute inset-0 w-full h-full flex items-center justify-center flex-col gap-2",
+                    "absolute inset-0 w-full lg:max-h-[400px] h-full flex items-center justify-center flex-col gap-2",
                     loading ? "opacity-100" : "opacity-0"
                 )}
             >
-                <Loader2 className="text-theme-blue-dark animate-spin" />
+                <Loader2 className="text-white animate-spin" />
                 <span className="text-xs text-gray-300">Loading </span>
             </div>
         </div>
