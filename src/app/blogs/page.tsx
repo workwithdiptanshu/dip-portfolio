@@ -33,7 +33,7 @@ export default async function page(
     return (
         <div className=" pb-[5%] lg:pt-[2%] pt-[10%] relative overflow-hidden ">
             <div className="">
-                <Heading heading={["Blogs", "That I write"]} number={4} />
+                <Heading heading={"Blogs That I write"} number={4} />
             </div>
             <Image
                 src="/Assets/back-dark-3.svg"

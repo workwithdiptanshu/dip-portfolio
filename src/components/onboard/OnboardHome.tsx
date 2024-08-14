@@ -7,7 +7,7 @@ export default function OnboardHome() {
     return (
         <div>
             <Heading
-                heading={["Interested in", "Working with", "me?"]}
+                heading={"Interested in Working with me?"}
                 number={3}
                 key="work"
             />

@@ -7,7 +7,7 @@ export default function BlogHome() {
     return (
         <div className="bg-white  overflow-hidden">
             <Heading
-                heading={["And Btw", "Sometimes I ", "Write too"]}
+                heading={"And Btw Sometimes I Write too"}
                 number={4}
                 key="write"
             />

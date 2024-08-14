@@ -8,7 +8,7 @@ export default function Services() {
     return (
         <div className="overflow-hidden h-min">
             <Heading
-                heading={["And Now ", "What Services", "Do I Offer?"]}
+                heading={"And Now What Services Do I Offer?"}
                 number={2}
                 key="Services"
             />

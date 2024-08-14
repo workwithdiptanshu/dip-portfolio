@@ -17,7 +17,7 @@ export default function Home() {
             <SmoothScrollProvider options={{ smooth: true }}>
                 <Header />
                 <Heading
-                    heading={["Enough Talk", "Let's See", "My work"]}
+                    heading={"Enough Talk Let's See My work"}
                     number={1}
                 />
                 <Work />
