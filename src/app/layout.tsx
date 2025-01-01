@@ -82,6 +82,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+             <head>
+        <meta name="google-adsense-account" content="ca-pub-3294424742179691" />
+      </head>
             <body className={`${generalSans.className} bg-bg-back`}>
                 {children}
             </body>
