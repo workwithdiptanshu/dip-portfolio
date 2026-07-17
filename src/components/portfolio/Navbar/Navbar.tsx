@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Book, ShoppingBagIcon } from "lucide-react";
+import { Book, Github } from "lucide-react";
 export default function Navbar() {
     return (
         <div className="fixed  left-[5vw]  right-[5vw] top-2 z-20 ">
@@ -25,13 +25,16 @@ export default function Navbar() {
                 />
                 <div className="flex gap-3 absolute lg:right-6 right-3 items-center ">
                     <Link
-                        href="/shop"
+                        href="https://github.com/diptanshumahish"
+                        target="_blank"
+                        aria-label="GitHub"
                         className="opacity-60 hover:opacity-100 transition-opacity lg:flex hidden"
                     >
-                        <ShoppingBagIcon />
+                        <Github />
                     </Link>
                     <Link
                         href="/blogs"
+                        aria-label="Blogs"
                         className="opacity-60 hover:opacity-100 transition-opacity lg:flex hidden"
                     >
                         <Book />
@@ -40,7 +43,7 @@ export default function Navbar() {
                         href="/hire"
                         className="hover:bg-yellow-100 bg-yellow-500 transition-colors text-black px-2 lg:px-4 border border-black lg:py-1 py-[2px] rounded-full "
                     >
-                        Hire Me
+                        Get in Touch
                     </Link>
                 </div>
             </div>

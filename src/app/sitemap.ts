@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: "https://diptanshumahish.in/work/bitgrain",
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
             url: "https://diptanshumahish.in/blogs",
             lastModified: new Date(),
             changeFrequency: "monthly",

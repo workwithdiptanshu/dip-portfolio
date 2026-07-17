@@ -15,3 +15,68 @@
     height: 105vh;
     background: #353451;
 }
+
+/* ---------------------------------------------------------------
+   Bitgrain case study.
+   Every effect below is drawn with gradients, SVG noise and blend
+   modes. No images, no generated assets. The page is built the same
+   way the tool it describes is: deterministic, and by hand.
+   --------------------------------------------------------------- */
+
+.paper {
+    background-color: #f4f2ee;
+}
+
+/* Grain. SVG fractal noise, laid over a surface. */
+.grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Halftone. A dot screen, sized by the surface it sits on. */
+.halftone-screen {
+    background-image: radial-gradient(
+        circle at center,
+        currentColor 1.6px,
+        transparent 1.7px
+    );
+    background-size: 9px 9px;
+}
+
+/* The two swatches in the determinism panel. Each is the real technique,
+   drawn in CSS: a dot screen, and two inks multiplying out of registration. */
+.fx {
+    position: relative;
+    overflow: hidden;
+    background-color: #111;
+}
+
+/* Bayer-ish ordered dither: two offset dot grids at different scales. */
+.fx-dither {
+    background-color: #111;
+    background-image: radial-gradient(
+            circle at 25% 25%,
+            #f4f2ee 1.1px,
+            transparent 1.2px
+        ),
+        radial-gradient(circle at 75% 75%, #f4f2ee 0.8px, transparent 0.9px),
+        radial-gradient(circle at 75% 25%, #f4f2ee 0.4px, transparent 0.5px);
+    background-size: 7px 7px;
+}
+
+/* Risograph: two of the engine's default inks, out of registration. */
+.fx-riso {
+    background-color: #f4f2ee;
+    background-image: radial-gradient(
+            circle at 32% 42%,
+            #ff48b0 0%,
+            rgba(255, 72, 176, 0) 58%
+        ),
+        radial-gradient(circle at 62% 58%, #0078bf 0%, rgba(0, 120, 191, 0) 58%);
+    background-blend-mode: multiply;
+}

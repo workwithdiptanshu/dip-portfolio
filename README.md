@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# diptanshumahish.in
 
-## Getting Started
+My personal portfolio: [diptanshumahish.in](https://diptanshumahish.in).
 
-First, run the development server:
+Built with Next.js (App Router), TypeScript, Tailwind CSS, GSAP and Locomotive Scroll. Blog content is authored in Notion and rendered natively through the Notion API.
+
+## Getting started
+
+This project uses [Bun](https://bun.sh).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Command | Description |
+| --- | --- |
+| `bun run dev` | Start the dev server |
+| `bun run build` | Production build |
+| `bun run start` | Serve the production build |
+| `bun run lint` | Lint |
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env` with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NOTION_DATABASE_SECRET=
+NOTION_DATABASE_ID=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Both come from a Notion integration with read access to the blog database. Without them the site still builds, but `/blogs` renders empty.
 
-## Deploy on Vercel
+## Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/app                      routes (home, blogs, hire, privacy)
+src/components/portfolio     home page sections: header, experience, work, contact
+src/components/NotionRender  Notion block -> React renderers
+public/Assets/work           per-project mockups (desktop + mobile SVG)
+public/resume.pdf            served at /resume.pdf
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Work items live in `src/components/portfolio/Work/Work.tsx`. Each entry optionally takes `itemImage` and `itemMobileImage`; without them the item renders text-only.
