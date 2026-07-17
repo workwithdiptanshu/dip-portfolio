@@ -12,16 +12,30 @@ export default function Footer() {
                     width={200}
                     alt="dptsnhu logo full"
                 />
-                <span> &copy; Diptanshu Mahish 2024</span>
-                <div className="flex justify-center items-center gap-3">
+                <span> &copy; Diptanshu Mahish {new Date().getFullYear()}</span>
+                <div className="flex flex-wrap justify-center items-center gap-3">
                     <Link href="/" className="underline">
                         Portfolio
                     </Link>
-                    <Link href="/shop" className="underline">
-                        Shop
-                    </Link>
                     <Link href="/blogs" className="underline">
                         Blogs
+                    </Link>
+                    <Link href="/resume.pdf" target="_blank" className="underline">
+                        Résumé
+                    </Link>
+                    <Link
+                        href="https://github.com/diptanshumahish"
+                        target="_blank"
+                        className="underline"
+                    >
+                        GitHub
+                    </Link>
+                    <Link
+                        href="https://linkedin.com/in/diptanshumahish"
+                        target="_blank"
+                        className="underline"
+                    >
+                        LinkedIn
                     </Link>
                 </div>
             </div>

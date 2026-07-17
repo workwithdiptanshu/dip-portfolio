@@ -3,9 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Diptanshu Mahish",
+    title: "Diptanshu Mahish | Product Engineer",
     description:
-        "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast and creative designs and turn them into reality.",
+        "Diptanshu Mahish is a product engineer based in Bengaluru, India. Founding engineer at Supaboard.ai, creator of Bitgrain and Rustybase. He builds customer-facing web and mobile products from 0 to 1 across React, TypeScript, Flutter and Rust.",
     icons: {
         icon: "/favicon.ico",
         shortcut: "/favicon.ico",
@@ -13,14 +13,17 @@ export const metadata: Metadata = {
     authors: [{ name: "Diptanshu Mahish", url: "https://diptanshumahish.in" }],
     category: "Portfolio Website",
     abstract:
-        "Diptanshu Mahish | Portfolio Website | UI/UX | Front end developer | Flutter | NextJS | Shop",
+        "Diptanshu Mahish | Product Engineer | Frontend Engineer | Design Engineer | React | TypeScript | Flutter | Rust",
     keywords: [
         "Diptanshu Mahish",
         "diptanshumahish",
-        "diptanshumahish2016@gmail.com",
-        "Dip",
-        "UI UX Diptanshu",
-        "Nextjs Diptanshu Mahish",
+        "Product Engineer",
+        "Frontend Engineer",
+        "Design Engineer",
+        "Supaboard",
+        "Bitgrain",
+        "Rustybase",
+        "React Developer Bengaluru",
         "diptanshumahish.in",
     ],
     robots: { follow: true },
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         site: "https://diptanshumahish.in",
-        creator: "@DiptanshuMahis5",
+        creator: "@diptanshuSays",
         images: "https://diptanshumahish.in/banner.png",
     },
 
@@ -42,12 +45,12 @@ export const metadata: Metadata = {
             "diptanshumahish2016@gmail.com",
             "workwithdiptanshu@gmail.com",
         ],
-        title: "Diptanshu Mahish | Portfolio",
+        title: "Diptanshu Mahish | Product Engineer",
         url: "https://diptanshumahish.in",
         siteName: "Diptanshu Mahish",
         images: ["https://diptanshumahish.in/banner.png"],
         description:
-            "Diptanshu Mahish is a UI/UX designer, Apps and websites developer and a musician from Kolkata, India. He is well experienced in making super fast yet creative designs and turn them into reality.",
+            "Product engineer based in Bengaluru, India. Founding engineer at Supaboard.ai, creator of Bitgrain and Rustybase. Shipping customer-facing web and mobile products from 0 to 1.",
         determiner: "the",
         locale: "IN",
         alternateLocale: "US",

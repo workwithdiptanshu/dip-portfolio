@@ -1,9 +1,7 @@
 import React from "react";
-import { Herr_Von_Muellerhoff } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-const hf = Herr_Von_Muellerhoff({ subsets: ["latin"], weight: ["400"] });
 
 export default function Header() {
     return (
@@ -18,23 +16,39 @@ export default function Header() {
                     <span className="text-sm opacity-80 lg:max-w-[40%] pt-2">
                         <b className="text-lg underline bg-yellow-300">
                             {" "}
-                            I craft beautiful, lightning-fast apps and websites.
+                            I&apos;m a product engineer in Bengaluru who builds
+                            things people actually use.
                         </b>{" "}
                         <br />
-                        <b>Think minimalism meets magic</b>. Clean UIs, smooth
-                        animations, and a sprinkle of creativity - that&apos;s
-                        my recipe for bringing your digital dreams to life. 🪄
-                        Flutter for apps, Next.js for websites, and Figma for
-                        weaving the design magic. Let&apos;s build something
-                        awesome together! P.S. Scroll down to see my work speak
-                        for itself.
+                        I&apos;m a founding engineer at <b>Supaboard</b>, an AI
+                        analytics platform I helped take from an early idea to
+                        paying customers. Before that I built a streaming
+                        platform that reached{" "}
+                        <b>1,000+ users in its first month</b>. In my own time I
+                        make <b>Bitgrain</b>, a design studio that runs in your
+                        browser and came #5 on Product Hunt, and{" "}
+                        <b>Rustybase</b>, a small database written in Rust.
+                        <br />
+                        <br />
+                        What I like is owning the whole thing: what to build,
+                        how it looks, how it works, and getting it out the door.
+                        Scroll down and it should speak for itself.
                     </span>
-                    <Link
-                        className="bg-black text-white px-4 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors hover:shadow-md gap-4 rounded-full mt-6"
-                        href="/hire"
-                    >
-                        Get in Touch <ArrowUpRight />
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-3 mt-6">
+                        <Link
+                            className="bg-black text-white px-4 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors hover:shadow-md gap-4 rounded-full"
+                            href="/hire"
+                        >
+                            Get in Touch <ArrowUpRight />
+                        </Link>
+                        <Link
+                            className="bg-white text-black px-4 py-2 w-fit flex items-center hover:bg-black hover:text-white border border-black transition-colors hover:shadow-md gap-4 rounded-full"
+                            href="/resume.pdf"
+                            target="_blank"
+                        >
+                            Résumé <ArrowUpRight />
+                        </Link>
+                    </div>
                 </div>
                 <Image
                     src="/Assets/Header/homeback.svg"

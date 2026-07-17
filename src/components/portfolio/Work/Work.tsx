@@ -1,160 +1,92 @@
 import React from "react";
 import WorkItem, { WorkItemProps } from "./WorkItem";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
-import { ArrowUpRight, GithubIcon, PlayCircle } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Accordion } from "@/components/ui/accordion";
 
 const workItemsArray: WorkItemProps[] = [
     {
-        headingName: "Warriors Group App",
+        headingName: "Bitgrain",
         itemNumber: "01",
-        itemDetails: `This application serves as the
-        backbone for
-     
-            warriorsgrp.com
-    
-        . This application
-        <b>
-            tracks employees working hours
-        </b>
-        , employees can update the forms,
-        send mass mails, update concerns and
-        such similar things. It also
-        includes a detailed admin panel that
-        allows the admins to look after the
-        employees information, add new
-        employees and remove them as well.
-        <br /> <br />
+        itemDetails: `<p>A design studio that runs in your browser, for people who make album covers, posters and zines. <b>There's no AI in it, on purpose.</b></p>
         <p>
-            
-            Complete with proper charts and
-            data for reading previous data
-            recorded from employees,
-            sendgrid api has been used to
-            send the mass mails, along with
-            attachments.
+            <b>27 image processing effects, all written by hand</b>: dithering, halftone, Risograph separation, ASCII, glitch. No GPU and no shaders, just per-pixel loops on the CPU in workers, made fast by caching and never doing the work twice. Your artwork never leaves your machine.
         </p>
-    </p>`,
-        itemImage: "/Assets/work/wgnew.svg",
-        linksAvailable: false,
-        techUsed: `NextJS, Tailwind, SendGrid,
-    FormSubmit, FireBase`,
-        appType: ["Progressive Web Application"],
-        sideHeading: `The official work application for Warriors's Group LLC built using `,
-        itemMobileImage: "/Assets/work/wgmob.svg",
+        <p>
+            Projects save to a <b>.btg</b> file that keeps every setting, so you can open it a year later and get the same image back.
+        </p>
+        <p>
+            I made all of it myself: the idea, the design, the code, the launch.
+        </p>`,
+        techUsed: ["TypeScript", "Canvas 2D", "Web Workers"],
+        appType: ["Product", "Solo Founder", "Live"],
+        stats: [
+            { value: "#5", label: "Product of the Day" },
+            { value: "10k+", label: "Visitors a month" },
+            { value: "500+", label: "Signed up" },
+        ],
+        sideHeading: `A design studio lighter than Figma and more flexible than Canva.`,
+        livelink: "https://bitgrain.app",
+        caseStudyLink: "/work/bitgrain",
     },
     {
-        headingName: "Cursed Diary Website",
+        headingName: "Rustybase",
         itemNumber: "02",
-        itemDetails: `This fun website was made for the creepypasta readers
-        <b>
-           with creeepy content
-        </b>
-        ,users can read creepy content, horror experiences, 
-        share their views, in a clean UI format.
-        <br /> <br />
+        itemDetails: `<p>A small database written in Rust that works like MongoDB, but is one file you can just run. Currently in beta.</p>
         <p>
-           The super clean UI, with a super readable and user friendly font makes content reading much more easier. I've used the power of Notion Databases to manage the content with robustness. Data is rendered natively
+            The idea is simple: <b>you shouldn't need a whole cluster just to build something on your laptop.</b> Rustybase is about 15 MB where MongoDB is over 400 MB, starts in under a tenth of a second instead of two, and uses a fraction of the memory. You type <code>rustybase serve</code> and it works, with nothing to configure.
         </p>
-    </p>`,
-        itemImage: "/Assets/work/cdnew.svg",
-        linksAvailable: true,
-        techUsed: `NextJS, Tailwind & Notion Databases`,
-        appType: ["website"],
-        sideHeading: `A fun website made for the creepypasta readers built using `,
-        githubLink: "https://github.com/diptanshumahish/curseddiary",
-        livelink: "https://curseddiary.vercel.app",
-        itemMobileImage: "/Assets/work/cdmob.svg",
+        <p>
+            Inside, it only ever adds to the end of a file, which keeps writing fast no matter how big it gets. It watches how you query and builds the indexes for you. It has proper transactions, so a crash can't leave your data half written, and it can split across machines as it grows. There are TypeScript and Python libraries for it.
+        </p>
+        <p>
+            This is the project I use to learn the things frontend work never teaches you.
+        </p>`,
+        techUsed: ["Rust", "Storage Engines", "Indexing"],
+        appType: ["Database", "Beta"],
+        stats: [
+            { value: "~15 MB", label: "Against MongoDB's 400+" },
+            { value: "<50ms", label: "To start up" },
+            { value: "0", label: "Things to configure" },
+        ],
+        liveLabel: "Website",
+        sideHeading: `A tiny, fast database that just runs.`,
+        livelink: "https://rustybase.vercel.app",
+        githubLink: "https://github.com/diptanshumahish/rustybase-release",
     },
     {
-        headingName: "Katze Speaks Website",
+        headingName: "Calendify",
         itemNumber: "03",
-        itemDetails: `A fun little blogging website for the horror bloggers
-        <b>
-            with a twist!
-        </b>
-        , readers can read experiences written by their fellow friends, and strangers as well. Can ready catagorized content, comment their views as well. All with a clean and dark UI.
-        <br /> <br />
+        itemDetails: `<p>A small calendar package you can install from npm.</p>
         <p>
-            complete with a well made text editor and content upload page, with a rich text editor and image upload features
-        </p>
-    </p>`,
-        itemImage: "/Assets/work/ksweb.svg",
-        linksAvailable: true,
-        techUsed: `NextJS, Tailwind, MongoDB, ExpressJS, Playbook, Cloudinary`,
-        appType: ["Fullstack Website"],
-        sideHeading: `A fun website made for the horror bloggers built using `,
-        githubLink: "https://github.com/diptanshumahish/katzespeaks",
-        livelink: "https://katzespeaks.vercel.app",
-        itemMobileImage: "/Assets/work/ksmob.svg",
+            I made it because most calendar components try to do everything, and end up being a fight to restyle. This one does less on purpose, so it's easy to make it look like your own. It's open source and installs in one line.
+        </p>`,
+        techUsed: ["TypeScript", "React", "npm"],
+        appType: ["Open Source", "npm Package"],
+        liveLabel: "npm",
+        sideHeading: `A calendar package that does less on purpose.`,
+        livelink: "https://www.npmjs.com/package/calendify",
+        githubLink: "https://github.com/diptanshumahish/calendify",
     },
     {
-        headingName: "Windows Utilities",
+        headingName: "Independent Android Apps",
         itemNumber: "04",
-        itemDetails: `A small project to ease the issues faced by Windows users , with these few simple python and batch scripts, users can easily do tasks such as image compression, organize files, flatten folders and many more such stuff with ease
-        <br /> <br />
+        itemDetails: `<p>Three Android apps I designed, built and published on my own: <b>dailyThings</b> for planning your day, <b>Zen Clock</b> for focus timers, and <b>Simply Expenses</b> for tracking spending.</p>
         <p>
-            with the basic requirements , i.e python and a few python ,modules being installed on your device this is a super lightweight program set!
+            Each one started as something I wanted for myself. Zen Clock exists because every other one I tried was buried in ads. Doing all of it, the design, the code, the store listing, and answering the people who emailed me, taught me more about real users than anything else I've made.
         </p>
-    </p>`,
-        itemImage: "/Assets/work/wuweb.svg",
-        linksAvailable: true,
-        techUsed: `Python, BATCH`,
-        appType: ["Python scripts"],
-        sideHeading: `A set of tools to ease your experience `,
-        githubLink: "https://github.com/diptanshumahish/windows_utliities",
-        livelink: "https://github.com/diptanshumahish/windows_utliities",
-        itemMobileImage: "/Assets/work/wumob.svg",
-    },
-    {
-        headingName: "Wally",
-        itemNumber: "05",
-        itemDetails: `An Android wallpapers applications (wallpapers made by me). with a super clean and fresh UI. Wally is a must have for all aesthetic people.
-        <br /> <br />
         <p>
-           recently crossed the 300+ downloads mark on Playstore. this app uses an Express Server hosted at Cyclic.sh and the images are stores using Playbook
-        </p>
-    </p>`,
-        itemImage: "/Assets/work/waweb.svg",
-        linksAvailable: true,
-        techUsed: `Flutter, ExpressJS, Github, PlayBook`,
-        appType: ["Flutter Application"],
-        sideHeading: `An aesthetic wallpapers app, wallpapers made by yours ❤️ `,
-        githubLink: "https://github.com/diptanshumahish/windows_utliities",
-        livelink:
-            "https://play.google.com/store/apps/details?id=com.diptanshumahish.wally&hl=en&gl=US",
-        itemMobileImage: "/Assets/work/wamob.svg",
-    },
-    {
-        headingName: "Zen Clock/ Pomodoro",
-        itemNumber: "06",
-        itemDetails: `An Android zen clock application with 500+ downloads on Play Store!
-        <br /> <br />
-        <p>
-        I noticed  that Zen clock is a pretty cool productivity thing. I myself was using one on my old  Tablet. I noticed there were too many ads. I thus decided to make my own Zen clock along with a Pomodoro timer. This ap allows various scenes and also plays ambient music if you want to play. The scenes are basically the various themes in the app. Which ranges from aesthetic images to amoled 
-        </p>
-    </p>`,
-        itemImage: "/Assets/work/zweb.svg",
-        linksAvailable: true,
-        techUsed: `Flutter,  Github`,
-        appType: ["Flutter Application"],
-        sideHeading: `A zen clock app with a built in pomodoro `,
-        githubLink: "https://github.com/diptanshumahish/windows_utliities",
-        livelink:
-            "https://play.google.com/store/apps/details?id=com.diptanshumahish.zen_clock&hl=en&gl=US",
-        itemMobileImage: "/Assets/work/zmob.svg",
+            These are archived now and no longer on the Play Store. The code is still up.
+        </p>`,
+        techUsed: ["Flutter", "Dart", "Firebase"],
+        appType: ["Mobile", "Archived"],
+        sideHeading: `Three apps I shipped on my own, start to finish.`,
+        githubLink: "https://github.com/diptanshumahish?tab=repositories",
+        noLinksReason: "Archived. No longer listed on the Play Store.",
     },
 ];
 
 export default function Work() {
     return (
-        <div className=" overflow-hidden">
+        <div id="work" className=" overflow-hidden">
             <div className="lg:h-[10vh]"></div>
             <div className="bg-[#1a1a1a] px-[5%] text-white py-[5%]">
                 <h2 className="lg:text-7xl text-4xl lg:py-8 py-4">
@@ -162,6 +94,10 @@ export default function Work() {
                         Here are some of my selected works ^^
                     </span>
                 </h2>
+                <p className="opacity-60 lg:max-w-[50%] pb-6 text-sm">
+                    Things I made in my own time, because I wanted them to
+                    exist. All of them shipped.
+                </p>
                 <Accordion type="single" collapsible className="w-full">
                     {workItemsArray.map((ele, idx) => (
                         <WorkItem workItem={ele} key={idx} />
