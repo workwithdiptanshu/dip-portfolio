@@ -37,7 +37,7 @@ export async function generateMetadata(
     };
 }
 
-export default async function (props: ServerProps<"id">) {
+export default async function BlogPost(props: ServerProps<"id">) {
     const [_, blog_id] = decodeURIComponent(props.params.id).split("__");
 
     return <BlogRenderComponent searchParams={{}} params={{ id: blog_id }} />;
