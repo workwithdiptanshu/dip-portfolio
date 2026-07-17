@@ -1,19 +1,36 @@
 "use client";
 import { animatePageIn } from "@/components/onboard/animations";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+/**
+ * Module scope, so it survives client-side navigation but resets on a real page
+ * load. Templates remount on every route change, and replaying a three second
+ * intro on each one is miserable. This way it plays once per visit.
+ *
+ * Never written on the server, so SSR always renders the intro and the first
+ * client render agrees with it. That keeps hydration quiet.
+ */
+let introHasPlayed = false;
 
 export default function Template({ children }: { children: React.ReactNode }) {
+    const [playIntro] = useState(() => !introHasPlayed);
+
     useEffect(() => {
+        if (introHasPlayed) return;
+        introHasPlayed = true;
         animatePageIn();
     }, []);
+
+    if (!playIntro) return <>{children}</>;
+
     return (
         <div className="relative overflow-hidden">
             <Image
                 src="/Assets/back-dark-3.svg"
                 height={100}
                 width={300}
-                alt="Dip logo"
+                alt=""
                 id="lBack"
                 className="z-50  h-screen w-screen fixed inset-0 opacity-20 object-cover"
             />
@@ -40,7 +57,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                     src="/Assets/logo-full.svg"
                     height={100}
                     width={300}
-                    alt="Dip logo"
+                    alt="Diptanshu Mahish"
                     className="z-50 invert animate-pulse"
                 />
             </div>

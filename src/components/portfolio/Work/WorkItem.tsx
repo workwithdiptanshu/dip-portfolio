@@ -33,7 +33,9 @@ interface Props {
 }
 
 export default function WorkItem({ workItem }: Props) {
-    const hasImage = Boolean(workItem.itemImage && workItem.itemMobileImage);
+    /** Mobile art is optional. Without it the desktop image is used at both sizes. */
+    const hasImage = Boolean(workItem.itemImage);
+    const mobileImage = workItem.itemMobileImage ?? workItem.itemImage;
     const hasLinks = Boolean(workItem.livelink || workItem.githubLink);
 
     const sidebar = (
@@ -136,7 +138,7 @@ export default function WorkItem({ workItem }: Props) {
                                 className="lg:w-[55%] lg:flex hidden h-auto"
                             />
                             <ImageLoader
-                                src={workItem.itemMobileImage!}
+                                src={mobileImage!}
                                 height={1400}
                                 width={1000}
                                 alt={workItem.headingName}

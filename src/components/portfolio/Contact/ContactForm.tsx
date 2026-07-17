@@ -13,7 +13,7 @@ export default function ContactForm() {
                 <input
                     type="hidden"
                     name="_subject"
-                    value="contact form submission @dptnshu"
+                    value="diptanshumahish.in, someone got in touch"
                 ></input>
                 <input
                     type="hidden"
@@ -22,48 +22,55 @@ export default function ContactForm() {
                 ></input>
                 <input type="hidden" name="_captcha" value="false"></input>
                 <ContactFormInner
-                    heading="Your full name"
+                    heading="Your name"
                     name="name"
                     placeholder="Full name please"
                     key="name"
                 />
                 <ContactFormInner
-                    heading="Your Email Address"
+                    heading="Your email"
                     name="email"
                     placeholder="hey@email.com"
+                    type="email"
                     key="email"
                 />
                 <ContactFormInner
-                    heading="Your Contact Number (Whatsapp/iMessage)"
-                    name="contact"
-                    placeholder="+91 9876543210"
-                    key="num"
+                    heading="Company or team"
+                    name="company"
+                    placeholder="Where you're writing from"
+                    required={false}
+                    key="company"
                 />
                 <ContactFormInner
-                    heading="Contacting for?"
+                    heading="What's this about?"
                     name="purpose"
-                    placeholder="for my new project!"
-                    key="contact"
-                />
-                <ContactFormInner
-                    heading="Budget, if contacting for a project"
-                    name="budget"
-                    placeholder="$1000-$2000, 0 if not"
-                    key="budget"
+                    placeholder="A role, a project, or just saying hi"
+                    key="purpose"
                 />
                 <div className="flex flex-col  gap-3 text-white">
-                    <span className="uppercase">Your Message</span>
+                    <span className="uppercase">Your message</span>
                     <textarea
                         className="w-full p-4 bg-white bg-opacity-5 rounded-md resize-none focus:outline-none h-[200px]"
-                        placeholder="So Here goes nothing."
+                        placeholder="So here goes nothing."
                         name="form-message"
                     />
                 </div>
-                <button className="bg-white p-2 rounded-lg" type="submit">
-                    Let&apos;s Go!
+                <button
+                    className="bg-white p-2 rounded-lg hover:bg-yellow-300 transition-colors"
+                    type="submit"
+                >
+                    Send it
                 </button>
-                <span className="text-sm text-white">
-                    (You will hear back from me ASAP)
+                <span className="text-sm text-white opacity-60">
+                    I read everything and reply to what I can. If you&apos;d
+                    rather just email,{" "}
+                    <a
+                        href="mailto:diptanshumahish2016@gmail.com"
+                        className="underline"
+                    >
+                        diptanshumahish2016@gmail.com
+                    </a>
+                    .
                 </span>
             </form>
         </div>

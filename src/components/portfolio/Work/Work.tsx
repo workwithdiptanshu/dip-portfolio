@@ -16,6 +16,7 @@ const workItemsArray: WorkItemProps[] = [
         <p>
             I made all of it myself: the idea, the design, the code, the launch.
         </p>`,
+        itemImage: "/Assets/work/bitgrain/showcase.webp",
         techUsed: ["TypeScript", "Canvas 2D", "Web Workers"],
         appType: ["Product", "Solo Founder", "Live"],
         stats: [
