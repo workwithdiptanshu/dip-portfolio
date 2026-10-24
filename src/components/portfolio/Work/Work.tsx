@@ -29,8 +29,28 @@ const workItemsArray: WorkItemProps[] = [
         caseStudyLink: "/work/bitgrain",
     },
     {
-        headingName: "Rustybase",
+        headingName: "Concepts",
         itemNumber: "02",
+        itemDetails: `<p>Twenty small businesses in the US and India with <b>hundreds or thousands of Google reviews and a website that lets them down</b>: missing, broken, or stuck in 2012. I built the one I'd give each of them.</p>
+        <p>
+            A panadería in El Paso, an eye hospital in Patna, a BBQ truck in Shreveport, a brass works in Jamnagar. Each one has its own look and its own typeface, and <b>nothing is invented</b>: no fake reviews, no made-up prices.
+        </p>`,
+        itemImage: "/Assets/work/concepts/bowie-bakery.webp",
+        techUsed: ["Next.js", "React", "Static Export"],
+        appType: ["Side Project", "Design", "Live"],
+        stats: [
+            { value: "20", label: "Concepts" },
+            { value: "26k+", label: "Google reviews between them" },
+            { value: "20", label: "Different typefaces" },
+        ],
+        sideHeading: `The websites twenty well-loved businesses should have.`,
+        livelink: "https://concepts.diptanshumahish.in/bowie-bakery/",
+        liveLabel: "See one",
+        caseStudyLink: "/concepts",
+    },
+    {
+        headingName: "Rustybase",
+        itemNumber: "03",
         itemDetails: `<p>A small database written in Rust that works like MongoDB, but is one file you can just run. Currently in beta.</p>
         <p>
             The idea is simple: <b>you shouldn't need a whole cluster just to build something on your laptop.</b> Rustybase is about 15 MB where MongoDB is over 400 MB, starts in under a tenth of a second instead of two, and uses a fraction of the memory. You type <code>rustybase serve</code> and it works, with nothing to configure.
@@ -55,7 +75,7 @@ const workItemsArray: WorkItemProps[] = [
     },
     {
         headingName: "Calendify",
-        itemNumber: "03",
+        itemNumber: "04",
         itemDetails: `<p>A small calendar package you can install from npm.</p>
         <p>
             I made it because most calendar components try to do everything, and end up being a fight to restyle. This one does less on purpose, so it's easy to make it look like your own. It's open source and installs in one line.
@@ -69,7 +89,7 @@ const workItemsArray: WorkItemProps[] = [
     },
     {
         headingName: "Independent Android Apps",
-        itemNumber: "04",
+        itemNumber: "05",
         itemDetails: `<p>Three Android apps I designed, built and published on my own: <b>dailyThings</b> for planning your day, <b>Zen Clock</b> for focus timers, and <b>Simply Expenses</b> for tracking spending.</p>
         <p>
             Each one started as something I wanted for myself. Zen Clock exists because every other one I tried was buried in ads. Doing all of it, the design, the code, the store listing, and answering the people who emailed me, taught me more about real users than anything else I've made.
