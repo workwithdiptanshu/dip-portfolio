@@ -31,7 +31,7 @@ const workItemsArray: WorkItemProps[] = [
     {
         headingName: "Concepts",
         itemNumber: "02",
-        itemDetails: `<p>Twenty small businesses in the US and India with <b>hundreds or thousands of Google reviews and a website that lets them down</b>: missing, broken, or stuck in 2012. I built the one I'd give each of them.</p>
+        itemDetails: `<p>Fifty-three small businesses in the US and India with <b>hundreds or thousands of Google reviews and a website that lets them down</b>: missing, broken, or stuck in 2012. I built the one I'd give each of them.</p>
         <p>
             A panadería in El Paso, an eye hospital in Patna, a BBQ truck in Shreveport, a brass works in Jamnagar. Each one has its own look and its own typeface, and <b>nothing is invented</b>: no fake reviews, no made-up prices.
         </p>`,
@@ -39,11 +39,11 @@ const workItemsArray: WorkItemProps[] = [
         techUsed: ["Next.js", "React", "Static Export"],
         appType: ["Side Project", "Design", "Live"],
         stats: [
-            { value: "20", label: "Concepts" },
-            { value: "26k+", label: "Google reviews between them" },
-            { value: "20", label: "Different typefaces" },
+            { value: "53", label: "Concepts" },
+            { value: "35k+", label: "Google reviews between them" },
+            { value: "49", label: "Different typefaces" },
         ],
-        sideHeading: `The websites twenty well-loved businesses should have.`,
+        sideHeading: `The websites fifty-three well-loved businesses should have.`,
         livelink: "https://concepts.diptanshumahish.in/bowie-bakery/",
         liveLabel: "See one",
         caseStudyLink: "/concepts",

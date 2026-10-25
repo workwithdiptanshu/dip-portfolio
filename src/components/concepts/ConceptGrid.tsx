@@ -10,7 +10,6 @@ export interface Concept {
     what: string;
     where: string;
     kind: string;
-    found: string;
     reviews: string;
 }
 
@@ -94,13 +93,6 @@ export default function ConceptGrid({ concepts }: { concepts: Concept[] }) {
                                     </div>
                                     <ArrowUpRight className="shrink-0 mt-1 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                                 </div>
-
-                                <p className="text-base border-l-4 border-black pl-4 py-1">
-                                    <span className="text-[11px] uppercase tracking-widest opacity-50 block pb-1">
-                                        What I found
-                                    </span>
-                                    {c.found}
-                                </p>
 
                                 <div className="flex flex-wrap gap-2 mt-auto pt-2">
                                     {[c.where, c.kind, c.reviews].map((t) => (
