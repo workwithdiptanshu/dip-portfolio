@@ -4,7 +4,6 @@ import ConceptGrid, { Concept } from "@/components/concepts/ConceptGrid";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
 
 export const metadata: Metadata = {
     title: "Concepts | Diptanshu Mahish",
@@ -75,211 +74,89 @@ const concepts: Concept[] = [
 ];
 
 const stats = [
-    { value: "53", label: "Concepts" },
-    { value: "35k+", label: "Google reviews between them" },
-    { value: "49", label: "Different typefaces" },
-    { value: "0", label: "Of them asked me to" },
+    { value: "53", label: "sites" },
+    { value: "35k+", label: "reviews" },
+    { value: "49", label: "typefaces" },
+    { value: "2", label: "countries" },
 ];
-
-const facts = [
-    { key: "Role", value: "Research, design, copy and code. All of it." },
-    { key: "Found on", value: "Google Maps, in the US and India" },
-    { key: "Built with", value: "Next.js, exported as static pages" },
-    { key: "Status", value: "Concepts. Not the businesses' official sites." },
-];
-
-function SectionTitle({
-    number,
-    children,
-}: {
-    number: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <div className="pt-20 pb-8">
-            <span className="halftone-screen inline-block w-16 h-3 text-black opacity-60 mb-5" />
-            <h2 className="lg:text-5xl text-3xl font-medium flex gap-4 items-baseline">
-                <span className="opacity-25 text-2xl lg:text-3xl">{number}</span>
-                <span>{children}</span>
-            </h2>
-        </div>
-    );
-}
 
 export default function ConceptsPage() {
     return (
         <main className="relative paper">
             <Navbar />
 
-            {/* Hero */}
-            <section className="relative px-[5%] pt-[18vh] pb-[6%] border-b border-black">
+            <section className="px-[5%] lg:pt-[16vh] pt-28 pb-10">
                 <Link
                     href="/#work"
-                    className="flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity w-fit mb-10"
+                    className="flex items-center gap-2 text-sm opacity-50 hover:opacity-100 transition-opacity w-fit mb-8"
                 >
                     <ArrowLeft size={16} /> Back to work
                 </Link>
 
-                <div className="flex items-center gap-4 mb-8">
-                    <span className="halftone-screen inline-block w-10 h-6 text-black opacity-70" />
-                    <span className="h-5 w-px bg-black/20" />
-                    <span className="text-[11px] uppercase tracking-[0.25em] opacity-50">
-                        Side project · 2026
-                    </span>
+                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-black/15 pb-8">
+                    <div className="flex flex-col gap-4 lg:max-w-[55%]">
+                        <h1 className="lg:text-7xl text-5xl font-medium tracking-tight leading-none">
+                            Concepts
+                        </h1>
+                        <p className="text-base lg:text-lg opacity-70 leading-relaxed">
+                            Small businesses with great Google reviews and a weak
+                            or missing website, and the site I&apos;d build each of
+                            them. Unsolicited, and nothing invented.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-4 gap-4 lg:flex lg:gap-10">
+                        {stats.map((s) => (
+                            <p key={s.label} className="flex flex-col">
+                                <span className="text-2xl lg:text-4xl font-medium leading-none">
+                                    {s.value}
+                                </span>
+                                <span className="text-xs lg:text-sm opacity-50 pt-1 leading-tight">
+                                    {s.label}
+                                </span>
+                            </p>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="concepts" className="px-[5%] pb-[8%] scroll-mt-24">
+                <ConceptGrid concepts={concepts} />
+
+                <div className="grid lg:grid-cols-3 gap-8 text-sm opacity-60 leading-relaxed mt-24 pt-8 border-t border-black/15">
+                    <p>
+                        Found on Google Maps in the US and India: places with
+                        hundreds or thousands of reviews and a site that was
+                        missing, broken or stuck in 2012.
+                    </p>
+                    <p>
+                        Hours, menus and history come from public sources. No
+                        fake reviews, prices or awards. Each site has a banner
+                        saying it isn&apos;t official, stays out of search
+                        engines, and uses sample photos.
+                    </p>
+                    <p>
+                        Business names and trademarks belong to their owners. If
+                        one of these is your business and you&apos;d like it taken
+                        down, or handed over to you, get in touch.
+                    </p>
                 </div>
 
-                <h1 className="lg:text-[8rem] text-6xl font-medium leading-[0.9] tracking-tight pb-8">
-                    Concepts
-                </h1>
-
-                <p className="lg:text-4xl text-xl font-light lg:max-w-[70%] leading-snug">
-                    Small businesses people clearly love, with{" "}
-                    <span className="bg-yellow-300">
-                        great reviews and a website that lets them down.
-                    </span>
-                </p>
-
-                <p className="text-base opacity-70 lg:max-w-[52%] pt-8 leading-relaxed">
-                    I went through Google Maps looking for places with hundreds
-                    or thousands of reviews and a site that was missing, broken
-                    or stuck in 2012. Then I built the one I&apos;d give each of
-                    them. A bakery in El Paso, an eye hospital in Patna, a BBQ
-                    truck in Shreveport, a brass works in Jamnagar. Fifty-three
-                    so far.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-3 mt-10">
-                    <Link
-                        href="#concepts"
-                        className="offsetstyle bg-black text-white px-5 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors gap-3 rounded-full"
-                    >
-                        See the concepts <ArrowUpRight size={18} />
-                    </Link>
+                <div className="flex flex-wrap items-center gap-6 mt-10 text-sm">
                     <Link
                         href="/hire"
-                        className="px-5 py-2 w-fit flex items-center hover:bg-black hover:text-white border border-black transition-colors gap-3 rounded-full"
+                        className="bg-black text-white px-5 py-2 flex items-center gap-2 rounded-full hover:opacity-80 transition-opacity"
                     >
-                        Want one? <ArrowUpRight size={18} />
+                        Get a site like this <ArrowUpRight size={16} />
+                    </Link>
+                    <Link
+                        href="/#work"
+                        className="flex items-center gap-2 underline underline-offset-4 opacity-70 hover:opacity-100"
+                    >
+                        More of my work
                     </Link>
                 </div>
             </section>
-
-            {/* Stats */}
-            <section className="grain relative bg-[#111] text-[#f4f2ee] px-[5%] py-[5%] overflow-hidden">
-                <span
-                    aria-hidden
-                    className="halftone-screen absolute inset-x-0 bottom-0 h-24 text-[#f4f2ee] opacity-20 pointer-events-none"
-                />
-                <div className="grid lg:grid-cols-4 grid-cols-2 gap-8 relative">
-                    {stats.map((s) => (
-                        <div key={s.label} className="flex flex-col gap-1">
-                            <span className="lg:text-7xl text-4xl font-medium leading-none">
-                                {s.value}
-                            </span>
-                            <span className="text-xs opacity-50 pt-2 uppercase tracking-widest">
-                                {s.label}
-                            </span>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Facts */}
-            <section className="px-[5%] py-[3%] border-b border-black">
-                <div className="grid lg:grid-cols-4 grid-cols-1 gap-6">
-                    {facts.map((f) => (
-                        <div
-                            key={f.key}
-                            className="flex flex-col gap-1 border-l-4 border-yellow-300 pl-4"
-                        >
-                            <span className="text-[11px] uppercase tracking-widest opacity-50">
-                                {f.key}
-                            </span>
-                            <span className="text-sm">{f.value}</span>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <article className="px-[5%] pb-[8%]">
-                <div className="lg:max-w-[80%]">
-                    <SectionTitle number="01">How I picked them</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            The reviews were the filter. A place with two
-                            thousand reviews has already done the hard part:
-                            people like it enough to say so. If the website then
-                            sends them to a parked domain or a page full of
-                            placeholder text, that&apos;s a problem the owner
-                            probably hasn&apos;t noticed, and one I can actually
-                            fix.
-                        </p>
-                        <p>
-                            I checked every candidate by hand and dropped
-                            anything that already had a decent site, which was
-                            most of them. What was left fell into three groups:
-                            no site at all, a site that&apos;s broken (lorem
-                            ipsum, demo content, a hijacked domain), and a site
-                            that simply stopped in 2012.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="02">The rules I kept</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p className="lg:text-2xl text-lg font-light border-l-4 border-black pl-6 py-2 opacity-100">
-                            Nothing invented. No fake reviews, no made-up
-                            prices, no awards nobody gave them.
-                        </p>
-                        <p>
-                            Hours, menus, services and history all come from
-                            public sources: their own pages, listings, local
-                            news. Where sources disagreed, the site says
-                            &ldquo;call to check&rdquo; instead of guessing.
-                            Every concept carries a small banner saying it
-                            isn&apos;t the official site, stays out of search
-                            engines, and uses sample photos until the owner
-                            sends their own.
-                        </p>
-                        <p>
-                            Each one also gets its own look and its own
-                            typeface. A panadería in El Paso and a brass
-                            exporter in Jamnagar shouldn&apos;t feel like the
-                            same template with the colours swapped.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="concepts" className="scroll-mt-24">
-                    <SectionTitle number="03">The concepts</SectionTitle>
-                    <ConceptGrid concepts={concepts} />
-                </div>
-
-                <div className="lg:max-w-[80%]">
-                    <div className="flex flex-col gap-4 text-sm opacity-60 leading-relaxed lg:max-w-[85%] pt-16">
-                        <p>
-                            Business names and trademarks belong to their owners.
-                            If one of these is your business and you&apos;d like
-                            the concept taken down, or handed over to you, just
-                            get in touch.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3 mt-10 pt-8 border-t border-black border-dashed">
-                        <Link
-                            href="/hire"
-                            className="offsetstyle bg-black text-white px-5 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors gap-3 rounded-full"
-                        >
-                            Get a site like this <ArrowUpRight size={18} />
-                        </Link>
-                        <Link
-                            href="/#work"
-                            className="bg-yellow-300 text-black px-5 py-2 w-fit flex items-center hover:bg-transparent border border-black transition-colors gap-3 rounded-full"
-                        >
-                            More of my work <ArrowUpRight size={18} />
-                        </Link>
-                    </div>
-                </div>
-            </article>
 
             <Footer />
         </main>
