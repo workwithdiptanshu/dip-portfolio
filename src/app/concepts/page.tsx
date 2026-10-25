@@ -18,66 +18,65 @@ export const metadata: Metadata = {
 };
 
 const concepts: Concept[] = [
-    { slug: "bowie-bakery", country: "us", what: "A panadería on the same corner since 1951", where: "El Paso, TX", kind: "Bakery", reviews: "2,063 reviews" },
-    { slug: "navneet-garden", country: "in", what: "Wedding garden and halls", where: "Indore", kind: "Venue", reviews: "1,398 reviews" },
-    { slug: "nuestro-mexico", country: "us", what: "Mexico City-style taquería", where: "Bakersfield, CA", kind: "Restaurant", reviews: "1,310 reviews" },
-    { slug: "shree-balaji-netralaya", country: "in", what: "Eye hospital, since 2016", where: "Patna", kind: "Healthcare", reviews: "2,099 reviews" },
-    { slug: "justin-empire-fences", country: "us", what: "Fence contractor", where: "Wichita, KS", kind: "Trade", reviews: "74 reviews" },
-    { slug: "jodhpur-furniture-company", country: "in", what: "Furniture workshop and exporter", where: "Jodhpur", kind: "Manufacturer", reviews: "70 reviews" },
-    { slug: "preservation-pros", country: "us", what: "Pool service", where: "Tucson, AZ", kind: "Trade", reviews: "319 reviews" },
-    { slug: "hotel-inder-prakash", country: "in", what: "Lakeside hotel", where: "Udaipur", kind: "Hotel", reviews: "533 reviews" },
-    { slug: "the-le-bakery", country: "us", what: "Vietnamese-French bakery", where: "Albuquerque, NM", kind: "Bakery", reviews: "260 reviews" },
-    { slug: "sodhani-sweets", country: "in", what: "Mithai house, since 2004", where: "Jaipur", kind: "Sweets", reviews: "11,987 reviews" },
-    { slug: "climate-king-hvac", country: "us", what: "Heating and air", where: "Ridgeland, MS", kind: "Trade", reviews: "652 reviews" },
-    { slug: "oscenox-swiss-cottage", country: "in", what: "Hillside stay above the Ganga", where: "Rishikesh", kind: "Hotel", reviews: "1,657 reviews" },
-    { slug: "bucket-of-love", country: "us", what: "Southern fried-chicken kitchen", where: "Lubbock, TX", kind: "Restaurant", reviews: "740 reviews" },
-    { slug: "anugrah-dental-clinic", country: "in", what: "Neighbourhood dental clinic", where: "Lucknow", kind: "Healthcare", reviews: "717 reviews" },
-    { slug: "louisiana-smokehouse", country: "us", what: "Pecan-wood BBQ truck", where: "Shreveport, LA", kind: "Food truck", reviews: "100 reviews" },
-    { slug: "dr-tejaswini-physio", country: "in", what: "Physiotherapy clinic", where: "Nagpur", kind: "Healthcare", reviews: "780 reviews" },
-    { slug: "fresno-auto-service", country: "us", what: "Independent repair shop", where: "Fresno, CA", kind: "Auto", reviews: "118 reviews" },
-    { slug: "jmr-brass", country: "in", what: "Brass components exporter", where: "Jamnagar", kind: "Manufacturer", reviews: "55 reviews" },
-    { slug: "bobs-fence-co", country: "us", what: "Family fence company, 40+ years", where: "Andover, KS", kind: "Trade", reviews: "89 reviews" },
-    { slug: "quantum-kota", country: "in", what: "Physics coaching for NEET and JEE", where: "Kota", kind: "Education", reviews: "1,703 reviews" },
-    { slug: "puppy-love-grooming", country: "us", what: "Dog grooming, two shops", where: "El Paso, TX", kind: "Pets", reviews: "889 reviews" },
-    { slug: "agave-florist", country: "us", what: "Neighbourhood florist in Nob Hill", where: "Albuquerque, NM", kind: "Florist", reviews: "107 reviews" },
-    { slug: "revolution-studios-tattoo", country: "us", what: "Tattoo studio", where: "Omaha, NE", kind: "Studio", reviews: "181 reviews" },
-    { slug: "boise-family-plumbing", country: "us", what: "Family plumbing company", where: "Garden City, ID", kind: "Trade", reviews: "196 reviews" },
-    { slug: "goodson-plumbing", country: "us", what: "Husband-and-wife plumbing service", where: "Boise, ID", kind: "Trade", reviews: "637 reviews" },
-    { slug: "shiv-kripa-blue-pottery", country: "in", what: "Blue pottery workshop, since 1969", where: "Jaipur", kind: "Crafts", reviews: "568 reviews" },
-    { slug: "zuma-weaves", country: "in", what: "Handloom weavers", where: "Varanasi", kind: "Crafts", reviews: "128 reviews" },
-    { slug: "ayur-medicity", country: "in", what: "Ayurveda hospital", where: "Kochi", kind: "Wellness", reviews: "914 reviews" },
-    { slug: "ayurgiri-ayurveda", country: "in", what: "Ayurveda clinic", where: "Kochi", kind: "Wellness", reviews: "574 reviews" },
-    { slug: "exotic-asia-travels", country: "in", what: "Ladakh tour operator", where: "Leh", kind: "Travel", reviews: "181 reviews" },
-    { slug: "custom-upholstery-sacramento", country: "us", what: "Custom upholstery shop", where: "Sacramento, CA", kind: "Trade", reviews: "69 reviews" },
-    { slug: "premier-upholstery-sacramento", country: "us", what: "Upholstery shop, since 1990", where: "Sacramento, CA", kind: "Trade", reviews: "59 reviews" },
-    { slug: "3-tigers-martial-arts", country: "us", what: "Martial arts school, since 1996", where: "Spokane Valley, WA", kind: "Education", reviews: "62 reviews" },
-    { slug: "madrid-european-bakery", country: "us", what: "European bakery, two shops", where: "Providence, RI", kind: "Bakery", reviews: "561 reviews" },
-    { slug: "linda-dobbins-dance", country: "us", what: "Dance school", where: "Birmingham, AL", kind: "Education", reviews: "58 reviews" },
-    { slug: "flash-movementz", country: "us", what: "Dance and fitness studio", where: "Birmingham, AL", kind: "Studio", reviews: "27 reviews" },
-    { slug: "krishna-creations-kanpur", country: "in", what: "Leather goods maker", where: "Kanpur", kind: "Manufacturer", reviews: "126 reviews" },
-    { slug: "fk-international-kanpur", country: "in", what: "Leather goods exporter", where: "Kanpur", kind: "Manufacturer", reviews: "64 reviews" },
-    { slug: "bharath-toy-factory", country: "in", what: "Wooden toy workshop", where: "Channapatna", kind: "Crafts", reviews: "72 reviews" },
-    { slug: "tea-emporium-darjeeling", country: "in", what: "Tea house, since 1940", where: "Darjeeling", kind: "Retail", reviews: "69 reviews" },
-    { slug: "aman-sidhu-photography", country: "in", what: "Wedding photographer", where: "Chandigarh", kind: "Studio", reviews: "359 reviews" },
-    { slug: "shinning-studio-weddings", country: "in", what: "Wedding photo and film studio", where: "Chandigarh", kind: "Studio", reviews: "204 reviews" },
-    { slug: "coffee-tree-stays-coorg", country: "in", what: "Homestay on a coffee estate", where: "Coorg", kind: "Hotel", reviews: "266 reviews" },
-    { slug: "colaos-ristorante-erie", country: "us", what: "Family Italian restaurant, since 1999", where: "Erie, PA", kind: "Restaurant", reviews: "824 reviews" },
-    { slug: "dr-auto-repair-billings", country: "us", what: "Repair and performance shop", where: "Billings, MT", kind: "Auto", reviews: "62 reviews" },
-    { slug: "1-stop-automotive-billings", country: "us", what: "Family auto repair, since 2005", where: "Billings, MT", kind: "Auto", reviews: "338 reviews" },
-    { slug: "ink-link-tattoo-omaha", country: "us", what: "Tattoo shop", where: "Omaha, NE", kind: "Studio", reviews: "320 reviews" },
-    { slug: "collective-hive-tattoo", country: "us", what: "Appointment-only tattoo collective", where: "Omaha, NE", kind: "Studio", reviews: "112 reviews" },
-    { slug: "winking-jack-piano", country: "us", what: "Piano tuning and repair", where: "Columbus, OH", kind: "Trade", reviews: "122 reviews" },
-    { slug: "wood-creations-terre-hill", country: "us", what: "Woodworking shop, since 1984", where: "Terre Hill, PA", kind: "Crafts", reviews: "25 reviews" },
-    { slug: "first-choice-home-design-indore", country: "in", what: "Interior design studio", where: "Indore", kind: "Studio", reviews: "99 reviews" },
-    { slug: "viga-knit-creation", country: "in", what: "Knitwear manufacturer", where: "Tiruppur", kind: "Manufacturer", reviews: "17 reviews" },
-    { slug: "bismi-cashew-company", country: "in", what: "Cashew processor and exporter", where: "Kollam", kind: "Manufacturer", reviews: "33 reviews" },
+    { slug: "bowie-bakery", what: "A panadería on the same corner since 1951", where: "El Paso, TX", kind: "Bakery", reviews: "2,063 reviews" },
+    { slug: "navneet-garden", what: "Wedding garden and halls", where: "Indore", kind: "Venue", reviews: "1,398 reviews" },
+    { slug: "nuestro-mexico", what: "Mexico City-style taquería", where: "Bakersfield, CA", kind: "Restaurant", reviews: "1,310 reviews" },
+    { slug: "shree-balaji-netralaya", what: "Eye hospital, since 2016", where: "Patna", kind: "Healthcare", reviews: "2,099 reviews" },
+    { slug: "justin-empire-fences", what: "Fence contractor", where: "Wichita, KS", kind: "Trade", reviews: "74 reviews" },
+    { slug: "jodhpur-furniture-company", what: "Furniture workshop and exporter", where: "Jodhpur", kind: "Manufacturer", reviews: "70 reviews" },
+    { slug: "preservation-pros", what: "Pool service", where: "Tucson, AZ", kind: "Trade", reviews: "319 reviews" },
+    { slug: "hotel-inder-prakash", what: "Lakeside hotel", where: "Udaipur", kind: "Hotel", reviews: "533 reviews" },
+    { slug: "the-le-bakery", what: "Vietnamese-French bakery", where: "Albuquerque, NM", kind: "Bakery", reviews: "260 reviews" },
+    { slug: "sodhani-sweets", what: "Mithai house, since 2004", where: "Jaipur", kind: "Sweets", reviews: "11,987 reviews" },
+    { slug: "climate-king-hvac", what: "Heating and air", where: "Ridgeland, MS", kind: "Trade", reviews: "652 reviews" },
+    { slug: "oscenox-swiss-cottage", what: "Hillside stay above the Ganga", where: "Rishikesh", kind: "Hotel", reviews: "1,657 reviews" },
+    { slug: "bucket-of-love", what: "Southern fried-chicken kitchen", where: "Lubbock, TX", kind: "Restaurant", reviews: "740 reviews" },
+    { slug: "anugrah-dental-clinic", what: "Neighbourhood dental clinic", where: "Lucknow", kind: "Healthcare", reviews: "717 reviews" },
+    { slug: "louisiana-smokehouse", what: "Pecan-wood BBQ truck", where: "Shreveport, LA", kind: "Food truck", reviews: "100 reviews" },
+    { slug: "dr-tejaswini-physio", what: "Physiotherapy clinic", where: "Nagpur", kind: "Healthcare", reviews: "780 reviews" },
+    { slug: "fresno-auto-service", what: "Independent repair shop", where: "Fresno, CA", kind: "Auto", reviews: "118 reviews" },
+    { slug: "jmr-brass", what: "Brass components exporter", where: "Jamnagar", kind: "Manufacturer", reviews: "55 reviews" },
+    { slug: "bobs-fence-co", what: "Family fence company, 40+ years", where: "Andover, KS", kind: "Trade", reviews: "89 reviews" },
+    { slug: "quantum-kota", what: "Physics coaching for NEET and JEE", where: "Kota", kind: "Education", reviews: "1,703 reviews" },
+    { slug: "puppy-love-grooming", what: "Dog grooming, two shops", where: "El Paso, TX", kind: "Pets", reviews: "889 reviews" },
+    { slug: "agave-florist", what: "Neighbourhood florist in Nob Hill", where: "Albuquerque, NM", kind: "Florist", reviews: "107 reviews" },
+    { slug: "revolution-studios-tattoo", what: "Tattoo studio", where: "Omaha, NE", kind: "Studio", reviews: "181 reviews" },
+    { slug: "boise-family-plumbing", what: "Family plumbing company", where: "Garden City, ID", kind: "Trade", reviews: "196 reviews" },
+    { slug: "goodson-plumbing", what: "Husband-and-wife plumbing service", where: "Boise, ID", kind: "Trade", reviews: "637 reviews" },
+    { slug: "shiv-kripa-blue-pottery", what: "Blue pottery workshop, since 1969", where: "Jaipur", kind: "Crafts", reviews: "568 reviews" },
+    { slug: "zuma-weaves", what: "Handloom weavers", where: "Varanasi", kind: "Crafts", reviews: "128 reviews" },
+    { slug: "ayur-medicity", what: "Ayurveda hospital", where: "Kochi", kind: "Wellness", reviews: "914 reviews" },
+    { slug: "ayurgiri-ayurveda", what: "Ayurveda clinic", where: "Kochi", kind: "Wellness", reviews: "574 reviews" },
+    { slug: "exotic-asia-travels", what: "Ladakh tour operator", where: "Leh", kind: "Travel", reviews: "181 reviews" },
+    { slug: "custom-upholstery-sacramento", what: "Custom upholstery shop", where: "Sacramento, CA", kind: "Trade", reviews: "69 reviews" },
+    { slug: "premier-upholstery-sacramento", what: "Upholstery shop, since 1990", where: "Sacramento, CA", kind: "Trade", reviews: "59 reviews" },
+    { slug: "3-tigers-martial-arts", what: "Martial arts school, since 1996", where: "Spokane Valley, WA", kind: "Education", reviews: "62 reviews" },
+    { slug: "madrid-european-bakery", what: "European bakery, two shops", where: "Providence, RI", kind: "Bakery", reviews: "561 reviews" },
+    { slug: "linda-dobbins-dance", what: "Dance school", where: "Birmingham, AL", kind: "Education", reviews: "58 reviews" },
+    { slug: "flash-movementz", what: "Dance and fitness studio", where: "Birmingham, AL", kind: "Studio", reviews: "27 reviews" },
+    { slug: "krishna-creations-kanpur", what: "Leather goods maker", where: "Kanpur", kind: "Manufacturer", reviews: "126 reviews" },
+    { slug: "fk-international-kanpur", what: "Leather goods exporter", where: "Kanpur", kind: "Manufacturer", reviews: "64 reviews" },
+    { slug: "bharath-toy-factory", what: "Wooden toy workshop", where: "Channapatna", kind: "Crafts", reviews: "72 reviews" },
+    { slug: "tea-emporium-darjeeling", what: "Tea house, since 1940", where: "Darjeeling", kind: "Retail", reviews: "69 reviews" },
+    { slug: "aman-sidhu-photography", what: "Wedding photographer", where: "Chandigarh", kind: "Studio", reviews: "359 reviews" },
+    { slug: "shinning-studio-weddings", what: "Wedding photo and film studio", where: "Chandigarh", kind: "Studio", reviews: "204 reviews" },
+    { slug: "coffee-tree-stays-coorg", what: "Homestay on a coffee estate", where: "Coorg", kind: "Hotel", reviews: "266 reviews" },
+    { slug: "colaos-ristorante-erie", what: "Family Italian restaurant, since 1999", where: "Erie, PA", kind: "Restaurant", reviews: "824 reviews" },
+    { slug: "dr-auto-repair-billings", what: "Repair and performance shop", where: "Billings, MT", kind: "Auto", reviews: "62 reviews" },
+    { slug: "1-stop-automotive-billings", what: "Family auto repair, since 2005", where: "Billings, MT", kind: "Auto", reviews: "338 reviews" },
+    { slug: "ink-link-tattoo-omaha", what: "Tattoo shop", where: "Omaha, NE", kind: "Studio", reviews: "320 reviews" },
+    { slug: "collective-hive-tattoo", what: "Appointment-only tattoo collective", where: "Omaha, NE", kind: "Studio", reviews: "112 reviews" },
+    { slug: "winking-jack-piano", what: "Piano tuning and repair", where: "Columbus, OH", kind: "Trade", reviews: "122 reviews" },
+    { slug: "wood-creations-terre-hill", what: "Woodworking shop, since 1984", where: "Terre Hill, PA", kind: "Crafts", reviews: "25 reviews" },
+    { slug: "first-choice-home-design-indore", what: "Interior design studio", where: "Indore", kind: "Studio", reviews: "99 reviews" },
+    { slug: "viga-knit-creation", what: "Knitwear manufacturer", where: "Tiruppur", kind: "Manufacturer", reviews: "17 reviews" },
+    { slug: "bismi-cashew-company", what: "Cashew processor and exporter", where: "Kollam", kind: "Manufacturer", reviews: "33 reviews" },
 ];
 
 const stats = [
     { value: "53", label: "sites" },
     { value: "35k+", label: "reviews" },
     { value: "49", label: "typefaces" },
-    { value: "2", label: "countries" },
 ];
 
 export default function ConceptsPage() {
@@ -105,7 +104,7 @@ export default function ConceptsPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-4 gap-4 lg:flex lg:gap-10">
+                    <div className="grid grid-cols-3 gap-4 lg:flex lg:gap-10">
                         {stats.map((s) => (
                             <p key={s.label} className="flex flex-col">
                                 <span className="text-2xl lg:text-4xl font-medium leading-none">
@@ -125,7 +124,7 @@ export default function ConceptsPage() {
 
                 <div className="grid lg:grid-cols-3 gap-8 text-sm opacity-60 leading-relaxed mt-24 pt-8 border-t border-black/15">
                     <p>
-                        Found on Google Maps in the US and India: places with
+                        Found on Google Maps: places with
                         hundreds or thousands of reviews and a site that was
                         missing, broken or stuck in 2012.
                     </p>
