@@ -71,10 +71,15 @@ const concepts: Concept[] = [
     { slug: "first-choice-home-design-indore", what: "Interior design studio", where: "Indore", kind: "Studio", reviews: "99 reviews" },
     { slug: "viga-knit-creation", what: "Knitwear manufacturer", where: "Tiruppur", kind: "Manufacturer", reviews: "17 reviews" },
     { slug: "bismi-cashew-company", what: "Cashew processor and exporter", where: "Kollam", kind: "Manufacturer", reviews: "33 reviews" },
+    { slug: "buttons-and-beyond-tailoring", what: "Bespoke menswear, measured at home", where: "Dubai", kind: "Studio", reviews: "207 reviews" },
+    { slug: "zikra-saeeda-tailoring", what: "Ladies' tailoring, 20 years", where: "Dubai", kind: "Studio", reviews: "66 reviews" },
+    { slug: "petsponz-mobile-grooming", what: "Mobile pet grooming van", where: "Abu Dhabi", kind: "Pets", reviews: "263 reviews" },
+    { slug: "sea-and-sky-upholstery", what: "Family upholstery workshop", where: "Abu Dhabi", kind: "Trade", reviews: "119 reviews" },
+    { slug: "bright-smile-al-ain", what: "24-hour dental and medical centre", where: "Al Ain", kind: "Healthcare", reviews: "655 reviews" },
 ];
 
 const stats = [
-    { value: "53", label: "sites" },
+    { value: "58", label: "sites" },
     { value: "35k+", label: "reviews" },
     { value: "49", label: "typefaces" },
 ];
