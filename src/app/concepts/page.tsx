@@ -1,4 +1,5 @@
 import ConceptGrid, { Concept } from "@/components/concepts/ConceptGrid";
+import { OG_IMAGE } from "@/lib/og";
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     description:
         "Fifty-eight small businesses with great Google reviews and a missing or broken website, and the site I'd build each of them.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Concepts | Diptanshu Mahish",
         description:
             "Fifty-eight small businesses with great reviews and weak websites, and the sites I'd build them.",

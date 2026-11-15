@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import { CaseShell, ProjectCard } from "@/components/work/CaseStudy";
 import { projects } from "@/components/work/projects";
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     description:
         "Things I've designed, built and shipped: Bitgrain, Concepts, Rustybase, Calendify and a few Android apps.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Work | Diptanshu Mahish",
         description: "Things I've designed, built and shipped.",
         url: "https://diptanshumahish.in/work",

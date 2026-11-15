@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Rss } from "lucide-react";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
         types: { "application/rss+xml": `${SITE}/blogs/rss.xml` },
     },
     openGraph: {
+        images: [OG_IMAGE],
         title: "Blog | Diptanshu Mahish",
         description: "Notes from building things, written plainly.",
         url: `${SITE}/blogs`,

@@ -21,7 +21,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     if (!post) return {};
     const { meta } = post;
     const url = `${SITE}/blogs/${meta.slug}`;
-    const image = meta.cover.src ? `${SITE}${meta.cover.src}` : `${SITE}/banner.png`;
+    const image = meta.cover.src ? `${SITE}${meta.cover.src}` : `${SITE}/og.png`;
     return {
         title: `${meta.title} | Diptanshu Mahish`,
         description: meta.description,
@@ -67,7 +67,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                 dateModified: meta.updated ?? meta.date,
                 url,
                 mainEntityOfPage: url,
-                image: meta.cover.src ? `${SITE}${meta.cover.src}` : `${SITE}/banner.png`,
+                image: meta.cover.src ? `${SITE}${meta.cover.src}` : `${SITE}/og.png`,
                 keywords: [...meta.tags, ...meta.keywords].join(", "),
                 author: { "@type": "Person", name: "Diptanshu Mahish", url: SITE },
                 publisher: { "@type": "Person", name: "Diptanshu Mahish", url: SITE },

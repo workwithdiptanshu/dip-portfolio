@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { OG_IMAGE } from "@/lib/og";
 import { Homemade_Apple, Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import { CatFilters } from "@/components/cats/Cats";
@@ -29,12 +30,12 @@ export const metadata: Metadata = {
         "diptanshumahish.in",
     ],
     robots: { follow: true },
-    assets: "https://diptanshumahish.in/banner.png",
+    assets: "https://diptanshumahish.in/og.png",
     twitter: {
         card: "summary_large_image",
         site: "https://diptanshumahish.in",
         creator: "@diptanshuSays",
-        images: "https://diptanshumahish.in/banner.png",
+        images: [OG_IMAGE],
     },
 
     classification: "Portfolio Website",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
         title: "Diptanshu Mahish | Product Engineer",
         url: "https://diptanshumahish.in",
         siteName: "Diptanshu Mahish",
-        images: ["https://diptanshumahish.in/banner.png"],
+        images: [OG_IMAGE],
         description:
             "Product engineer based in Bengaluru, India. Founding engineer at Supaboard.ai, creator of Bitgrain and Rustybase. Shipping customer-facing web and mobile products from 0 to 1.",
         determiner: "the",

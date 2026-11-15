@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import { CaseHero, CaseShell, Chapter, NextProject, Stage, Wide } from "@/components/work/CaseStudy";
 import { APPS } from "@/components/work/projects";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     description:
         "dailyThings, Zen Clock and Simply Expenses: three Android apps I designed, built and published on my own.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Android apps | Diptanshu Mahish",
         description: "Three Android apps I designed, built and published on my own.",
         url: "https://diptanshumahish.in/work/android-apps",

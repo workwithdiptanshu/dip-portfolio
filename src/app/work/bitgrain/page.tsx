@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     description:
         "How I designed, built and launched Bitgrain on my own: a design studio in the browser that makes posters, covers and zines look printed. #5 Product of the Day on Product Hunt.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Bitgrain | Diptanshu Mahish",
         description:
             "A design studio in the browser that makes posters, covers and zines look printed, not prompted.",

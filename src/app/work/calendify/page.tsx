@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import {
     CaseHero,
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     description:
         "A small npm package that gives you a month of dates as data, so you can build a calendar that looks like your own site.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Calendify | Diptanshu Mahish",
         description: "A calendar package that hands you the dates and leaves the design to you.",
         url: "https://diptanshumahish.in/work/calendify",

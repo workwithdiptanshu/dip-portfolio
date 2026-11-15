@@ -1,4 +1,5 @@
 import React from "react";
+import { OG_IMAGE } from "@/lib/og";
 import { Metadata } from "next";
 import {
     CaseHero,
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     description:
         "A MongoDB-style document database I wrote in Rust: one small binary, a log-structured storage engine, crash-safe transactions and indexes it builds for itself.",
     openGraph: {
+        images: [OG_IMAGE],
         title: "Rustybase | Diptanshu Mahish",
         description: "A MongoDB-style database in one small binary, written in Rust.",
         url: "https://diptanshumahish.in/work/rustybase",
