@@ -5,13 +5,62 @@ import { ArrowUpRight } from "lucide-react";
 import SectionTitle from "@/components/Common/SectionTitle";
 import { CatLoaf, CatSitting } from "@/components/cats/Cats";
 
-/** A red pin, the kind that holds a photo to a corkboard. */
-function Pin({ className }: { className: string }) {
+/** Three tones per pin colour: the lit side, the colour itself, and the shaded rim. */
+const PIN_TONES = {
+    moss: ["#6FAE8C", "#2F6B4F", "#1B4231"],
+    marigold: ["#FFD98A", "#F2B23A", "#A87612"],
+    peach: ["#FFD1C2", "#F5A48C", "#B8634A"],
+};
+
+/**
+ * A push pin, seen from slightly above: a glossy domed head with a light
+ * catching it, a short steel needle going into the paper at an angle, and a
+ * small soft shadow where it meets the photo.
+ */
+function Pin({ className, color = "moss", tilt = 0 }: { className: string; color?: keyof typeof PIN_TONES; tilt?: number }) {
+    const [light, base, dark] = PIN_TONES[color];
+    const id = `pin-${color}`;
     return (
-        <span
+        <svg
             aria-hidden
-            className={`absolute z-10 w-3 h-3 rounded-full bg-cat-moss shadow-[0_2px_3px_rgba(0,0,0,0.3)] ${className}`}
-        />
+            viewBox="0 0 40 46"
+            className={`absolute z-10 w-9 h-auto pointer-events-none ${className}`}
+            style={{ transform: `translate(-50%, -50%) rotate(${tilt}deg)` }}
+        >
+            <defs>
+                <radialGradient id={`${id}-head`} cx="35%" cy="30%" r="75%">
+                    <stop offset="0" stopColor={light} />
+                    <stop offset="0.55" stopColor={base} />
+                    <stop offset="1" stopColor={dark} />
+                </radialGradient>
+                <linearGradient id={`${id}-body`} x1="0" x2="1">
+                    <stop offset="0" stopColor={dark} />
+                    <stop offset="0.35" stopColor={base} />
+                    <stop offset="1" stopColor={dark} />
+                </linearGradient>
+                <linearGradient id={`${id}-steel`} x1="0" x2="1">
+                    <stop offset="0" stopColor="#8E8B85" />
+                    <stop offset="0.5" stopColor="#E9E6E0" />
+                    <stop offset="1" stopColor="#77746E" />
+                </linearGradient>
+                <filter id={`${id}-soft`} x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="1.6" />
+                </filter>
+            </defs>
+            {/* Shadow on the paper, falling down and to the right. */}
+            <ellipse cx="25" cy="38" rx="8" ry="3.2" fill="#1C1A17" opacity="0.22" filter={`url(#${id}-soft)`} />
+            <path d="M22 26 L27 38" stroke="#1C1A17" strokeOpacity="0.18" strokeWidth="1.6" strokeLinecap="round" filter={`url(#${id}-soft)`} />
+            {/* The needle, going into the paper. */}
+            <path d="M19.4 25 L21.4 36.5 L22.4 36.2 L20.8 25 Z" fill={`url(#${id}-steel)`} />
+            {/* The collar and body of the pin. */}
+            <ellipse cx="20" cy="24.5" rx="7.5" ry="3" fill={dark} />
+            <path d="M14 15 L14 23.5 A6 2.6 0 0 0 26 23.5 L26 15 Z" fill={`url(#${id}-body)`} />
+            {/* The domed head, lit from the top left. */}
+            <ellipse cx="20" cy="14.5" rx="11.5" ry="6" fill={dark} />
+            <ellipse cx="20" cy="13.2" rx="11.5" ry="6" fill={`url(#${id}-head)`} />
+            <ellipse cx="15.6" cy="11.2" rx="3.8" ry="1.7" fill="#FFFFFF" opacity="0.55" transform="rotate(-12 15.6 11.2)" />
+            <ellipse cx="13.8" cy="11.4" rx="1.1" ry="0.7" fill="#FFFFFF" opacity="0.9" />
+        </svg>
     );
 }
 
@@ -38,14 +87,14 @@ export default function About() {
                             className="object-cover"
                         />
                     </div>
-                    <Pin className="left-[32%] top-2" />
+                    <Pin className="left-[34%] top-5" color="moss" tilt={-8} />
                     <div
                         className="mat absolute right-[4%] top-16 w-[44%] aspect-square !bg-cat-lilac flex items-center justify-center"
                         style={{ transform: "rotate(8deg)" }}
                     >
                         <CatSitting color="indigo" face="marigold" mood="happy" blink className="w-[60%] h-auto" />
                     </div>
-                    <Pin className="right-[22%] top-14" />
+                    <Pin className="left-[74%] top-[68px]" color="marigold" tilt={10} />
                     <CatLoaf color="marigold" face="moss" className="absolute left-0 bottom-0 w-[38%] h-auto" />
                 </div>
 
