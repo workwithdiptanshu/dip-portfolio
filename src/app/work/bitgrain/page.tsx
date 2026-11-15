@@ -1,732 +1,310 @@
-import Footer from "@/components/Common/Footer";
-import Navbar from "@/components/portfolio/Navbar/Navbar";
-import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import {
+    CaseHero,
+    CaseShell,
+    Chapter,
+    Glance,
+    NextProject,
+    Shot,
+    Takeaways,
+    Wide,
+} from "@/components/work/CaseStudy";
+import BitgrainStage from "@/components/work/BitgrainStage";
 
 export const metadata: Metadata = {
-    title: "Bitgrain Case Study | Diptanshu Mahish",
+    title: "Bitgrain | Diptanshu Mahish",
     description:
-        "How I built Bitgrain: 27 hand-written image processing effects running in the browser on Canvas and Web Workers, with no GPU and no AI. #5 Product of the Day on Product Hunt.",
+        "How I designed, built and launched Bitgrain on my own: a design studio in the browser that makes posters, covers and zines look printed. #5 Product of the Day on Product Hunt.",
     openGraph: {
-        title: "Bitgrain Case Study | Diptanshu Mahish",
+        title: "Bitgrain | Diptanshu Mahish",
         description:
-            "27 hand-written image effects, in the browser, no GPU and no AI. #5 Product of the Day on Product Hunt.",
+            "A design studio in the browser that makes posters, covers and zines look printed, not prompted.",
         url: "https://diptanshumahish.in/work/bitgrain",
     },
 };
 
-const stats = [
-    { value: "#5", label: "Product of the Day" },
-    { value: "10k+", label: "Visitors a month" },
-    { value: "27", label: "Effects, written by hand" },
-    { value: "1", label: "Person on the team" },
+const BASE = "/Assets/work/bitgrain";
+
+const looks = [
+    { name: "original", label: "The photo" },
+    { name: "halftone", label: "Halftone" },
+    { name: "dither", label: "Dither" },
+    { name: "riso", label: "Riso" },
+    { name: "grain", label: "Grain" },
 ];
 
-const facts = [
-    { key: "Role", value: "Founder, designer and engineer. All of it." },
-    { key: "Timeline", value: "2025 to now" },
-    { key: "Built with", value: "TypeScript, Canvas 2D, Web Workers" },
-    { key: "Launched", value: "Product Hunt, May 2026" },
+/** Close crops of the engine's output, so you can see each mark. */
+const closeups = [
+    { name: "dither", label: "Dither" },
+    { name: "halftone", label: "Halftone" },
+    { name: "ascii", label: "ASCII" },
+    { name: "newspaper", label: "Newsprint" },
+    { name: "pop-art", label: "Pop art" },
+    { name: "manga-screentone", label: "Screentone" },
+    { name: "glitch", label: "Glitch" },
+    { name: "crosshatch", label: "Crosshatch" },
+    { name: "crt", label: "CRT" },
 ];
 
-/** The real ink book from the engine, with the RGB values it actually prints. */
-const risoInks = [
-    { name: "Black", hex: "#252525" },
-    { name: "Fluoro Pink", hex: "#FF48B0" },
-    { name: "Blue", hex: "#0078BF" },
-    { name: "Yellow", hex: "#FFE800" },
-    { name: "Red", hex: "#FF665E" },
-    { name: "Green", hex: "#00A95C" },
-    { name: "Purple", hex: "#764BA0" },
-    { name: "Teal", hex: "#00838A" },
-    { name: "Orange", hex: "#FF6C2F" },
+const tri = (name: string, labels = ["Coarse", "Balanced", "Fine"]) =>
+    labels.map((label, k) => ({ src: `${BASE}/tri/${name}-${k}.webp`, label }));
+
+/** Real templates from the library, at their real proportions. */
+const library = [
+    { name: "meenakshi-arjun-wedding", alt: "Tamil wedding invitation", h: 711 },
+    { name: "midnight-noodles", alt: "Midnight Noodles cookbook cover", h: 566 },
+    { name: "second-spawn", alt: "Indie game review thumbnail", h: 225 },
+    { name: "cranes-crossing", alt: "Cranes Crossing poetry cover", h: 600 },
+    { name: "lagos-plate", alt: "Nigerian kitchen opening poster", h: 500 },
+    { name: "mughal-garden-wedding", alt: "Mughal garden wedding invitation", h: 566 },
+    { name: "lowlight-album", alt: "Lowlight album cover", h: 400 },
+    { name: "cranberry-coupe", alt: "Holiday cocktail recipe card", h: 600 },
+    { name: "ironhouse-gym", alt: "Gym membership card", h: 253 },
+    { name: "mehndi-night", alt: "Mehndi night welcome sign", h: 600 },
+    { name: "vale-rovers-card", alt: "Football trading card", h: 560 },
+    { name: "glow-theory", alt: "Skincare sale story", h: 711 },
+    { name: "wren-and-wilder", alt: "Florist business card", h: 229 },
+    { name: "izakaya-hotaru", alt: "Izakaya year-end invitation", h: 564 },
+    { name: "kolabagan", alt: "Banana grove cut-paper print", h: 400 },
+    { name: "mulberry-christmas", alt: "Christmas card", h: 560 },
+    { name: "cafe-menu", alt: "Cafe menu", h: 500 },
+    { name: "taash-night", alt: "Playing cards", h: 500 },
+    { name: "feedback-that-lands", alt: "Workshop slides", h: 225 },
+    { name: "stoic-shorts", alt: "Short video covers", h: 711 },
 ];
 
-/** The four screens, at the angles the engine uses. */
-const cmykScreens = [
-    { ink: "#00FFFF", angle: 15, label: "Cyan 15°" },
-    { ink: "#FF00FF", angle: 75, label: "Magenta 75°" },
-    { ink: "#FFFF00", angle: 0, label: "Yellow 0°" },
-    { ink: "#000000", angle: 45, label: "Black 45°" },
-];
-
-const effects = [
-    { name: "Dither", note: "14 methods, from Floyd-Steinberg to blue noise." },
-    { name: "Halftone", note: "Rotated screens, mono, colour or true CMYK." },
-    { name: "ASCII", note: "Four ramps, with a Sobel pass for edges." },
-    { name: "Pixelate", note: "Hard blocks, no smoothing, ever." },
-    { name: "Scanlines", note: "Spacing and intensity, like a bad monitor." },
-    { name: "Crosshatch", note: "Ink lines, by spacing and thickness." },
-    { name: "Pop art", note: "Rotated dots with hashed grit and dropout." },
-    { name: "Posterize", note: "2 to 16 levels of tone." },
-    { name: "Misprint", note: "Channels pulled apart. Registration error." },
-    { name: "Grain", note: "Film grain, stochastic on purpose." },
-    { name: "Photocopy", note: "Luma crushed through a threshold." },
-    { name: "Fold", note: "A real crease curve, t(1 - t²)." },
-    { name: "Dust", note: "Seeded specks and scratches. Reproducible." },
-];
-
-/** Floyd-Steinberg and Atkinson, drawn as the grids they are. */
-const kernels = [
-    {
-        name: "Floyd-Steinberg",
-        minX: -1,
-        cols: 3,
-        rows: 2,
-        total: "16/16 of the error moves on.",
-        cells: [
-            { x: 0, y: 0, label: "×", current: true },
-            { x: 1, y: 0, label: "7/16" },
-            { x: -1, y: 1, label: "3/16" },
-            { x: 0, y: 1, label: "5/16" },
-            { x: 1, y: 1, label: "1/16" },
-        ],
-    },
-    {
-        name: "Atkinson",
-        minX: -1,
-        cols: 4,
-        rows: 3,
-        total: "Only 6/8 moves on. The rest is thrown away.",
-        cells: [
-            { x: 0, y: 0, label: "×", current: true },
-            { x: 1, y: 0, label: "1/8" },
-            { x: 2, y: 0, label: "1/8" },
-            { x: -1, y: 1, label: "1/8" },
-            { x: 0, y: 1, label: "1/8" },
-            { x: 1, y: 1, label: "1/8" },
-            { x: 0, y: 2, label: "1/8" },
-        ],
-    },
-];
-
-function SectionTitle({
-    number,
-    children,
-}: {
-    number: string;
-    children: React.ReactNode;
-}) {
+function Triptych({ items }: { items: { src: string; label: string }[] }) {
     return (
-        <div className="pt-20 pb-8">
-            <span className="halftone-screen inline-block w-16 h-3 text-black opacity-60 mb-5" />
-            <h2 className="lg:text-5xl text-3xl font-medium flex gap-4 items-baseline">
-                <span className="opacity-25 text-2xl lg:text-3xl">{number}</span>
-                <span>{children}</span>
-            </h2>
+        <div className="grid grid-cols-3 gap-3 sm:gap-5">
+            {items.map((t, i) => (
+                <figure key={t.src} className="flex flex-col gap-2.5">
+                    <Shot
+                        src={t.src}
+                        alt={t.label}
+                        ratio="684 / 860"
+                        rotate={[-1.5, 1, -1][i]}
+                        sizes="(min-width: 1080px) 320px, 30vw"
+                        className="!border-4 !rounded-[14px]"
+                    />
+                    <figcaption className="text-xs text-center text-muted">{t.label}</figcaption>
+                </figure>
+            ))}
         </div>
     );
 }
 
-function Kernel({ k }: { k: (typeof kernels)[number] }) {
-    const grid = [];
-    for (let y = 0; y < k.rows; y++) {
-        for (let x = k.minX; x < k.minX + k.cols; x++) {
-            const cell = k.cells.find((c) => c.x === x && c.y === y);
-            grid.push(
-                <div
-                    key={`${x}-${y}`}
-                    className={`aspect-square flex items-center justify-center text-[11px] font-mono border ${
-                        cell?.current
-                            ? "bg-black text-white border-black"
-                            : cell
-                              ? "bg-yellow-300 border-black"
-                              : "border-black/15"
-                    }`}
-                >
-                    {cell?.label ?? ""}
-                </div>,
-            );
-        }
-    }
-    return (
-        <div className="flex flex-col gap-3">
-            <span className="text-[11px] uppercase tracking-widest opacity-50">
-                {k.name}
-            </span>
-            <div
-                className="grid gap-1 max-w-[220px]"
-                style={{ gridTemplateColumns: `repeat(${k.cols}, 1fr)` }}
-            >
-                {grid}
-            </div>
-            <span className="text-xs opacity-60">{k.total}</span>
-        </div>
-    );
-}
+const speed = [
+    {
+        title: "Load the photo once",
+        body: "The photo is opened once and kept ready. Moving a slider only redoes the effect, nothing else.",
+    },
+    {
+        title: "Draw once per frame",
+        body: "However fast you drag, the picture is redrawn at most once per screen refresh. No lag, no wasted work.",
+    },
+    {
+        title: "Latest change wins",
+        body: "If you change something while it's still working, it skips the old job and does the new one. It never falls behind.",
+    },
+    {
+        title: "Preview small, export big",
+        body: "The preview is just big enough to look sharp on screen. The export still uses the full size.",
+    },
+    {
+        title: "Don't copy things around",
+        body: "Results are handed over in the leanest form possible, never copied, so nothing waits on memory.",
+    },
+];
 
 export default function BitgrainCaseStudy() {
     return (
-        <main className="relative paper">
-            <Navbar />
+        <CaseShell>
+            <CaseHero
+                name="Bitgrain"
+                kind="Design studio · my own product"
+                line={
+                    <>
+                        Posters, covers and zines that look{" "}
+                        <span className="bg-cat-marigold px-1.5 rounded-md">printed, not prompted</span>.
+                    </>
+                }
+                cat={{ color: "indigo", face: "marigold" }}
+                meta={[
+                    { label: "Role", value: "All of it: design, code, launch" },
+                    { label: "When", value: "2025 to now" },
+                    { label: "Built with", value: "TypeScript, Canvas, Web Workers" },
+                    { label: "Status", value: "Live, people use it every day" },
+                ]}
+                links={[
+                    { label: "Try it", href: "https://bitgrain.app" },
+                    { label: "Product Hunt", href: "https://www.producthunt.com/products/bitgrain" },
+                ]}
+            />
 
-            {/* Hero */}
-            <section className="relative px-[5%] pt-[18vh] pb-[6%] border-b border-black">
-                <Link
-                    href="/#work"
-                    className="flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity w-fit mb-10"
-                >
-                    <ArrowLeft size={16} /> Back to work
-                </Link>
+            <div className="max-w-[1080px] mx-auto px-4">
+                <BitgrainStage className="mt-3" />
+            </div>
 
-                <div className="flex items-center gap-4 mb-8">
+            <Glance
+                items={[
+                    { value: "#5", label: "Product of the Day on Product Hunt" },
+                    { value: "10k+", label: "Visitors a month" },
+                    { value: "500+", label: "People signed up" },
+                    { value: "Just me", label: "No team, no funding" },
+                ]}
+            />
+
+            <Chapter title="Why I made it">
+                <p>
+                    I have a lot of friends who make music and draw. Every time one of them wanted a cover with that rough, printed look, it turned into a whole thing. Photoshop can do it, but it&apos;s expensive and hard to learn just for one effect. Canva is easy, but it can&apos;t do this at all. The small free sites only give you a flat image back.
+                </p>
+                <p>
+                    So they&apos;d jump between three apps and still not get what they wanted. <b>I wanted one place where you could add the effect and design the poster around it.</b>
+                </p>
+            </Chapter>
+
+            <Wide
+                className="!p-3 sm:!p-5"
+                caption="The photo editor. You stack effects on the left and pick a style on the right."
+            >
+                <div className="relative aspect-[1440/900] rounded-[20px] overflow-hidden">
                     <Image
-                        src="/Assets/work/bitgrain/logo.svg"
-                        alt="Bitgrain"
-                        width={44}
-                        height={36}
-                        className="h-[28px] w-auto"
+                        src={`${BASE}/app/photo-effects.webp`}
+                        alt="Bitgrain's photo editor, with a riso and dither recipe applied to an illustration of a child stroking a cat"
+                        fill
+                        sizes="(min-width: 1080px) 1040px, 94vw"
+                        className="object-cover"
                     />
-                    <span className="h-5 w-px bg-black/20" />
-                    <span className="text-[11px] uppercase tracking-[0.25em] opacity-50">
-                        Case study
-                    </span>
                 </div>
+            </Wide>
 
-                <h1 className="lg:text-[8rem] text-6xl font-medium leading-[0.9] tracking-tight pb-8">
-                    Bitgrain
-                </h1>
-
-                <p className="lg:text-4xl text-xl font-light lg:max-w-[65%] leading-snug">
-                    Make posters, covers and zines that feel{" "}
-                    <span className="bg-yellow-300">printed, not prompted.</span>
-                </p>
-
-                <p className="text-base opacity-70 lg:max-w-[52%] pt-8 leading-relaxed">
-                    A design studio that runs in your browser, which I designed,
-                    built and launched on my own. Twenty-seven image processing
-                    effects, written by hand, running on the CPU. No GPU. No
-                    models. Nothing leaves your machine.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-3 mt-10">
-                    <Link
-                        href="https://bitgrain.app"
-                        target="_blank"
-                        className="offsetstyle bg-black text-white px-5 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors gap-3 rounded-full"
-                    >
-                        Try it live <ArrowUpRight size={18} />
-                    </Link>
-                    <Link
-                        href="https://www.producthunt.com/products/bitgrain"
-                        target="_blank"
-                        className="px-5 py-2 w-fit flex items-center hover:bg-black hover:text-white border border-black transition-colors gap-3 rounded-full"
-                    >
-                        Product Hunt <ArrowUpRight size={18} />
-                    </Link>
-                </div>
-            </section>
-
-            {/* Showcase */}
-            <section className="px-[5%] py-[4%] border-b border-black">
-                <Image
-                    src="/Assets/work/bitgrain/showcase.webp"
-                    alt="The Bitgrain studio, template gallery and video timeline"
-                    width={1200}
-                    height={630}
-                    className="w-full h-auto border border-black rounded-lg"
-                    priority
-                />
-                <p className="text-xs opacity-50 pt-3">
-                    The studio, the template gallery and the video timeline.
-                    Everything you see runs in a browser tab.
-                </p>
-            </section>
-
-            {/* Stats */}
-            <section className="grain relative bg-[#111] text-[#f4f2ee] px-[5%] py-[5%] overflow-hidden">
-                <span
-                    aria-hidden
-                    className="halftone-screen absolute inset-x-0 bottom-0 h-24 text-[#f4f2ee] opacity-20 pointer-events-none"
-                />
-                <div className="grid lg:grid-cols-4 grid-cols-2 gap-8 relative">
-                    {stats.map((s) => (
-                        <div key={s.label} className="flex flex-col gap-1">
-                            <span className="lg:text-7xl text-4xl font-medium leading-none">
-                                {s.value}
-                            </span>
-                            <span className="text-xs opacity-50 pt-2 uppercase tracking-widest">
-                                {s.label}
-                            </span>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Facts */}
-            <section className="px-[5%] py-[3%] border-b border-black">
-                <div className="grid lg:grid-cols-4 grid-cols-1 gap-6">
-                    {facts.map((f) => (
-                        <div
-                            key={f.key}
-                            className="flex flex-col gap-1 border-l-4 border-yellow-300 pl-4"
-                        >
-                            <span className="text-[11px] uppercase tracking-widest opacity-50">
-                                {f.key}
-                            </span>
-                            <span className="text-sm">{f.value}</span>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <article className="px-[5%] pb-[8%]">
-                <div className="lg:max-w-[80%]">
-                    <SectionTitle number="01">The problem</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            I kept watching musicians and illustrators fight
-                            their tools. If you want a record sleeve with that
-                            rough, printed look, your options are bad. Photoshop
-                            can do it, but you are paying every month and
-                            learning a thirty-year-old program to get at one
-                            effect. Canva is easy to pick up but will not go
-                            anywhere near this. The small one-off tools online
-                            do a single trick and hand you a flat image, with no
-                            way to build a real design around it.
-                        </p>
-                        <p>
-                            So people were exporting from one tool into another,
-                            losing their settings on the way, and could never
-                            recreate the thing they made three months ago.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="02">The bet</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p className="lg:text-2xl text-lg font-light border-l-4 border-black pl-6 py-2 opacity-100">
-                            No models. No prompts. No training. No telemetry.
-                        </p>
-                        <p>
-                            Every other decision came from this one. The reason
-                            is practical, not principled.{" "}
-                            <b>
-                                A model gives you something different every time
-                            </b>
-                            : run the same prompt twice and you get two
-                            different images. That is useful when you are
-                            hunting for an idea and useless when you are
-                            finishing one. Someone with a sleeve due on Friday
-                            needs to change one number and have only that thing
-                            change.
-                        </p>
-                    </div>
-                </div>
-
-                {/* The argument, made rather than asserted. */}
-                <div className="grid lg:grid-cols-2 gap-6 my-12 lg:max-w-[80%]">
-                    <div className="offsetstyle border border-black rounded-lg p-6 bg-white">
-                        <span className="text-[11px] uppercase tracking-widest opacity-50">
-                            An effect chain, run twice
-                        </span>
-                        <div className="flex gap-3 py-5">
-                            <div className="fx fx-dither h-28 w-full rounded" />
-                            <div className="fx fx-dither h-28 w-full rounded" />
-                        </div>
-                        <p className="text-sm">
-                            <b>The same. Every time.</b> The kernel is a fixed
-                            table of numbers. It cannot surprise you.
-                        </p>
-                    </div>
-                    <div className="border border-black border-dashed rounded-lg p-6">
-                        <span className="text-[11px] uppercase tracking-widest opacity-50">
-                            A model, run twice
-                        </span>
-                        <div className="flex gap-3 py-5">
-                            <div className="fx fx-riso h-28 w-full rounded" />
-                            <div
-                                className="fx fx-riso h-28 w-full rounded"
-                                style={{
-                                    filter: "hue-rotate(115deg)",
-                                    transform: "scaleX(-1)",
-                                }}
+            <Wide caption="One photo, a few different looks. Nothing touched up by hand.">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                    {looks.map((l, i) => (
+                        <figure key={l.name} className={`flex flex-col gap-2.5 ${i === 0 ? "col-span-2 sm:col-span-1" : ""}`}>
+                            <Shot
+                                src={`${BASE}/effects/${l.name}.webp`}
+                                alt={`A portrait, ${l.label.toLowerCase()}`}
+                                ratio="4 / 3"
+                                rotate={[0, -2, 1.5, -1.5, 2][i]}
+                                sizes="220px"
+                                className="!border-4 !rounded-[14px]"
                             />
-                        </div>
-                        <p className="text-sm opacity-70">
-                            Close, and never the same. Fine for finding an idea.
-                            No use for finishing one.
-                        </p>
-                    </div>
+                            <figcaption className="text-xs text-center text-muted">{l.label}</figcaption>
+                        </figure>
+                    ))}
                 </div>
+            </Wide>
 
-                <div className="lg:max-w-[80%]">
-                    <SectionTitle number="03">
-                        How the effects actually work
-                    </SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            There are <b>27 effects</b>, and each one is a
-                            plugin with a single job: take a buffer of pixels,
-                            return a buffer of pixels. They register into one
-                            table and run as an ordered chain, each feeding the
-                            next.
-                        </p>
-                        <p>
-                            <b>
-                                None of it touches the GPU. There are no shaders
-                                and no WebAssembly in the effect path.
-                            </b>{" "}
-                            Every kernel, screen and separation is a hand
-                            written loop over a Float32Array, running on the CPU
-                            in a worker. I expected to need the GPU and never
-                            did. The speed came from architecture instead, which
-                            is section 04.
-                        </p>
-                    </div>
-                </div>
+            <Chapter title="No AI, on purpose">
+                <p className="font-serif text-2xl leading-snug text-ink">
+                    No AI. No prompts. Nothing tracking you.
+                </p>
+                <p>
+                    This wasn&apos;t about being against AI. It was practical. <b>AI gives you something different every time you ask.</b> That&apos;s fine when you&apos;re looking for ideas, but not when you&apos;re finishing a cover that&apos;s due on Friday. You want to move one slider and have only that one thing change.
+                </p>
+                <p>
+                    So I wrote every effect myself, as normal code. Same settings in, same picture out, every single time. That one choice ended up making a lot of other things possible later.
+                </p>
+            </Chapter>
 
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 my-10">
-                    {effects.map((e) => (
-                        <div
-                            key={e.name}
-                            className="border border-black/20 rounded-md p-4 bg-white/40"
+            <Wide caption="Same photo, one slider moved. Do it again next year and you get the exact same result.">
+                <Triptych items={tri("dither")} />
+            </Wide>
+
+            <Chapter title="Making it look like real print">
+                <p>
+                    Most photo filters look fake because they skip what real printing actually does. So I read up on how printing works, and copied it as closely as I could.
+                </p>
+                <p>
+                    Take <b>dithering</b>. It&apos;s how you make a photo out of only black and white dots. There are lots of ways to do it, and each one has its own feel. I built the well-known ones, like Floyd-Steinberg and Atkinson, and you can switch between them instantly.
+                </p>
+                <p>
+                    One small thing I&apos;m happy about: if you process the picture left to right on every row, you get faint streaks. So mine goes left to right, then right to left, back and forth. The streaks just disappear.
+                </p>
+            </Chapter>
+
+            <Wide caption="Zoomed right in. Every dot, line and letter here comes from the code, nobody drew them.">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    {closeups.map((c, i) => (
+                        <figure
+                            key={c.name}
+                            className={`relative rounded-[20px] overflow-hidden bg-white aspect-square ${
+                                i === 0 ? "col-span-2 row-span-2" : ""
+                            }`}
                         >
-                            <h3 className="font-medium text-sm">{e.name}</h3>
-                            <p className="text-xs opacity-60 pt-1 leading-relaxed">
-                                {e.note}
-                            </p>
+                            <Image
+                                src={`${BASE}/close/${c.name}.webp`}
+                                alt={`A close crop of Bitgrain's ${c.label.toLowerCase()} effect`}
+                                fill
+                                sizes={i === 0 ? "(min-width: 1080px) 520px, 92vw" : "(min-width: 1080px) 260px, 45vw"}
+                                className="object-cover"
+                            />
+                            <figcaption className="absolute left-3 bottom-3 bg-white/95 rounded-full px-3 py-1 text-xs">
+                                {c.label}
+                            </figcaption>
+                        </figure>
+                    ))}
+                </div>
+            </Wide>
+
+            <Chapter title="Halftone, the way printers do it">
+                <p>
+                    Halftone is the dot pattern you see in newspapers: bigger dots for darker areas. When you print in colour, the dots for each ink can clash and make a weird wavy pattern. Printers figured out ages ago that turning each colour&apos;s dots to a different angle fixes it. <b>I used the same angles they do.</b>
+                </p>
+            </Chapter>
+
+            <Wide>
+                <Triptych items={tri("halftone")} />
+            </Wide>
+
+            <Chapter title="Riso, the hardest one to get right">
+                <p>
+                    A Riso is a printer that prints one colour at a time, and the layers never line up perfectly. That&apos;s why people love it. To fake it, I had to work out <b>how much of each ink should go on every single pixel</b>.
+                </p>
+                <p>
+                    It took some maths, but now it works properly. It even gives you a separate file for each ink colour, so you could take them to a real Riso shop and print them.
+                </p>
+            </Chapter>
+
+            <Wide>
+                <Triptych items={tri("risograph")} />
+            </Wide>
+
+            <Chapter title="Making it fast">
+                <p>
+                    I thought I&apos;d need the graphics card to make this fast. I didn&apos;t. <b>The trick was just never doing the same work twice.</b> These five simple rules are why the sliders feel instant, even on an older laptop.
+                </p>
+            </Chapter>
+
+            <Wide>
+                <div className="grid sm:grid-cols-5 gap-3">
+                    {speed.map((s, i) => (
+                        <div key={s.title} className="bg-white rounded-[22px] p-5 flex flex-col gap-2">
+                            <span className="text-xs text-muted">0{i + 1}</span>
+                            <h3 className="font-serif text-lg leading-snug">{s.title}</h3>
+                            <p className="text-[13px] text-black/65 leading-relaxed">{s.body}</p>
                         </div>
                     ))}
                 </div>
+            </Wide>
 
-                {/* Dithering */}
-                <div className="lg:max-w-[80%]">
-                    <h3 className="text-2xl font-medium pt-10 pb-4">
-                        Dithering, and why the kernel is the whole trick
-                    </h3>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            Dithering is how you fake grey using only black and
-                            white. You walk the image pixel by pixel, round each
-                            one to the nearest available colour, then take the
-                            error you just introduced and push it onto the
-                            neighbours you have not visited yet. Those pixels
-                            get nudged, so the error averages out across the
-                            picture instead of piling up.
-                        </p>
-                        <p>
-                            The only thing separating one dither from another is{" "}
-                            <b>where that error goes, and in what fractions</b>.
-                            That is the kernel. It is a small table of numbers,
-                            and it is the entire personality of the effect.
-                        </p>
-                    </div>
-                </div>
+            <Chapter title="A file you can come back to">
+                <p>
+                    When you save a normal image, all your settings are gone. Bitgrain saves a <code>.btg</code> file instead, which remembers every setting, every layer and every font.
+                </p>
+                <p>
+                    It&apos;s a simple text file, so it&apos;ll still open years from now. Fonts and images are packed inside, so nothing goes missing when you send it to someone. <b>Open it a year later and it looks exactly the same.</b>
+                </p>
+            </Chapter>
 
-                <div className="offsetstyle border border-black rounded-lg bg-white p-6 lg:p-8 my-8 lg:max-w-[80%]">
-                    <div className="grid sm:grid-cols-2 gap-10">
-                        {kernels.map((k) => (
-                            <Kernel k={k} key={k.name} />
-                        ))}
-                    </div>
-                    <p className="text-sm opacity-70 pt-8 border-t border-black/10 mt-8">
-                        Black is the pixel being decided. Yellow is where its
-                        error lands. Floyd-Steinberg passes on all of it and
-                        gives you smooth gradients. Atkinson deliberately drops
-                        a quarter of the error on the floor, which is exactly
-                        why it looks punchy and blown out, and why it is the one
-                        people recognise from old Macs.
-                    </p>
-                </div>
-
-                <div className="lg:max-w-[80%]">
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            There are <b>14 of these</b> in the engine:
-                            Floyd-Steinberg, Atkinson, Burkes, Stucki, JJN,
-                            three flavours of Sierra, ordered Bayer at 2×2, 4×4
-                            and 8×8, a 16×16 blue noise table, plain threshold,
-                            and random.
-                        </p>
-                        <p>
-                            The part I am most pleased with is the scan order.
-                            If you always sweep left to right, the error
-                            consistently drifts the same way and the picture
-                            grows visible worms, little directional streaks.
-                            So the engine walks in <b>serpentine</b> order,
-                            alternating direction every row like an ox ploughing
-                            a field, and mirrors the kernel to match.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Serpentine */}
-                <div className="offsetstyle border border-black rounded-lg bg-white p-6 lg:p-8 my-8 lg:max-w-[80%]">
-                    <span className="text-[11px] uppercase tracking-widest opacity-50">
-                        Serpentine scan
-                    </span>
-                    <div className="flex flex-col gap-2 py-6 max-w-[420px]">
-                        {[0, 1, 2, 3, 4, 5].map((row) => {
-                            const ltr = row % 2 === 0;
-                            return (
-                                <div
-                                    key={row}
-                                    className={`flex items-center gap-2 ${
-                                        ltr ? "" : "flex-row-reverse"
-                                    }`}
-                                >
-                                    <div className="h-[3px] flex-1 bg-black/15" />
-                                    {ltr ? (
-                                        <ArrowRight size={16} />
-                                    ) : (
-                                        <ArrowLeft size={16} />
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <pre className="bg-[#111] text-[#f4f2ee] rounded-md p-4 overflow-x-auto text-[11px] lg:text-xs leading-relaxed">
-                        {`const leftToRight = (y & 1) === 0;
-const dirX = leftToRight ? 1 : -1;
-
-for (const [dx, dy, factor] of kernel) {
-  distributeError(data, x + dx * dirX, y + dy, ...);
-}`}
-                    </pre>
-                    <p className="text-sm opacity-70 pt-4">
-                        One bitwise check per row, and one sign flip on the
-                        kernel. Six characters of code, and the worms are gone.
-                    </p>
-                </div>
-
-                {/* Halftone */}
-                <div className="lg:max-w-[80%]">
-                    <h3 className="text-2xl font-medium pt-10 pb-4">
-                        Halftone, and the angles that stop a moiré
-                    </h3>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            A halftone turns tone into dots of different sizes.
-                            Darker area, fatter dot. The engine rotates the
-                            image into screen space, snaps to a cell, samples
-                            the tone there with bilinear filtering, sizes the
-                            dot from the density, and works out how much of the
-                            pixel that dot covers so the edge is not jagged.
-                        </p>
-                        <p>
-                            In CMYK mode it does this <b>four separate times</b>
-                            , once per ink, and this is where a real printing
-                            problem shows up. Four dot grids stacked at the same
-                            angle interfere and produce an ugly moiré. Presses
-                            solved this a century ago by rotating each screen to
-                            a different angle. The engine uses the same numbers
-                            they do.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="offsetstyle border border-black rounded-lg bg-white p-6 lg:p-8 my-8 lg:max-w-[80%]">
-                    <div className="grid lg:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <span className="text-[11px] uppercase tracking-widest opacity-50">
-                                Four screens, four angles
-                            </span>
-                            <div className="grid grid-cols-4 gap-3 pt-5">
-                                {cmykScreens.map((s) => (
-                                    <div key={s.label}>
-                                        <div
-                                            className="aspect-square rounded overflow-hidden border border-black/20 bg-white"
-                                            style={{
-                                                backgroundImage: `radial-gradient(circle at center, ${s.ink} 2.4px, transparent 2.5px)`,
-                                                backgroundSize: "8px 8px",
-                                                transform: `rotate(${s.angle}deg)`,
-                                            }}
-                                        />
-                                        <span className="text-[10px] opacity-60 block pt-2">
-                                            {s.label}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div>
-                            <span className="text-[11px] uppercase tracking-widest opacity-50">
-                                Stacked, they make a rosette
-                            </span>
-                            <div className="relative aspect-square max-w-[180px] mt-5 bg-white border border-black/20 rounded overflow-hidden">
-                                {cmykScreens.map((s) => (
-                                    <div
-                                        key={s.label}
-                                        className="absolute inset-[-30%] mix-blend-multiply"
-                                        style={{
-                                            backgroundImage: `radial-gradient(circle at center, ${s.ink} 2.4px, transparent 2.5px)`,
-                                            backgroundSize: "8px 8px",
-                                            transform: `rotate(${s.angle}deg)`,
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <p className="text-sm opacity-70 pt-8 border-t border-black/10 mt-8">
-                        Cyan at 15°, magenta at 75°, yellow at 0°, black at 45°.
-                        Yellow is the weakest ink, so it gets the angle the eye
-                        catches most easily. That flower pattern on the right is
-                        a rosette, and it is the thing you are actually looking
-                        at when you put your nose against a printed magazine.
-                    </p>
-                </div>
-
-                {/* Riso */}
-                <div className="lg:max-w-[80%]">
-                    <h3 className="text-2xl font-medium pt-10 pb-4">
-                        Risograph, which is the one I like most
-                    </h3>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            A Riso is not a printer so much as a photocopier
-                            with personality. It prints one spot colour at a
-                            time, on separate passes, and the paper never lines
-                            up quite right. To fake it you have to answer a real
-                            question: given this photo and these two inks,{" "}
-                            <b>how much of each ink goes at each pixel?</b>
-                        </p>
-                        <p>
-                            The answer turned out to be geometry. Paper starts
-                            white. Every ink is a thing that subtracts light
-                            from white. So each ink becomes a vector pointing
-                            away from white, each pixel is a request to darken
-                            white by a certain amount, and the ink density is
-                            just the <b>projection</b> of that request onto the
-                            ink vector. How much does this ink point in the
-                            direction this pixel needs to go.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="offsetstyle border border-black rounded-lg bg-white p-6 lg:p-8 my-8 lg:max-w-[80%]">
-                    <pre className="bg-[#111] text-[#f4f2ee] rounded-md p-4 overflow-x-auto text-[11px] lg:text-xs leading-relaxed">
-                        {`const inkVectors = inks.map((c) => [255 - c[0], 255 - c[1], 255 - c[2]]);
-
-const density = clamp01(
-  (demandR * vector[0] + demandG * vector[1] + demandB * vector[2]) / inkNorms[ink],
-);
-const tone = clampByte(255 * (1 - density)); // white paper = no ink`}
-                    </pre>
-                    <span className="text-[11px] uppercase tracking-widest opacity-50 block pt-8">
-                        The nine inks, at the values they print
-                    </span>
-                    <div className="flex flex-wrap gap-3 pt-4">
-                        {risoInks.map((ink) => (
-                            <div key={ink.name} className="flex flex-col gap-2">
-                                <div
-                                    className="h-14 w-14 rounded border border-black/20"
-                                    style={{ backgroundColor: ink.hex }}
-                                />
-                                <span className="text-[10px] opacity-60 leading-tight">
-                                    {ink.name}
-                                    <br />
-                                    <span className="font-mono opacity-70">
-                                        {ink.hex}
-                                    </span>
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                    <p className="text-sm opacity-70 pt-8 border-t border-black/10 mt-8">
-                        Eighty-two lines of worker code. It outputs a real
-                        greyscale separation per ink, one file each, which you
-                        could hand to an actual Riso and print. Pink and blue by
-                        default, because that is the combination the whole zine
-                        world runs on.
-                    </p>
-                </div>
-
-                {/* Output */}
-                <div className="my-12 lg:max-w-[80%]">
-                    <Image
-                        src="/Assets/work/bitgrain/output.webp"
-                        alt="A photo run through the Bitgrain engine: halftoned and posterized into a violet and amber duotone"
-                        width={1200}
-                        height={792}
-                        className="w-full h-auto border border-black rounded-lg"
-                    />
-                    <p className="text-xs opacity-50 pt-3">
-                        Engine output. Halftone plus posterize, in a two ink
-                        duotone. Every dot in that image was placed by a for
-                        loop.
-                    </p>
-                </div>
-
-                <div className="lg:max-w-[80%]">
-                    <SectionTitle number="04">
-                        No GPU, and it still feels instant
-                    </SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            This is the part I am proudest of, because none of
-                            it is clever mathematics. It is just refusing to do
-                            work twice.
-                        </p>
-                        <p>
-                            <b>Decode once, never again.</b> The worker caches
-                            the decoded bitmap and its downsampled pixels, then
-                            copies into a reused scratch buffer for every
-                            render. Dragging a slider re-runs the effect and
-                            nothing else. No decode, no allocation.
-                        </p>
-                        <p>
-                            <b>One render per frame, maximum.</b> Parameter
-                            changes are coalesced with requestAnimationFrame
-                            rather than debounced on a timer. Debouncing makes a
-                            slider feel laggy. Coalescing makes it feel
-                            immediate, and you still never render twice for one
-                            frame.
-                        </p>
-                        <p>
-                            <b>Newest wins.</b> Only one job is ever in flight.
-                            If results are still coming back, the newest
-                            parameters replace whatever was queued instead of
-                            stacking up behind it. A queue would mean the
-                            preview lags further behind the harder you drag.
-                        </p>
-                        <p>
-                            <b>Preview small, export big.</b> Previews cap at
-                            2000px, layer effects at 1200px, video effects at
-                            720px. You cannot see the difference on screen, and
-                            the export path still gets full resolution.
-                        </p>
-                        <p>
-                            <b>Do not send strings between threads.</b> A dither
-                            result is one bit per pixel, so it ships as a
-                            Uint8Array mask rather than an array of block
-                            characters, and every buffer is transferred instead
-                            of copied. And if workers are unavailable the whole
-                            thing falls back to the main thread rather than
-                            breaking.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="05">The .btg file</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            When you export a normal image, every decision that
-                            made it is thrown away. So projects save as a{" "}
-                            <b>.btg</b> file, which keeps the decisions instead
-                            of the result.
-                        </p>
-                        <p>
-                            It is JSON. Deliberately. It could have been a
-                            packed binary format and been a fraction of the
-                            size, but a design file that outlives its editor has
-                            to be readable by a person with a text editor in ten
-                            years. The image is embedded as a data URL and so
-                            are any custom fonts, so a .btg is one
-                            self-contained file that opens anywhere, with
-                            nothing to go missing.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="grain relative overflow-hidden bg-[#111] text-[#f4f2ee] rounded-lg p-6 lg:p-8 my-10 font-mono text-[11px] lg:text-sm leading-relaxed lg:max-w-[80%]">
-                    <div className="relative overflow-x-auto">
-                        <pre>{`{
-  "type": "studio",        // or "image-editor"
+            <Wide tone="dark">
+                <pre className="font-mono text-[12px] sm:text-sm leading-relaxed overflow-x-auto">{`{
+  "type": "studio",
   "version": 1,
-  "timestamp": 1745884800000,
   "canvasWidth": 1080,
   "canvasHeight": 1080,
   "layers": [ ... ],       // the composition, in order
@@ -736,197 +314,108 @@ const tone = clampByte(255 * (1 - density)); // white paper = no ink`}
   ],
   "image": "data:image/png;base64,..."
 }`}</pre>
-                        <div className="pt-4 text-yellow-300">
-                            {"// open it in a year, get the same pixels back"}
-                        </div>
-                    </div>
+                <p className="font-mono text-sm text-cat-marigold pt-4">{"// open it in a year, get the same pixels back"}</p>
+            </Wide>
+
+            <Chapter title="Video too">
+                <p>
+                    There&apos;s a video editor that uses the exact same effects. The part I&apos;m proud of: <b>a video exports the same on a fast laptop and a slow one.</b> It doesn&apos;t rush or skip frames when your computer is busy. It just takes a bit longer.
+                </p>
+            </Chapter>
+
+            <Chapter title="Templates worth using">
+                <p>
+                    A lot of template sites are full of stuff nobody would actually use. I wanted every template here to be good enough to print as it is. I check each one myself before it goes live, and you can change anything in it, down to a single letter.
+                </p>
+            </Chapter>
+
+            <Wide className="!p-3 sm:!p-5">
+                <div className="relative aspect-[1440/900] rounded-[20px] overflow-hidden">
+                    <Image
+                        src={`${BASE}/app/template-gallery.webp`}
+                        alt="Bitgrain's template gallery"
+                        fill
+                        sizes="(min-width: 1080px) 1040px, 94vw"
+                        className="object-cover object-top"
+                    />
                 </div>
+            </Wide>
 
-                <div className="lg:max-w-[80%]">
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            This only works <i>because</i> there is no model in
-                            the pipeline. A file can only promise you the same
-                            result if the thing reading it behaves the same way
-                            every time. You cannot serialise your way out of
-                            something that invents a new answer on each run. The
-                            constraint and the feature are one decision seen
-                            from two sides.
-                        </p>
-                        <p className="text-sm opacity-70">
-                            To be exact about it: the effect chain is
-                            deterministic. The grain and paper texture layered
-                            on top are stochastic per render, on purpose,
-                            because grain that lands in the same place twice
-                            stops reading as grain. The effects where the
-                            randomness is structural, like dust and scratches,
-                            take a seed, and the seed travels in the file.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="06">Video, without a clock</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            The video editor applies the same effects to footage
-                            and animates them over time. It reuses the image
-                            engine literally: the frame worker imports the exact
-                            same transform function the still editor calls.
-                        </p>
-                        <p>
-                            The thing I would defend hardest is that{" "}
-                            <b>export never reads the clock</b>. Timestamps come
-                            from the frame index rather than elapsed time,
-                            effect seeds are derived from the frame time rather
-                            than the wall clock, and the audio is rendered
-                            offline instead of recorded. The result is that the
-                            same project exports to the same file whether your
-                            laptop is fast, slow, or busy. The fallback path
-                            does the opposite, capturing the canvas in real time
-                            through MediaRecorder, and you can feel the
-                            difference immediately.
-                        </p>
-                        <p>
-                            The encoder is not hardcoded either. It works out
-                            the H.264 level from the macroblock load and picks
-                            the lowest one that fits, then derives the bitrate
-                            from bits per pixel rather than a fixed number.
-                            Frames fan out across a worker pool sized to the
-                            machine, capped at eight, with a sliding window that
-                            keeps order.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="07">
-                        The rules I gave myself
-                    </SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            Working alone, the danger is that nothing stops you.
-                            So I wrote the constraints down and made them
-                            non-negotiable. No file over 300 lines. No folder
-                            over 10 files. No comments, on the theory that if it
-                            needs one the code is wrong. The line I keep coming
-                            back to is{" "}
-                            <b>
-                                if code is hard to read, it is considered
-                                incorrect even if it works
-                            </b>
-                            . The engine still obeys it. The largest file in it
-                            is 266 lines.
-                        </p>
-                        <p>
-                            State is a <b>45 line signals library</b> I wrote
-                            instead of reaching for Redux or Zustand. It is a
-                            value, a set of listeners, and useSyncExternalStore.
-                            An editor is thousands of tiny updates a second, and
-                            most state libraries are built for a different
-                            problem.
-                        </p>
-                        <p>
-                            The brand runs on the same principle. Three
-                            typefaces, each with one job. Two colour variables
-                            that everything else derives from. No shadows
-                            anywhere, because depth comes from a border and a
-                            surface shift. A banned words list. The word AI
-                            appears in the product only when it is being
-                            negated.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="08">
-                        Making money without a wall
-                    </SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            The studio and the video editor are free, with no
-                            signup, because local processing costs me nothing
-                            per person. If I had put this on servers I would
-                            have had to charge before anyone had made anything.
-                        </p>
-                        <p>
-                            Paying removes the watermark and lifts the export
-                            ceiling: full resolution instead of 1500px, vector
-                            export, 1080p video, batch. And it is{" "}
-                            <b>
-                                one payment for a ten year licence, not a
-                                subscription
-                            </b>
-                            . Selling a tool that promises your files will still
-                            open in a decade, and then renting it to you by the
-                            month, would be an odd thing to do.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="09">Results</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            I launched it on Product Hunt in May 2026 and it
-                            finished <b>#5 Product of the Day</b> with 200
-                            upvotes. It now gets{" "}
-                            <b>10,000+ visitors a month</b> and has{" "}
-                            <b>500+ people signed up</b>.
-                        </p>
-                        <p>
-                            It began as a small tool that only did dithering.
-                            Enough people asked for the parts around it, the
-                            layers, the type, the exporting, that it grew into a
-                            full editor, then a video editor. I have kept
-                            building it alongside a full-time job ever since.
-                        </p>
-                    </div>
-
-                    <SectionTitle number="10">What I took from it</SectionTitle>
-                    <div className="flex flex-col gap-4 text-base opacity-80 leading-relaxed lg:max-w-[85%]">
-                        <p>
-                            <b>
-                                Saying no to one thing gave me everything else.
-                            </b>{" "}
-                            No AI sounds like a limitation. It turned out to be
-                            the position, the architecture and the best feature
-                            at once. Because the chain is deterministic I got
-                            the .btg file, the privacy, a free tier that costs
-                            me nothing, and a reason for anyone to care.
-                        </p>
-                        <p>
-                            <b>
-                                I reached for the GPU before I had earned it.
-                            </b>{" "}
-                            My assumption was that per-pixel work in JavaScript
-                            could not possibly be fast enough. It was, once I
-                            stopped doing it more often than necessary. The
-                            performance came from caching, coalescing and not
-                            copying, and I would not have found any of that if I
-                            had reached for shaders on day one.
-                        </p>
-                        <p>
-                            <b>Old ideas are load bearing.</b> The best things
-                            in the engine are not mine. Serpentine scanning,
-                            press screen angles, ink separation and error
-                            diffusion were all worked out by people with
-                            machinery, decades before the browser existed. My
-                            job was mostly to go and read what they did.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-3 mt-16 pt-8 border-t border-black border-dashed">
-                        <Link
-                            href="https://bitgrain.app"
-                            target="_blank"
-                            className="offsetstyle bg-black text-white px-5 py-2 w-fit flex items-center hover:bg-white hover:text-black border border-black transition-colors gap-3 rounded-full"
+            <Wide caption="A few from the library: wedding invites, cookbook covers, menus, cards, slides and thumbnails.">
+                <Link
+                    href="https://bitgrain.app/template-gallery"
+                    target="_blank"
+                    aria-label="Browse Bitgrain's templates"
+                    className="block columns-2 sm:columns-4 gap-3 sm:gap-4"
+                >
+                    {library.map((t, i) => (
+                        <span
+                            key={t.name}
+                            className="mat !border-4 !rounded-[12px] relative block mb-3 sm:mb-4 break-inside-avoid transition-transform duration-300 hover:-translate-y-1"
+                            style={{ transform: `rotate(${[-1.2, 0.8, -0.6, 1.1][i % 4]}deg)` }}
                         >
-                            Try Bitgrain <ArrowUpRight size={18} />
-                        </Link>
-                        <Link
-                            href="/hire"
-                            className="bg-yellow-300 text-black px-5 py-2 w-fit flex items-center hover:bg-transparent border border-black transition-colors gap-3 rounded-full"
-                        >
-                            Work with me <ArrowUpRight size={18} />
-                        </Link>
-                    </div>
+                            <Image
+                                src={`${BASE}/library/${t.name}.webp`}
+                                alt={t.alt}
+                                width={400}
+                                height={t.h}
+                                sizes="(min-width: 640px) 240px, 45vw"
+                                className="w-full h-auto rounded-[8px]"
+                            />
+                        </span>
+                    ))}
+                </Link>
+            </Wide>
+
+            <Chapter title="Keeping it tidy, alone">
+                <p>
+                    When you work alone, nobody stops you from writing messy code. So I made myself some rules: no file over 300 lines, no folder with more than ten files, and <b>if the code is hard to read, it counts as broken.</b>
+                </p>
+                <p>
+                    I also wrote my own tiny tool for keeping track of the app&apos;s data, about 45 lines long, instead of using a big library. An editor changes thousands of small things every second, and the big libraries weren&apos;t made for that.
+                </p>
+            </Chapter>
+
+            <Chapter title="How it makes money">
+                <p>
+                    You can use the editor for free, without even signing up. Everything runs on your own computer, so free users don&apos;t cost me anything. If you pay, the watermark goes away and you can export bigger. <b>It&apos;s one payment that lasts ten years, not a monthly subscription.</b> It felt weird to promise your files will last for years and then charge you every month.
+                </p>
+            </Chapter>
+
+            <Chapter title="What happened">
+                <p>
+                    It started as a tiny tool that only did dithering. People kept asking for more: layers, text, better exports. So it slowly grew into a full design editor, and then a video editor.
+                </p>
+                <p>
+                    I launched it on Product Hunt in May 2026 and it came <b>#5 Product of the Day</b>. Now around <b>10,000 people visit every month</b> and <b>more than 500 have signed up</b>. I still work on it every week, next to my full-time job.
+                </p>
+            </Chapter>
+
+            <Wide caption="I made the website too, including a page for each effect where you can try it right there.">
+                <div className="grid sm:grid-cols-2 gap-5 sm:gap-8 sm:p-4">
+                    <Shot src={`${BASE}/app/home.webp`} alt="The Bitgrain homepage" ratio="1440 / 900" rotate={-2} sizes="(min-width: 1080px) 500px, 92vw" />
+                    <Shot src={`${BASE}/app/dither-page.webp`} alt="Bitgrain's dither page" ratio="1440 / 900" rotate={2} sizes="(min-width: 1080px) 500px, 92vw" />
                 </div>
-            </article>
+            </Wide>
 
-            <Footer />
-        </main>
+            <Takeaways
+                items={[
+                    {
+                        title: "Saying no made it better",
+                        body: "Skipping AI sounded like a weakness. It turned out to be the reason people liked it.",
+                    },
+                    {
+                        title: "Try the simple way first",
+                        body: "I was sure I needed the graphics card. Doing less work was enough. I'd never have learned that if I'd gone fancy first.",
+                    },
+                    {
+                        title: "Old ideas still work",
+                        body: "Most of the clever bits were worked out by printers long ago. I mostly had to go and read about them.",
+                    },
+                ]}
+            />
+
+            <NextProject slug="bitgrain" />
+        </CaseShell>
     );
 }

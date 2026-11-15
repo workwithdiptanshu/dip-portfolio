@@ -42,7 +42,7 @@ export default async function RenderTextBlock({ block }: Props) {
             );
         case "quote":
             return (
-                <blockquote className="bg-[#00000013] border-l-4 border-theme-blue-dark w-full p-4 flex gap-2 items-star rounded-sm">
+                <blockquote className="bg-card border-l-4 border-cat-moss w-full p-5 flex gap-2 items-start rounded-r-2xl font-serif text-lg">
                     <Quote fill="black" />
                     {block.quote.rich_text.map((i) => (
                         <span
@@ -62,7 +62,7 @@ export default async function RenderTextBlock({ block }: Props) {
                     {block.code.rich_text.map((i) => (
                         <span
                             key={i.plain_text}
-                            className="bg-gray-200 ml-2 px-2 rounded-sm py-[1px] border flex items-center text-md justify-center w-fit "
+                            className="bg-card ml-2 px-2 rounded-md py-[1px] flex items-center text-md justify-center w-fit "
                             style={styling(i.annotations)}
                         >
                             {i.plain_text}

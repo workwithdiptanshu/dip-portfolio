@@ -5,10 +5,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 12vh;
+    padding-top: 4rem;
 }
 .blogContainer .articleContainer {
-    min-width: 900px;
+    width: 100%;
+    max-width: 752px;
     padding: 2% 5%;
     -webkit-font-smoothing: antialiased;
 }
@@ -20,33 +21,38 @@
 }
 .blogContainer article img {
     width: 100%;
+    border-radius: 18px;
     object-position: center;
     object-fit: cover;
     margin: 1rem auto;
 }
 .blogContainer article a {
     text-decoration: underline;
-    color: #1c3e51;
+    text-underline-offset: 3px;
+    color: #2f6b4f;
 }
 .blogContainer article img:first-of-type {
     width: 100%;
     max-height: 500px;
     object-position: center;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 18px;
 }
 .blogContainer article h1,
 .blogContainer article h2,
 .blogContainer article h3,
 .blogContainer article h4,
 .blogContainer article h5 {
-    color: black;
+    color: #111;
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.01em;
 }
 .blogContainer article h1,
 .blogContainer article h2 {
-    font-weight: 500;
+    font-weight: 400;
     width: 100%;
     text-align: left;
+    margin-top: 1.5rem;
 }
 .blogContainer article h1 {
     font-size: 1.8rem;
@@ -69,7 +75,7 @@
 }
 .blogContainer article h1:first-of-type {
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: black;
     margin: 2rem auto;
     margin-bottom: 0.5rem;
@@ -84,12 +90,11 @@
     margin-bottom: 2rem;
 }
 .blogContainer article p {
-    color: rgba(0, 0, 0, 0.593);
+    color: rgba(0, 0, 0, 0.75);
     width: 100%;
     padding: 10px 0;
-    line-height: 2rem;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.0625rem;
+    line-height: 1.7;
 }
 .blogContainer article ul,
 .blogContainer article ol {
@@ -97,8 +102,7 @@
     width: 100%;
     padding: 10px 0;
     font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.2;
+    line-height: 1.6;
 }
 .blogContainer article li {
     margin-left: 40px;
@@ -123,14 +127,14 @@
     display: flex;
     margin-bottom: 5px;
     gap: 0.5rem;
-    color: #1c3e51;
+    color: #111;
     line-height: 1.5rem;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
-    background-color: #0a0a0a1b;
-    padding: 1rem;
-    border-radius: 1px;
+    background-color: #e6dfd1;
+    padding: 1.25rem;
+    border-radius: 20px;
 }
 .blogContainer article table {
     background-color: #fff;
@@ -184,8 +188,7 @@
 }
 @media screen and (max-width: 800px) {
     .blogContainer .articleContainer {
-        min-width: 342px;
-        padding: 3% 5%;
+        padding: 3% 16px;
         margin: 1rem auto;
     }
     .article img {

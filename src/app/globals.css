@@ -2,18 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-.offsetstyle {
-    box-shadow: 2px 2px 0 0 black, 4px 4px 0 0 #0f172a;
-    transition: 200ms ease-in-out;
-}
-.offsetstyle:hover {
-    box-shadow: 6px 6px 0 0 black, 8px 8px 0 0 #0f172a;
+html {
+    background: #f3eee4;
 }
 
-.bar {
-    width: 10vw;
-    height: 105vh;
-    background: #353451;
+/* A faint dot grid on the paper, like a sketchbook page. Cards sit on top
+   of it with solid backgrounds, so it only shows in the gaps. */
+body {
+    background-color: #f3eee4;
+    background-image: radial-gradient(rgba(28, 26, 23, 0.12) 1px, transparent 1.3px);
+    background-size: 22px 22px;
+    background-position: -11px -11px;
+}
+
+::selection {
+    background: #f2b23a;
+    color: #111;
+}
+
+/* ---------------------------------------------------------------
+   Cats. Flat blobs in five inks, the way a sticker sheet is drawn.
+   All motion here is small and slow, and switched off entirely for
+   anyone who has asked their OS for less of it.
+   --------------------------------------------------------------- */
+
+.cat-blink .cat-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cat-blink 5.5s infinite;
+}
+.cat-blink:nth-of-type(2n) .cat-eye {
+    animation-delay: 1.7s;
+}
+@keyframes cat-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+.cat-sway {
+    animation: cat-sway 7s ease-in-out infinite;
+    transform-origin: 50% 90%;
+}
+@keyframes cat-sway {
+    0%, 100% { transform: rotate(var(--r, 0deg)); }
+    50% { transform: rotate(calc(var(--r, 0deg) + 4deg)); }
+}
+
+.cat-pop {
+    transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.group:hover .cat-pop,
+.cat-pop:hover {
+    transform: rotate(-10deg) scale(1.12);
+}
+
+/* The strip of work under the hero. Two copies, slid by half. */
+.marquee {
+    animation: marquee 60s linear infinite;
+}
+.marquee:hover {
+    animation-play-state: paused;
+}
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
+/* Photos on a card: a white mat and a soft lift, set at an angle. */
+.mat {
+    border: 6px solid #fff;
+    border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 28px -12px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    overflow: hidden;
+}
+
+.dash-rule {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.18) 50%, transparent 50%);
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cat-blink .cat-eye,
+    .cat-sway,
+    .marquee {
+        animation: none;
+    }
+    .cat-pop {
+        transition: none;
+    }
 }
 
 /* ---------------------------------------------------------------
@@ -24,7 +102,7 @@
    --------------------------------------------------------------- */
 
 .paper {
-    background-color: #f4f2ee;
+    background-color: #f3eee4;
 }
 
 /* Grain. SVG fractal noise, laid over a surface. */

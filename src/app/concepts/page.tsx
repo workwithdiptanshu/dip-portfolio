@@ -1,18 +1,20 @@
-import Footer from "@/components/Common/Footer";
-import Navbar from "@/components/portfolio/Navbar/Navbar";
 import ConceptGrid, { Concept } from "@/components/concepts/ConceptGrid";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { CaseHero, CaseShell, Chapter, Glance, NextProject, Stage, Wide } from "@/components/work/CaseStudy";
+import { Mat } from "@/components/work/projects";
 
 export const metadata: Metadata = {
     title: "Concepts | Diptanshu Mahish",
     description:
-        "Fifty-three small businesses with great Google reviews and a missing or broken website, and the site I'd build each of them.",
+        "Fifty-eight small businesses with great Google reviews and a missing or broken website, and the site I'd build each of them.",
     openGraph: {
         title: "Concepts | Diptanshu Mahish",
         description:
-            "Fifty-three small businesses with great reviews and weak websites, and the sites I'd build them.",
+            "Fifty-eight small businesses with great reviews and weak websites, and the sites I'd build them.",
         url: "https://diptanshumahish.in/concepts",
     },
 };
@@ -78,91 +80,134 @@ const concepts: Concept[] = [
     { slug: "bright-smile-al-ain", what: "24-hour dental and medical centre", where: "Al Ain", kind: "Healthcare", reviews: "655 reviews" },
 ];
 
-const stats = [
-    { value: "58", label: "sites" },
-    { value: "35k+", label: "reviews" },
-    { value: "49", label: "typefaces" },
+const C = "/Assets/work/concepts";
+
+/** A spread of phones, picked for how different they look from each other. */
+const phones = [
+    "bowie-bakery",
+    "hotel-inder-prakash",
+    "louisiana-smokehouse",
+    "shiv-kripa-blue-pottery",
+    "quantum-kota",
+    "puppy-love-grooming",
+    "aman-sidhu-photography",
 ];
 
 export default function ConceptsPage() {
     return (
-        <main className="relative paper">
-            <Navbar />
+        <CaseShell>
+            <CaseHero
+                name="Concepts"
+                kind="Websites · self-initiated"
+                line="The websites well-loved small businesses should have, designed and built without being asked."
+                cat={{ color: "marigold", face: "moss" }}
+                meta={[
+                    { label: "Role", value: "Research, design and build" },
+                    { label: "When", value: "2026" },
+                    { label: "Built with", value: "Next.js, static export" },
+                    { label: "Where", value: "The US, India and the UAE" },
+                ]}
+                links={[
+                    { label: "See them all", href: "#all" },
+                    { label: "Get a site like this", href: "/hire?for=website" },
+                ]}
+            />
 
-            <section className="px-[5%] lg:pt-[16vh] pt-28 pb-10">
-                <Link
-                    href="/#work"
-                    className="flex items-center gap-2 text-sm opacity-50 hover:opacity-100 transition-opacity w-fit mb-8"
-                >
-                    <ArrowLeft size={16} /> Back to work
-                </Link>
+            <Stage bg="#F2B23A" className="h-[300px] sm:h-[560px]">
+                <Mat src={`${C}/bowie-bakery.webp`} alt="Concept site for Bowie Bakery in El Paso" className="left-[4%] top-[12%] w-[56%] sm:w-[46%] aspect-[3/2] h-auto" rotate={-4} sizes="520px" />
+                <Mat src={`${C}/hotel-inder-prakash.webp`} alt="Concept site for Hotel Inder Prakash in Udaipur" className="right-[4%] sm:right-[16%] bottom-[10%] w-[50%] sm:w-[40%] aspect-[3/2] h-auto" rotate={3} sizes="460px" />
+                <Mat src={`${C}/louisiana-smokehouse-m.webp`} alt="Concept site for Louisiana Smokehouse on a phone" className="hidden sm:block right-[4%] top-[8%] w-[15%] aspect-[390/844] h-auto" rotate={8} sizes="200px" />
+            </Stage>
 
-                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-black/15 pb-8">
-                    <div className="flex flex-col gap-4 lg:max-w-[55%]">
-                        <h1 className="lg:text-7xl text-5xl font-medium tracking-tight leading-none">
-                            Concepts
-                        </h1>
-                        <p className="text-base lg:text-lg opacity-70 leading-relaxed">
-                            Small businesses with great Google reviews and a weak
-                            or missing website, and the site I&apos;d build each of
-                            them. Unsolicited, and nothing invented.
-                        </p>
-                    </div>
+            <Glance
+                items={[
+                    { value: "58", label: "Businesses" },
+                    { value: "35k+", label: "Google reviews between them" },
+                    { value: "49", label: "Different typefaces" },
+                ]}
+            />
 
-                    <div className="grid grid-cols-3 gap-4 lg:flex lg:gap-10">
-                        {stats.map((s) => (
-                            <p key={s.label} className="flex flex-col">
-                                <span className="text-2xl lg:text-4xl font-medium leading-none">
-                                    {s.value}
-                                </span>
-                                <span className="text-xs lg:text-sm opacity-50 pt-1 leading-tight">
-                                    {s.label}
-                                </span>
-                            </p>
-                        ))}
-                    </div>
+            <Chapter title="The idea">
+                <p>
+                    Some of the best-loved places in a city have the worst
+                    websites. A panadería that has been on the same corner since
+                    1951, with two thousand five-star reviews, and a site that
+                    hasn&apos;t loaded properly in years. <b>The reviews prove the
+                    business is good. The website says the opposite.</b>
+                </p>
+                <p>
+                    So I went looking for them on Google Maps: places with
+                    hundreds or thousands of reviews and a website that was
+                    missing, broken or stuck in 2012. Then I built each one the
+                    site I&apos;d give them.
+                </p>
+            </Chapter>
+
+            <Chapter title="Every one gets its own look">
+                <p>
+                    The easy version of this is one template with the logo
+                    swapped. I didn&apos;t want that. A brass works in Jamnagar
+                    and a tattoo studio in Omaha shouldn&apos;t look related, so
+                    each site has its own layout, palette and typeface, taken
+                    from what the place actually feels like.
+                </p>
+                <p>
+                    They&apos;re built phone first, because that&apos;s how people
+                    find a bakery on the way somewhere.
+                </p>
+            </Chapter>
+
+            <Wide className="overflow-hidden">
+                <div className="flex justify-center py-4">
+                    {phones.map((slug, i) => (
+                        <span
+                            key={slug}
+                            className={`relative shrink-0 -ml-6 first:ml-0 transition-transform duration-300 hover:-translate-y-4 ${i > 4 ? "hidden sm:block" : ""}`}
+                            style={{ zIndex: i }}
+                        >
+                            <span
+                                className="mat !border-4 !rounded-[16px] relative block w-[110px] sm:w-[150px] aspect-[390/844] overflow-hidden"
+                                style={{ transform: `rotate(${-9 + i * 3}deg)` }}
+                            >
+                                <Image src={`${C}/${slug}-m.webp`} alt="" fill sizes="160px" className="object-cover object-top" />
+                            </span>
+                        </span>
+                    ))}
                 </div>
-            </section>
+            </Wide>
 
-            <section id="concepts" className="px-[5%] pb-[8%] scroll-mt-24">
+            <Chapter title="Honest by default">
+                <p>
+                    Hours, menus and history come from public sources.{" "}
+                    <b>Nothing is invented</b>: no fake reviews, prices or awards.
+                    Every site carries a banner saying it isn&apos;t official,
+                    stays out of search engines, and uses sample photos.
+                </p>
+                <p>
+                    If one of these is your business and you&apos;d like it taken
+                    down, or handed over to you, <Link href="/hire?for=website">get in touch</Link>.
+                </p>
+            </Chapter>
+
+            <section id="all" className="max-w-[1080px] mx-auto px-4 pt-24 sm:pt-32 scroll-mt-8">
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8">
+                    <h2 className="font-serif text-[34px] sm:text-[44px] leading-[1.05] tracking-[-0.02em]">
+                        All of them
+                    </h2>
+                    <Link
+                        href="/hire?for=website"
+                        className="w-fit bg-ink text-white px-5 py-2.5 text-sm font-medium flex items-center gap-1.5 rounded-full hover:bg-cat-moss transition-colors"
+                    >
+                        Get a site like this <ArrowUpRight size={15} />
+                    </Link>
+                </div>
                 <ConceptGrid concepts={concepts} />
-
-                <div className="grid lg:grid-cols-3 gap-8 text-sm opacity-60 leading-relaxed mt-24 pt-8 border-t border-black/15">
-                    <p>
-                        Found on Google Maps: places with
-                        hundreds or thousands of reviews and a site that was
-                        missing, broken or stuck in 2012.
-                    </p>
-                    <p>
-                        Hours, menus and history come from public sources. No
-                        fake reviews, prices or awards. Each site has a banner
-                        saying it isn&apos;t official, stays out of search
-                        engines, and uses sample photos.
-                    </p>
-                    <p>
-                        Business names and trademarks belong to their owners. If
-                        one of these is your business and you&apos;d like it taken
-                        down, or handed over to you, get in touch.
-                    </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-6 mt-10 text-sm">
-                    <Link
-                        href="/hire"
-                        className="bg-black text-white px-5 py-2 flex items-center gap-2 rounded-full hover:opacity-80 transition-opacity"
-                    >
-                        Get a site like this <ArrowUpRight size={16} />
-                    </Link>
-                    <Link
-                        href="/#work"
-                        className="flex items-center gap-2 underline underline-offset-4 opacity-70 hover:opacity-100"
-                    >
-                        More of my work
-                    </Link>
-                </div>
+                <p className="text-xs text-muted pt-8 max-w-[640px]">
+                    Business names and trademarks belong to their owners.
+                </p>
             </section>
 
-            <Footer />
-        </main>
+            <NextProject slug="concepts" />
+        </CaseShell>
     );
 }

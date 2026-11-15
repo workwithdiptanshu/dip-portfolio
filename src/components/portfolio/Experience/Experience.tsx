@@ -1,5 +1,6 @@
 import React from "react";
 import ExperienceItem, { ExperienceItemProps } from "./ExperienceItem";
+import SectionTitle from "@/components/Common/SectionTitle";
 
 const experienceArray: ExperienceItemProps[] = [
     {
@@ -10,7 +11,6 @@ const experienceArray: ExperienceItemProps[] = [
         location: "Bengaluru, India",
         engagement: "Full-time",
         current: true,
-        bgColor: "#1a1a1a",
         summary: "Supaboard lets a company ask questions about its own business in plain English and get a real answer back. I work on the dashboards and the agent that answers.",
         points: [
             "Joined as a <b>founding engineer</b> when the team was tiny. It's 12 people now, and I own core product and engineering decisions on the dashboard and the agent product.",
@@ -28,7 +28,6 @@ const experienceArray: ExperienceItemProps[] = [
         duration: "Apr 2025 to Feb 2026",
         location: "Remote",
         engagement: "Part-time",
-        bgColor: "#DCFF93",
         summary: "Brand campaigns and visual work, plus a website redesign that moved the numbers.",
         points: [
             "Redesigned the company website and <b>grew organic traffic by 30%</b>.",
@@ -45,7 +44,6 @@ const experienceArray: ExperienceItemProps[] = [
         duration: "May 2024 to Jun 2025",
         location: "Remote",
         engagement: "Full-time",
-        bgColor: "#C8ADFF",
         summary: "A streaming service for movies, shows, web series and originals. I built it for web and mobile, starting from an empty folder.",
         points: [
             "Owned how the whole thing was put together: the architecture, the way it looked, and the way the video actually played.",
@@ -62,7 +60,6 @@ const experienceArray: ExperienceItemProps[] = [
         duration: "Apr 2023 to Sep 2024",
         location: "Remote",
         engagement: "Internship",
-        bgColor: "#93C5FF",
         summary: "My first real experience writing code that other people depended on.",
         points: [
             "Worked hands-on in live codebases for several client companies, on software that was already in front of users.",
@@ -77,7 +74,6 @@ const experienceArray: ExperienceItemProps[] = [
         duration: "Dec 2023 to Mar 2024",
         location: "Remote",
         engagement: "Internship",
-        bgColor: "#FF9393",
         summary: "A lot of creative work, for a lot of brands, quickly.",
         points: [
             "Made <b>500+ digital assets</b> and social creatives, and gave the marketing a consistent look across every channel.",
@@ -90,23 +86,17 @@ const experienceArray: ExperienceItemProps[] = [
 
 export default function Experience() {
     return (
-        <div
-            id="experience"
-            className="relative z-10 bg-white overflow-hidden px-[5%] py-[5%]"
-        >
-            <h2 className="lg:text-7xl text-4xl lg:py-8 py-4">
-                <span className="flex">Where I&apos;ve worked so far</span>
-            </h2>
-            <p className="opacity-60 lg:max-w-[50%] pb-6 text-sm">
-                Two and a bit years of building things, mostly at small teams
-                where you can decide something in the morning and have it live
-                by the evening.
-            </p>
-            <div className="flex flex-col gap-8 pt-4">
-                {experienceArray.map((ele) => (
-                    <ExperienceItem item={ele} key={ele.company} />
+        <section id="experience" className="max-w-[856px] mx-auto px-4 pt-24 sm:pt-32 scroll-mt-6">
+            <SectionTitle
+                title="Where I&rsquo;ve worked"
+                note="the day jobs"
+                sub="Two and a bit years of building things, mostly on small teams where you decide something in the morning and it's live by evening."
+            />
+            <div className="flex flex-col gap-4 pt-10">
+                {experienceArray.map((item, i) => (
+                    <ExperienceItem item={item} index={i} key={item.company} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }

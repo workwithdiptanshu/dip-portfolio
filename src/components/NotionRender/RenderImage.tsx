@@ -26,7 +26,7 @@ export default async function RenderImage({ block }: Props) {
                 width={1920}
                 height={1080}
                 alt="Blog Image"
-                className=" border border-black border-opacity-15 h-auto w-full "
+                className="h-auto w-full"
             />
             <figcaption className="caption">
                 {block.image.caption[0].plain_text}

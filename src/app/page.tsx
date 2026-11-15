@@ -1,28 +1,25 @@
-import BlogHome from "@/components/BlogHome/BlogHome";
-import Bakcground from "@/components/Common/Bakcground";
 import Footer from "@/components/Common/Footer";
-import Heading from "@/components/Common/Heading";
-import { SmoothScrollProvider } from "@/components/Locomotive/SmoothScroll";
-import Contact from "@/components/portfolio/Contact/Contact";
+import { PawTrail } from "@/components/Common/Handwriting";
+import BitgrainFeature from "@/components/portfolio/Bitgrain/BitgrainFeature";
+import About from "@/components/portfolio/About/About";
 import Experience from "@/components/portfolio/Experience/Experience";
 import Header from "@/components/portfolio/Header/Header";
 import Navbar from "@/components/portfolio/Navbar/Navbar";
+import Skills from "@/components/portfolio/Skills/Skills";
 import Work from "@/components/portfolio/Work/Work";
 
 export default function Home() {
     return (
-        <main className="relative">
+        <main className="relative overflow-x-clip">
             <Navbar />
-            <SmoothScrollProvider options={{ smooth: true }}>
-                <Header />
-                <Heading heading={"Enough Talk, Where Have I Worked?"} number={1} />
-                <Experience />
-                <Heading heading={"And Here's What I've Built"} number={2} />
-                <Work />
-                <BlogHome />
-                <Contact />
-                <Bakcground />
-            </SmoothScrollProvider>
+            <Header />
+            <BitgrainFeature />
+            <Work />
+            <PawTrail className="mt-20 sm:mt-24 -mb-10" />
+            <Experience />
+            <Skills />
+            <About />
+            <PawTrail color="indigo" className="mt-16 -mb-6" steps={6} />
             <Footer />
         </main>
     );

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Homemade_Apple, Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
+import { CatFilters } from "@/components/cats/Cats";
 
 export const metadata: Metadata = {
     title: "Diptanshu Mahish | Product Engineer",
@@ -59,23 +60,29 @@ export const metadata: Metadata = {
     creator: "Diptanshu Mahish",
 };
 export const viewport: Viewport = {
-    themeColor: "#353451",
-    
+    themeColor: "#F3EEE4",
 };
 
-const generalSans = localFont({
-    src: [
-        {
-            path: "./fonts/medium.woff2",
-            weight: "500",
-            style: "normal",
-        },
-        {
-            path: "./fonts/bold.woff2",
-            weight: "600",
-            style: "bold",
-        },
-    ],
+const serif = Libre_Baskerville({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    style: ["normal", "italic"],
+    variable: "--font-serif",
+    display: "swap",
+});
+
+const sans = Inter({
+    subsets: ["latin"],
+    variable: "--font-sans",
+    display: "swap",
+});
+
+/** Handwriting, for notes in the margins and anything that should feel written. */
+const hand = Homemade_Apple({
+    subsets: ["latin"],
+    weight: "400",
+    variable: "--font-hand",
+    display: "swap",
 });
 
 export default function RootLayout({
@@ -84,11 +91,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${serif.variable} ${sans.variable} ${hand.variable}`}>
              <head>
         <meta name="google-adsense-account" content="ca-pub-3294424742179691" />
       </head>
-            <body className={`${generalSans.className} bg-bg-back`}>
+            <body className="font-sans bg-paper text-ink antialiased">
+                <CatFilters />
                 {children}
             </body>
         </html>
