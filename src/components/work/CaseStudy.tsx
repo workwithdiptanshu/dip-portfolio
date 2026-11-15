@@ -267,35 +267,49 @@ export function ProjectCard({
 }) {
     const flip = index % 2 === 1;
     const external = project.href.startsWith("http");
+    /*
+     * One strict grid: two square tiles of 192px with a 16px gap, and the big
+     * card spanning exactly both rows (400px). Every edge lines up; the work
+     * stays inside its card.
+     */
     return (
-        <div className={`flex flex-col gap-4 ${flip ? "sm:flex-row-reverse" : "sm:flex-row"}`}>
+        <div
+            className={`grid grid-cols-2 gap-4 sm:grid-rows-[192px_192px] ${
+                flip ? "sm:grid-cols-[192px_1fr]" : "sm:grid-cols-[1fr_192px]"
+            }`}
+        >
             <Link
                 href={project.href}
                 target={external ? "_blank" : undefined}
-                className="group flex-1 min-w-0 rounded-[32px] bg-card hover:bg-[#DCD3C2] transition-colors overflow-hidden flex flex-col"
+                className={`group col-span-2 sm:col-span-1 sm:row-span-2 min-w-0 sm:h-[400px] rounded-[32px] bg-card hover:bg-[#DCD3C2] transition-colors overflow-hidden flex flex-col ${
+                    flip ? "sm:col-start-2" : "sm:col-start-1"
+                } sm:row-start-1`}
             >
-                <div className="relative h-[240px] sm:h-[300px] mx-6 mt-6 sm:mx-8 sm:mt-8 transition-transform duration-500 group-hover:-translate-y-1.5">
+                <div className="relative h-[240px] sm:h-auto sm:flex-1 min-h-0 mx-6 mt-6 sm:mx-8 sm:mt-7 transition-transform duration-500 group-hover:-translate-y-1">
                     {project.cover}
                 </div>
-                <div className="flex items-end justify-between gap-4 px-6 sm:px-8 pt-6 pb-6">
-                    <div className="flex flex-col gap-1">
+                <div className="flex items-end justify-between gap-4 px-6 sm:px-8 pt-5 pb-6">
+                    <div className="flex flex-col gap-1 min-w-0">
                         <p className="text-[15px]">
                             {project.name} <span className="text-muted">{project.kind}</span>
                         </p>
-                        <p className="text-sm text-black/60 leading-snug max-w-[420px]">
-                            {project.line}
-                        </p>
+                        <p className="text-sm text-black/60 leading-snug max-w-[420px] sm:line-clamp-2">{project.line}</p>
                     </div>
                     <span className="shrink-0 w-10 h-10 rounded-full bg-paper flex items-center justify-center transition-colors group-hover:bg-ink group-hover:text-white">
                         <ArrowUpRight size={17} />
                     </span>
                 </div>
             </Link>
-            <div className="grid grid-cols-2 sm:grid-cols-1 gap-4 sm:w-[192px] shrink-0">
-                <CatTile index={index} className="aspect-square" />
-                <div className="aspect-square rounded-[28px] bg-card flex items-center justify-center p-6 text-center">
-                    {project.mark}
-                </div>
+            <CatTile
+                index={index}
+                className={`aspect-square sm:aspect-auto sm:row-start-1 ${flip ? "sm:col-start-1" : "sm:col-start-2"}`}
+            />
+            <div
+                className={`aspect-square sm:aspect-auto sm:row-start-2 rounded-[28px] bg-card flex items-center justify-center p-6 text-center ${
+                    flip ? "sm:col-start-1" : "sm:col-start-2"
+                }`}
+            >
+                {project.mark}
             </div>
         </div>
     );

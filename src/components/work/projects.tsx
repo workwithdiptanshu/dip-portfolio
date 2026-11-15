@@ -121,8 +121,10 @@ export const projects: Project[] = [
         mark: <span className="font-hand text-lg sm:text-xl leading-none">concepts</span>,
         cover: (
             <>
-                <Mat src="/Assets/work/concepts/the-le-bakery.webp" alt="Concept site for The Le Bakery" className="left-[2%] top-4 w-[64%] h-[76%]" rotate={4} sizes="480px" />
-                <Mat src="/Assets/work/concepts/louisiana-smokehouse-m.webp" alt="Concept site for Louisiana Smokehouse on a phone" className="right-[4%] top-0 w-[30%] h-[96%]" rotate={-6} />
+                <Mat src="/Assets/work/concepts/tea-emporium-darjeeling.webp" alt="Concept site for a tea house in Darjeeling" className="left-0 top-2 w-[52%] h-[58%]" rotate={-5} sizes="400px" />
+                <Mat src="/Assets/work/concepts/ink-link-tattoo-omaha.webp" alt="Concept site for a tattoo shop in Omaha" className="left-[18%] bottom-0 w-[50%] h-[56%]" rotate={3} sizes="400px" />
+                <Mat src="/Assets/work/concepts/shinning-studio-weddings-m.webp" alt="Concept site for a wedding studio, on a phone" className="right-[17%] top-0 w-[20%] h-[94%]" rotate={-4} sizes="200px" />
+                <Mat src="/Assets/work/concepts/bucket-of-love-m.webp" alt="Concept site for a fried chicken kitchen, on a phone" className="right-0 top-5 w-[20%] h-[90%]" rotate={7} sizes="200px" />
             </>
         ),
     },

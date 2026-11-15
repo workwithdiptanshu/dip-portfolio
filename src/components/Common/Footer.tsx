@@ -1,14 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { CatHead, Ink, Mood } from "@/components/cats/Cats";
+import { ArrowUpRight, FileText, Github, Linkedin, PenLine, Shapes, Twitter, LucideIcon } from "lucide-react";
+import { CatHead, INK, Ink, Mood } from "@/components/cats/Cats";
 
-const links = [
-    { label: "works", href: "/work" },
-    { label: "blogs", href: "/blogs" },
-    { label: "résumé", href: "/resume.pdf", external: true },
-    { label: "github", href: "https://github.com/diptanshumahish", external: true },
-    { label: "linkedin", href: "https://linkedin.com/in/diptanshumahish", external: true },
-    { label: "x (twitter)", href: "https://x.com/diptanshuSays", external: true },
+/** The footer links, as paper tags: each its own colour, each stuck on at its own angle. */
+const links: { label: string; href: string; icon: LucideIcon; bg: Ink; text: "ink" | "white"; tilt: number; external?: boolean }[] = [
+    { label: "works", href: "/work", icon: Shapes, bg: "marigold", text: "ink", tilt: -4 },
+    { label: "blogs", href: "/blogs", icon: PenLine, bg: "lilac", text: "ink", tilt: 3 },
+    { label: "résumé", href: "/resume.pdf", icon: FileText, bg: "peach", text: "ink", tilt: -2, external: true },
+    { label: "github", href: "https://github.com/diptanshumahish", icon: Github, bg: "ink", text: "white", tilt: 4, external: true },
+    { label: "linkedin", href: "https://linkedin.com/in/diptanshumahish", icon: Linkedin, bg: "indigo", text: "white", tilt: -3, external: true },
+    { label: "x (twitter)", href: "https://x.com/diptanshuSays", icon: Twitter, bg: "moss", text: "white", tilt: 2, external: true },
 ];
 
 /** The row of cats peeking up from the bottom of every page. */
@@ -54,20 +56,34 @@ export default function Footer({ cta = true }: { cta?: boolean }) {
                     </div>
                 )}
 
-                <ul className="flex flex-wrap justify-center gap-2 pt-3">
-                    {links.map((l) => (
-                        <li key={l.label}>
-                            <Link
-                                href={l.href}
-                                target={l.external ? "_blank" : undefined}
-                                className="block bg-card hover:bg-ink hover:text-white transition-colors rounded-xl px-5 py-2.5 text-[13px]"
-                            >
-                                {l.label}
-                            </Link>
-                        </li>
-                    ))}
+                <ul className="flex flex-wrap justify-center gap-x-3 gap-y-4 pt-6">
+                    {links.map((l) => {
+                        const Icon = l.icon;
+                        return (
+                            <li key={l.label}>
+                                <Link
+                                    href={l.href}
+                                    target={l.external ? "_blank" : undefined}
+                                    style={{ backgroundColor: INK[l.bg], color: INK[l.text], transform: `rotate(${l.tilt}deg)` }}
+                                    className="group relative flex items-center gap-2 rounded-[10px] pl-6 pr-4 py-2.5 text-[13px] font-medium transition-transform duration-300 hover:!rotate-0 hover:-translate-y-1"
+                                >
+                                    {/* The punched hole, like a luggage tag. */}
+                                    <span aria-hidden className="absolute left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-paper" />
+                                    <Icon size={14} strokeWidth={2.2} aria-hidden />
+                                    {l.label}
+                                    {l.external && (
+                                        <ArrowUpRight
+                                            size={13}
+                                            aria-hidden
+                                            className="opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                                        />
+                                    )}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
-                <p className="text-center text-xs text-muted pt-6">
+                <p className="text-center text-xs text-muted pt-8">
                     &copy; Diptanshu Mahish {new Date().getFullYear()} · made
                     in Bengaluru, supervised by cats
                 </p>
