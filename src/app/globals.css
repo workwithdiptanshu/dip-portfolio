@@ -83,7 +83,110 @@ body {
     background-position: bottom;
 }
 
+/* ---------------------------------------------------------------
+   First-load hello. A cat peeks over a ledge, blinks, says hi, and
+   the page lifts away. About a second and a half, once per visit.
+   --------------------------------------------------------------- */
+
+.hello {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background-color: #f3eee4;
+    background-image: radial-gradient(rgba(28, 26, 23, 0.12) 1px, transparent 1.3px);
+    background-size: 22px 22px;
+    background-position: -11px -11px;
+    animation: hello-lift 0.6s cubic-bezier(0.7, 0, 0.25, 1) 1.35s forwards;
+}
+.hello-seen .hello {
+    display: none;
+}
+.hello-stage {
+    position: relative;
+    width: 120px;
+}
+/* The cat sits behind the ledge and rises into view. */
+.hello-window {
+    height: 92px;
+    overflow: hidden;
+}
+.hello-cat {
+    width: 120px;
+    height: auto;
+    transform: translateY(100%);
+    animation: hello-peek 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.15s forwards;
+}
+.hello-cat .cat-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hello-blink 0.22s ease-in-out 0.85s;
+}
+.hello-ledge {
+    display: block;
+    height: 3px;
+    margin: 0 -26px;
+    border-radius: 3px;
+    background: #1c1a17;
+}
+.hello-hi {
+    position: absolute;
+    right: -46px;
+    top: 4px;
+    color: #2f6b4f;
+    font-size: 20px;
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.6);
+    animation: hello-hi 0.35s cubic-bezier(0.34, 1.5, 0.64, 1) 0.95s forwards;
+}
+
+@keyframes hello-peek {
+    to {
+        transform: translateY(4%);
+    }
+}
+@keyframes hello-blink {
+    50% {
+        transform: scaleY(0.1);
+    }
+}
+@keyframes hello-hi {
+    to {
+        opacity: 1;
+        transform: rotate(-10deg) scale(1);
+    }
+}
+@keyframes hello-fade {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@keyframes hello-lift {
+    to {
+        transform: translateY(-100%);
+        visibility: hidden;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
+    /* Still says hi, just without the movement, and gets out of the way sooner. */
+    .hello {
+        animation: hello-fade 0.3s ease 0.6s forwards;
+    }
+    .hello-cat {
+        transform: translateY(4%);
+        animation: none;
+    }
+    .hello-cat .cat-eye {
+        animation: none;
+    }
+    .hello-hi {
+        opacity: 1;
+        transform: rotate(-10deg);
+        animation: none;
+    }
     .cat-blink .cat-eye,
     .cat-sway,
     .marquee {

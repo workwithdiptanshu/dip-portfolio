@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Homemade_Apple, Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import { CatFilters } from "@/components/cats/Cats";
+import FirstLoad, { firstLoadScript } from "@/components/Common/FirstLoad";
 
 export const metadata: Metadata = {
     title: "Diptanshu Mahish | Product Engineer",
@@ -91,12 +92,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${serif.variable} ${sans.variable} ${hand.variable}`}>
+        <html lang="en" suppressHydrationWarning className={`${serif.variable} ${sans.variable} ${hand.variable}`}>
              <head>
         <meta name="google-adsense-account" content="ca-pub-3294424742179691" />
+        {/* Decides before the first paint whether the hello loader shows. */}
+        <script dangerouslySetInnerHTML={{ __html: firstLoadScript }} />
       </head>
             <body className="font-sans bg-paper text-ink antialiased">
                 <CatFilters />
+                <FirstLoad />
                 {children}
             </body>
         </html>
