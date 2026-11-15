@@ -71,13 +71,7 @@ export default function HirePage({ searchParams }: { searchParams: { for?: strin
                             <div className="flex flex-col gap-1.5">
                                 <p className="text-[15px] font-medium leading-tight">Diptanshu Mahish</p>
                                 <p className="text-xs text-muted leading-snug">Product engineer, Bengaluru</p>
-                                <span className="flex items-center gap-1.5 text-xs pt-1">
-                                    <span className="relative flex w-2 h-2">
-                                        <span className="absolute inset-0 rounded-full bg-cat-moss animate-ping opacity-60" />
-                                        <span className="relative w-2 h-2 rounded-full bg-cat-moss" />
-                                    </span>
-                                    Usually replies within a day
-                                </span>
+                                <span className="text-xs pt-1">Usually replies within a day</span>
                             </div>
                             <MarginNote rotate={-8} className="absolute -top-5 right-4">
                                 that&rsquo;s me!
